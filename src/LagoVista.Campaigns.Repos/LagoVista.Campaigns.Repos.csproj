@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LagoVista.Campaigns.Models\LagoVista.Campaigns.Models.csproj" />
+    <ProjectReference Include="..\LagoVista.Campaigns\LagoVista.Campaigns.csproj" />
+  </ItemGroup>
+
+</Project>

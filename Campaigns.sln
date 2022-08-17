@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32414.318
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LagoVista.Campaigns", "src\LagoVista.Campaigns\LagoVista.Campaigns.csproj", "{4B5D550E-22A8-47E1-B53A-E594CF81E0E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LagoVista.Campaigns.Models", "src\LagoVista.Campaigns.Models\LagoVista.Campaigns.Models.csproj", "{B47BA343-3120-4B00-AA6A-DE43460AEBBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LagoVista.Campaigns.REST", "src\LagoVista.Campaigns.REST\LagoVista.Campaigns.REST.csproj", "{CFC6B045-45F7-426A-A417-2FC785B57EDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LagoVista.Campaigns.Repos", "src\LagoVista.Campaigns.Repos\LagoVista.Campaigns.Repos.csproj", "{A2BA83A8-34F7-4269-9493-F4F5ACA4F2FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4B5D550E-22A8-47E1-B53A-E594CF81E0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B5D550E-22A8-47E1-B53A-E594CF81E0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B5D550E-22A8-47E1-B53A-E594CF81E0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B5D550E-22A8-47E1-B53A-E594CF81E0E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B47BA343-3120-4B00-AA6A-DE43460AEBBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B47BA343-3120-4B00-AA6A-DE43460AEBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B47BA343-3120-4B00-AA6A-DE43460AEBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B47BA343-3120-4B00-AA6A-DE43460AEBBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFC6B045-45F7-426A-A417-2FC785B57EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFC6B045-45F7-426A-A417-2FC785B57EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFC6B045-45F7-426A-A417-2FC785B57EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFC6B045-45F7-426A-A417-2FC785B57EDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2BA83A8-34F7-4269-9493-F4F5ACA4F2FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2BA83A8-34F7-4269-9493-F4F5ACA4F2FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2BA83A8-34F7-4269-9493-F4F5ACA4F2FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2BA83A8-34F7-4269-9493-F4F5ACA4F2FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D676F48B-39B7-4548-86E1-21668B4F5FA2}
+	EndGlobalSection
+EndGlobal
