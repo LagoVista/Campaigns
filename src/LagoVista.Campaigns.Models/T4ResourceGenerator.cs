@@ -63,9 +63,27 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Common_Description
 
 		public static string Common_Description { get { return GetResourceString("Common_Description"); } }
+//Resources:CampaignResources:Common_IsPublic
+
+		public static string Common_IsPublic { get { return GetResourceString("Common_IsPublic"); } }
+//Resources:CampaignResources:Common_IsRequired
+
+		public static string Common_IsRequired { get { return GetResourceString("Common_IsRequired"); } }
 //Resources:CampaignResources:Common_Key
 
 		public static string Common_Key { get { return GetResourceString("Common_Key"); } }
+//Resources:CampaignResources:Common_Key_Help
+
+		public static string Common_Key_Help { get { return GetResourceString("Common_Key_Help"); } }
+//Resources:CampaignResources:Common_Key_Validation
+
+		public static string Common_Key_Validation { get { return GetResourceString("Common_Key_Validation"); } }
+//Resources:CampaignResources:Common_LastUpdated
+
+		public static string Common_LastUpdated { get { return GetResourceString("Common_LastUpdated"); } }
+//Resources:CampaignResources:Common_LastUpdatedBy
+
+		public static string Common_LastUpdatedBy { get { return GetResourceString("Common_LastUpdatedBy"); } }
 //Resources:CampaignResources:Common_Name
 
 		public static string Common_Name { get { return GetResourceString("Common_Name"); } }
@@ -81,7 +99,13 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Campaign_Description = "Campaign_Description";
 			public const string Campaign_Title = "Campaign_Title";
 			public const string Common_Description = "Common_Description";
+			public const string Common_IsPublic = "Common_IsPublic";
+			public const string Common_IsRequired = "Common_IsRequired";
 			public const string Common_Key = "Common_Key";
+			public const string Common_Key_Help = "Common_Key_Help";
+			public const string Common_Key_Validation = "Common_Key_Validation";
+			public const string Common_LastUpdated = "Common_LastUpdated";
+			public const string Common_LastUpdatedBy = "Common_LastUpdatedBy";
 			public const string Common_Name = "Common_Name";
 			public const string Promotion_Description = "Promotion_Description";
 			public const string Promotion_Title = "Promotion_Title";
