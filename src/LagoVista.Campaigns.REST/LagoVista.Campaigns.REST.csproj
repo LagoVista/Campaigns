@@ -6,8 +6,8 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.IoT.Web.Common" Version="3.0.1928.1008" />
-    <PackageReference Include="LagoVista.UserAdmin" Version="3.0.1928.1008" />
+    <PackageReference Include="LagoVista.IoT.Web.Common" Version="3.0.1935.0755" />
+    <PackageReference Include="LagoVista.UserAdmin" Version="3.0.1935.0755" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>

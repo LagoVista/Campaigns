@@ -57,6 +57,12 @@ namespace LagoVista.Campaigns.Models.Resources
         }*/
 		
 		public static string Campaign_Description { get { return GetResourceString("Campaign_Description"); } }
+//Resources:CampaignResources:Campaign_EndDate
+
+		public static string Campaign_EndDate { get { return GetResourceString("Campaign_EndDate"); } }
+//Resources:CampaignResources:Campaign_StartDate
+
+		public static string Campaign_StartDate { get { return GetResourceString("Campaign_StartDate"); } }
 //Resources:CampaignResources:Campaign_Title
 
 		public static string Campaign_Title { get { return GetResourceString("Campaign_Title"); } }
@@ -97,6 +103,8 @@ namespace LagoVista.Campaigns.Models.Resources
 		public static class Names
 		{
 			public const string Campaign_Description = "Campaign_Description";
+			public const string Campaign_EndDate = "Campaign_EndDate";
+			public const string Campaign_StartDate = "Campaign_StartDate";
 			public const string Campaign_Title = "Campaign_Title";
 			public const string Common_Description = "Common_Description";
 			public const string Common_IsPublic = "Common_IsPublic";

@@ -8,7 +8,7 @@ namespace LagoVista.Campaigns.Repos
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddTransient<ICampaignRepo, CampaignRepo>();
         }
     }
 }

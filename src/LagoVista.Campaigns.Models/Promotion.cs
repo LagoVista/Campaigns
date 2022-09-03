@@ -1,11 +1,13 @@
 ﻿using LagoVista.Campaigns.Models.Resources;
 using LagoVista.Core.Attributes;
 using System;
+using System.Collections.Generic;
 
 namespace LagoVista.Campaigns.Models
 {
     public class Promotion
     {
+
         public String Id { get; set; } 
 
         [ListColumn(HeaderResource: CampaignResources.Names.Common_Name, ResourceType: typeof(CampaignResources))]
@@ -23,5 +25,6 @@ namespace LagoVista.Campaigns.Models
         public Decimal Budget { get; set; }
         public Decimal Spend { get; set; }
 
+        public List<SocialMediaPost> Posts { get; set; } = new List<SocialMediaPost>();
     }
 }

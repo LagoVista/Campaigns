@@ -120,6 +120,12 @@
   <data name="Campaign_Description" xml:space="preserve">
     <value>A campaign is an effort to promote something that will help grow an initiative for our company.</value>
   </data>
+  <data name="Campaign_EndDate" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="Campaign_StartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
   <data name="Campaign_Title" xml:space="preserve">
     <value>Campaign</value>
   </data>
