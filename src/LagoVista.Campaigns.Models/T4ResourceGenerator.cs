@@ -93,12 +93,33 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Common_Name
 
 		public static string Common_Name { get { return GetResourceString("Common_Name"); } }
+//Resources:CampaignResources:Promotion_Budget
+
+		public static string Promotion_Budget { get { return GetResourceString("Promotion_Budget"); } }
 //Resources:CampaignResources:Promotion_Description
 
 		public static string Promotion_Description { get { return GetResourceString("Promotion_Description"); } }
+//Resources:CampaignResources:Promotion_Spend
+
+		public static string Promotion_Spend { get { return GetResourceString("Promotion_Spend"); } }
 //Resources:CampaignResources:Promotion_Title
 
 		public static string Promotion_Title { get { return GetResourceString("Promotion_Title"); } }
+//Resources:CampaignResources:SocialMedia_Account
+
+		public static string SocialMedia_Account { get { return GetResourceString("SocialMedia_Account"); } }
+//Resources:CampaignResources:SocialMedia_Account_Help
+
+		public static string SocialMedia_Account_Help { get { return GetResourceString("SocialMedia_Account_Help"); } }
+//Resources:CampaignResources:SocialMedia_AccountId
+
+		public static string SocialMedia_AccountId { get { return GetResourceString("SocialMedia_AccountId"); } }
+//Resources:CampaignResources:SocialMedia_AccountKey
+
+		public static string SocialMedia_AccountKey { get { return GetResourceString("SocialMedia_AccountKey"); } }
+//Resources:CampaignResources:SocialMedia_AccountName
+
+		public static string SocialMedia_AccountName { get { return GetResourceString("SocialMedia_AccountName"); } }
 
 		public static class Names
 		{
@@ -115,8 +136,15 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Common_LastUpdated = "Common_LastUpdated";
 			public const string Common_LastUpdatedBy = "Common_LastUpdatedBy";
 			public const string Common_Name = "Common_Name";
+			public const string Promotion_Budget = "Promotion_Budget";
 			public const string Promotion_Description = "Promotion_Description";
+			public const string Promotion_Spend = "Promotion_Spend";
 			public const string Promotion_Title = "Promotion_Title";
+			public const string SocialMedia_Account = "SocialMedia_Account";
+			public const string SocialMedia_Account_Help = "SocialMedia_Account_Help";
+			public const string SocialMedia_AccountId = "SocialMedia_AccountId";
+			public const string SocialMedia_AccountKey = "SocialMedia_AccountKey";
+			public const string SocialMedia_AccountName = "SocialMedia_AccountName";
 		}
 	}
 }

@@ -4,9 +4,9 @@ namespace LagoVista.Campaigns
 {
     public interface ICampaignConnectionSettings
     {
-        IConnectionSettings CampaignDocDbStorage { get; set; }
+        IConnectionSettings CampaignDocDbStorage { get; }
 
-        IConnectionSettings CampaignTableStorage { get; set; }
+        IConnectionSettings CampaignTableStorage { get; }
 
         bool ShouldConsolidateCollections { get; }
     }

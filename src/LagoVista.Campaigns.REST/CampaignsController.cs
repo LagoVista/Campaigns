@@ -34,7 +34,6 @@ namespace LagoVista.Campaigns.REST
             return DetailResponse<Campaign>.Create(campaign);
         }
 
-
         [HttpPost("/api/campaign")]
         public Task<InvokeResult<Campaign>> AddCampaignAsycn([FromBody] Campaign campaign)
         {
@@ -45,6 +44,14 @@ namespace LagoVista.Campaigns.REST
         public Task<InvokeResult<Campaign>> UpdateCampaignAsycn([FromBody] Campaign campaign)
         {
             return _campaignManager.UpdateCampaignAsync(campaign, OrgEntityHeader, UserEntityHeader);
+        }
+
+        [HttpGet("/api/campaign/promotion/factory")]
+        public DetailResponse<Promotion> CreatePromotion()
+        {
+            var campaign = DetailResponse<Promotion>.Create();
+            campaign.Model.Id = Guid.NewGuid().ToId();
+            return campaign;
         }
 
         [HttpGet("/api/campaign/factory")]

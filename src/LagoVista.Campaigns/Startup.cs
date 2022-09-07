@@ -9,6 +9,7 @@ namespace LagoVista.Campaigns
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<ICampaignManager, CampaignManager>();
+            services.AddTransient<ISocialMediaAccountManager, SocialMediaAccountManager>();
         }
     }
 }

@@ -3,16 +3,16 @@ using LagoVista.CloudStorage;
 using LagoVista.CloudStorage.DocumentDB;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Logging.Loggers;
-using System.Linq;
+using System;
 using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns.Repos
 {
-    public class CampaignRepo : DocumentDBRepoBase<Campaign>, ICampaignRepo
+    public class SocialMediaAccountRepo : DocumentDBRepoBase<SocialMediaAccount>, ISocialMediaAccountRepo
     {
         private bool _shouldConsolidateCollections;
 
-        public CampaignRepo(ICampaignConnectionSettings repoSettings, IAdminLogger logger, ICacheProvider cacheProvider)
+        public SocialMediaAccountRepo(ICampaignConnectionSettings repoSettings, IAdminLogger logger, ICacheProvider cacheProvider)
             : base(repoSettings.CampaignDocDbStorage.Uri, repoSettings.CampaignDocDbStorage.AccessKey, repoSettings.CampaignDocDbStorage.ResourceName, logger, cacheProvider)
         {
             this._shouldConsolidateCollections = repoSettings.ShouldConsolidateCollections;
@@ -21,25 +21,24 @@ namespace LagoVista.Campaigns.Repos
         protected override bool ShouldConsolidateCollections => _shouldConsolidateCollections;
 
 
-        public Task AddCampaignAsync(Campaign campaign)
+        public Task AddAccountAsync(SocialMediaAccount account)
         {
-            return CreateDocumentAsync(campaign);
+            return CreateDocumentAsync(account);
         }
 
-        public Task<Campaign> GetCampaignAsync(string id)
+        public Task<SocialMediaAccount> GetAccountAsync(string id)
         {
             return GetDocumentAsync(id);
         }
 
-        public async Task<ListResponse<CampaignSummary>> GetCampaigns(ListRequest request, string orgId)
+        public async Task<ListResponse<SocialMediaAccount>> GetAccountsAsync(ListRequest request, string orgId)
         {
-            var campaigns = await QueryAsync(cmp => cmp.OwnerOrganization.Id == orgId, request);
-            return ListResponse<CampaignSummary>.Create(request, campaigns.Model.Select(cmp => cmp.CreateSummary()));
+            return await QueryAsync(cmp => cmp.OwnerOrganization.Id == orgId, request);
         }
 
-        public Task UpdateCampaignAsync(Campaign campaign)
+        public Task UpdateAccountAsync(SocialMediaAccount account)
         {
-            return UpsertDocumentAsync(campaign);
+            return UpsertDocumentAsync(account);
         }
     }
 }
