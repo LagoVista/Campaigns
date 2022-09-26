@@ -10,5 +10,6 @@ namespace LagoVista.Campaigns.Models
         public string Title { get; set; }
         public string Content { get; set; }
         public EntityHeader Account {get; set;}
+        public EntityHeader SiteContent { get; set;}
     }
 }
