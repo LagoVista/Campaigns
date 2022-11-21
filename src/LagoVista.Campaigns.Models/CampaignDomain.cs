@@ -26,7 +26,7 @@ namespace LagoVista.Campaigns.Models
                         Major = 1,
                         Minor = 0,
                         Build = 001,
-                        DateStamp = new DateTime(2022, 17, 9),
+                        DateStamp = new DateTime(2022, 9, 17),
                         Revision = 1,
                         ReleaseNotes = "Initial Release"
                     }
