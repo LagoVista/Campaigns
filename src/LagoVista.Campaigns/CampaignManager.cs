@@ -30,7 +30,15 @@ namespace LagoVista.Campaigns
             return InvokeResult<Campaign>.Create(campaign);
         }
 
-        public async Task<Campaign> GetCampaign(string id, EntityHeader org, EntityHeader user)
+        public async Task<InvokeResult> DeleteCampaignAsync(string id, EntityHeader org, EntityHeader user)
+        {
+            var campaign = await _repo.GetCampaignAsync(id);
+            await AuthorizeAsync(campaign, AuthorizeResult.AuthorizeActions.Delete, user, org);
+            await _repo.DeleteCampaignAsync(id);
+            return InvokeResult.Success;
+        }
+
+        public async Task<Campaign> GetCampaignAsync(string id, EntityHeader org, EntityHeader user)
         {
             var campaign = await _repo.GetCampaignAsync(id);
             await AuthorizeAsync(campaign, AuthorizeResult.AuthorizeActions.Read, user, org);
@@ -38,7 +46,7 @@ namespace LagoVista.Campaigns
             return campaign;
         }
 
-        public async Task<ListResponse<CampaignSummary>> GetCampaigns(ListRequest request, EntityHeader org, EntityHeader user)
+        public async Task<ListResponse<CampaignSummary>> GetCampaignsAsync(ListRequest request, EntityHeader org, EntityHeader user)
         {
             await AuthorizeOrgAccessAsync(user, org, typeof(CampaignSummary), Actions.Read);
             return await _repo.GetCampaigns(request, org.Id);

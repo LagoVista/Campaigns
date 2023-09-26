@@ -24,14 +24,20 @@ namespace LagoVista.Campaigns.REST
         [HttpGet("/api/campaigns")]
         public Task<ListResponse<CampaignSummary>> GetCampaigns()
         {
-            return _campaignManager.GetCampaigns(GetListRequestFromHeader(), OrgEntityHeader, UserEntityHeader);
+            return _campaignManager.GetCampaignsAsync(GetListRequestFromHeader(), OrgEntityHeader, UserEntityHeader);
         }
 
         [HttpGet("/api/campaign/{id}")]
-        public async Task<DetailResponse<Campaign>> GetCampaigns(String id)
+        public async Task<DetailResponse<Campaign>> GetCampaign(String id)
         {
-            var campaign = await _campaignManager.GetCampaign(id, OrgEntityHeader, UserEntityHeader);
+            var campaign = await _campaignManager.GetCampaignAsync(id, OrgEntityHeader, UserEntityHeader);
             return DetailResponse<Campaign>.Create(campaign);
+        }
+
+        [HttpDelete("/api/campaign/{id}")]
+        public async Task<InvokeResult> DeleteCampaign(String id)
+        {
+            return await _campaignManager.DeleteCampaignAsync(id, OrgEntityHeader, UserEntityHeader);
         }
 
         [HttpPost("/api/campaign")]

@@ -31,6 +31,11 @@ namespace LagoVista.Campaigns.Repos
             return GetDocumentAsync(id);
         }
 
+        public Task DeleteCampaignAsync(string id)
+        {
+            return DeleteDocumentAsync(id);
+        }
+
         public async Task<ListResponse<CampaignSummary>> GetCampaigns(ListRequest request, string orgId)
         {
             var campaigns = await QueryAsync(cmp => cmp.OwnerOrganization.Id == orgId, request);

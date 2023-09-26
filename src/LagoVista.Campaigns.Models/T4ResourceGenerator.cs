@@ -60,6 +60,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Campaign_EndDate
 
 		public static string Campaign_EndDate { get { return GetResourceString("Campaign_EndDate"); } }
+//Resources:CampaignResources:Campaign_Promotions
+
+		public static string Campaign_Promotions { get { return GetResourceString("Campaign_Promotions"); } }
 //Resources:CampaignResources:Campaign_StartDate
 
 		public static string Campaign_StartDate { get { return GetResourceString("Campaign_StartDate"); } }
@@ -99,6 +102,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_Description
 
 		public static string Promotion_Description { get { return GetResourceString("Promotion_Description"); } }
+//Resources:CampaignResources:Promotion_Posts
+
+		public static string Promotion_Posts { get { return GetResourceString("Promotion_Posts"); } }
 //Resources:CampaignResources:Promotion_Spend
 
 		public static string Promotion_Spend { get { return GetResourceString("Promotion_Spend"); } }
@@ -125,6 +131,7 @@ namespace LagoVista.Campaigns.Models.Resources
 		{
 			public const string Campaign_Description = "Campaign_Description";
 			public const string Campaign_EndDate = "Campaign_EndDate";
+			public const string Campaign_Promotions = "Campaign_Promotions";
 			public const string Campaign_StartDate = "Campaign_StartDate";
 			public const string Campaign_Title = "Campaign_Title";
 			public const string Common_Description = "Common_Description";
@@ -138,6 +145,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Common_Name = "Common_Name";
 			public const string Promotion_Budget = "Promotion_Budget";
 			public const string Promotion_Description = "Promotion_Description";
+			public const string Promotion_Posts = "Promotion_Posts";
 			public const string Promotion_Spend = "Promotion_Spend";
 			public const string Promotion_Title = "Promotion_Title";
 			public const string SocialMedia_Account = "SocialMedia_Account";

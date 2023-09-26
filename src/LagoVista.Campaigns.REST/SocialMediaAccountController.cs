@@ -27,13 +27,13 @@ namespace LagoVista.Campaigns.REST
         }
 
         [HttpPost("/api/socialmedia/accounts")]
-        public Task<InvokeResult<SocialMediaAccount>> AddCampaignAsycn([FromBody] SocialMediaAccount account)
+        public Task<InvokeResult<SocialMediaAccount>> AddAccountAsync([FromBody] SocialMediaAccount account)
         {
             return _oscialMediaManager.AddAccountAsync(account, OrgEntityHeader, UserEntityHeader);
         }
 
         [HttpPut("/api/socialmedia/accounts")]
-        public Task<InvokeResult<SocialMediaAccount>> UpdateCampaignAsycn([FromBody] SocialMediaAccount account)
+        public Task<InvokeResult<SocialMediaAccount>> UpdateAccountAsync([FromBody] SocialMediaAccount account)
         {
             return _oscialMediaManager.UpdateAccountAsync(account, OrgEntityHeader, UserEntityHeader);
         }
