@@ -7,7 +7,8 @@ using System.Collections.Generic;
 namespace LagoVista.Campaigns.Models
 {
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Promotion_Title, CampaignResources.Names.Promotion_Description,
-     Resources.CampaignResources.Names.Promotion_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources))]
+     Resources.CampaignResources.Names.Promotion_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources),
+       FactoryUrl: "/api/campaign/promotion/factory")]
     public class Promotion : IFormDescriptor
     {
         public String Id { get; set; } 
