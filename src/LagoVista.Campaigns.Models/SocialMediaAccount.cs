@@ -7,7 +7,7 @@ using System;
 
 namespace LagoVista.Campaigns.Models
 {
-    public class SocialMediaAccount : IOwnedEntity, IIDEntity, IValidateable, INoSQLEntity
+    public class SocialMediaAccount : IOwnedEntity, INamedEntity, IIDEntity, IValidateable, INoSQLEntity
     {
         public enum SocialMediaTypes
         {
@@ -35,6 +35,8 @@ namespace LagoVista.Campaigns.Models
         public string DatabaseName { get; set; }
         public string EntityType { get; set; }
 
+
+        public string Name { get; set; }
 
         public string AccountName { get; set; }
         public string AccountId { get; set; }
