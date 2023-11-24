@@ -4,10 +4,11 @@ using LagoVista.Core.Models;
 using LagoVista.Core.Validation;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace LagoVista.Campaigns.Models
 {
-    public class SocialMediaAccount : IOwnedEntity, INamedEntity, IIDEntity, IValidateable, INoSQLEntity
+    public class SocialMediaAccount : EntityBase, IValidateable
     {
         public enum SocialMediaTypes
         {
@@ -22,21 +23,7 @@ namespace LagoVista.Campaigns.Models
             Id = Guid.NewGuid().ToId();
         }
 
-        [JsonProperty("id")]
-        public String Id { get; set; }
-
-        public bool IsPublic { get; set; }
-        public EntityHeader OwnerOrganization { get; set; }
-        public EntityHeader OwnerUser { get; set; }
-        public string CreationDate { get; set; }
-        public string LastUpdatedDate { get; set; }
-        public EntityHeader CreatedBy { get; set; }
-        public EntityHeader LastUpdatedBy { get; set; }
-        public string DatabaseName { get; set; }
-        public string EntityType { get; set; }
-
-
-        public string Name { get; set; }
+        public List<EntityChangeSet> History { get; set; } = new List<EntityChangeSet>();
 
         public string AccountName { get; set; }
         public string AccountId { get; set; }

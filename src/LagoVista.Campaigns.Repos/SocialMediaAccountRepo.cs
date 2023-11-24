@@ -1,6 +1,7 @@
 ﻿using LagoVista.Campaigns.Models;
 using LagoVista.CloudStorage;
 using LagoVista.CloudStorage.DocumentDB;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Logging.Loggers;
 using System;
