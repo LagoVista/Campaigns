@@ -7,15 +7,25 @@ using System.Collections.Generic;
 namespace LagoVista.Campaigns.Models
 {
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Promotion_Title, CampaignResources.Names.Promotion_Description,
-     Resources.CampaignResources.Names.Promotion_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources),
+     Resources.CampaignResources.Names.Promotion_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-calling-2",
        FactoryUrl: "/api/campaign/promotion/factory")]
-    public class Promotion : IFormDescriptor
+    public class Promotion : IFormDescriptor, IIconEntity
     {
+        public Promotion()
+        {
+            Icon = "icon-ae-calling-2";
+        }
+
         public String Id { get; set; } 
 
         [ListColumn(HeaderResource: CampaignResources.Names.Common_Name, ResourceType: typeof(CampaignResources))]
         [FormField(LabelResource: CampaignResources.Names.Common_Name, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string Name { get; set; }
+
+
+        [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
+        public string Icon { get; set; }
+
 
         [ListColumn(HeaderResource: CampaignResources.Names.Common_Key, ResourceType: typeof(CampaignResources))]
         [FormField(LabelResource: CampaignResources.Names.Common_Key, HelpResource: CampaignResources.Names.Common_Key_Help, FieldType: FieldTypes.Key, RegExValidationMessageResource: CampaignResources.Names.Common_Key_Validation, ResourceType: typeof(CampaignResources), IsRequired: true)]
@@ -40,10 +50,11 @@ namespace LagoVista.Campaigns.Models
             {
                 nameof(Name),
                 nameof(Key),
-                nameof(Description),
+                nameof(Icon),
                 nameof(Budget),
                 nameof(Spend),
-                nameof(Posts)
+                nameof(Posts),
+                nameof(Description),
             };
         }
     }

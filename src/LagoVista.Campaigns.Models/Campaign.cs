@@ -7,13 +7,22 @@ using System.Collections.Generic;
 namespace LagoVista.Campaigns.Models
 {
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Campaign_Title, CampaignResources.Names.Campaign_Description, 
-        Resources.CampaignResources.Names.Campaign_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources),
+        Resources.CampaignResources.Names.Campaign_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-call-center",
         GetUrl: "/api/campaign/{id}", GetListUrl: "/api/campaigns", SaveUrl: "/api/campaign", DeleteUrl: "/api/campaign/{id}", FactoryUrl: "/api/campaign/factory")]
 
-    public class Campaign : CampaignModelBase, IFormDescriptor
+    public class Campaign : CampaignModelBase, IFormDescriptor, IIconEntity, ISummaryFactory
     {
+        public Campaign()
+        {
+            Icon = "icon-ae-call-center";
+        }
+
         [FormField(LabelResource: CampaignResources.Names.Campaign_Promotions, FieldType: FieldTypes.ChildListInline, ResourceType: typeof(CampaignResources),  IsUserEditable: true)]
         public List<Promotion> Promotions { get; set; } = new List<Promotion>();
+
+
+        [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
+        public string Icon { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Campaign_StartDate, FieldType: FieldTypes.Date, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string StartDate { get; set; }
@@ -30,6 +39,7 @@ namespace LagoVista.Campaigns.Models
                 Name = Name,
                 IsPublic = IsPublic,
                 Key = Key,
+                Icon = Icon,
                 StartDate = StartDate,
                 EndDate = EndDate,
             };
@@ -41,17 +51,22 @@ namespace LagoVista.Campaigns.Models
             {
                 nameof(Name),
                 nameof(Key),
-                nameof(Description),
+                nameof(Icon),
                 nameof(StartDate),
                 nameof(EndDate),
                 nameof(Promotions),
+                nameof(Description),
             };
+        }
+
+        ISummaryData ISummaryFactory.CreateSummary()
+        {
+            return CreateSummary();
         }
     }
 
-
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Campaign_Title, CampaignResources.Names.Campaign_Description,
-        Resources.CampaignResources.Names.Campaign_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources),
+        Resources.CampaignResources.Names.Campaign_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-call-center",
         GetUrl: "/api/campaign/{id}", GetListUrl: "/api/campaigns", SaveUrl: "/api/campaign", DeleteUrl: "/api/campaign/{id}", FactoryUrl: "/api/campaign/factory")]
     public class CampaignSummary : SummaryData
     {

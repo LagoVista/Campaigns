@@ -135,6 +135,9 @@
   <data name="Common_Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="Common_Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
   <data name="Common_IsPublic" xml:space="preserve">
     <value>Is Public</value>
   </data>

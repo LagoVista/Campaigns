@@ -1,10 +1,8 @@
 ﻿using LagoVista.Campaigns.Models;
-using LagoVista.CloudStorage;
 using LagoVista.CloudStorage.DocumentDB;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Logging.Loggers;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns.Repos
@@ -39,8 +37,7 @@ namespace LagoVista.Campaigns.Repos
 
         public async Task<ListResponse<CampaignSummary>> GetCampaigns(ListRequest request, string orgId)
         {
-            var campaigns = await QueryAsync(cmp => cmp.OwnerOrganization.Id == orgId, request);
-            return ListResponse<CampaignSummary>.Create(request, campaigns.Model.Select(cmp => cmp.CreateSummary()));
+            return await QuerySummaryAsync<CampaignSummary, Campaign>(cmp => cmp.OwnerOrganization.Id == orgId, cmp => cmp.Name, request);
         }
 
         public Task UpdateCampaignAsync(Campaign campaign)
