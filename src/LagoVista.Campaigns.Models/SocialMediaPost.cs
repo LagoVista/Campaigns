@@ -1,22 +1,49 @@
 ﻿using LagoVista.Campaigns.Models.Resources;
+using LagoVista.Core;
 using LagoVista.Core.Attributes;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace LagoVista.Campaigns.Models
 {
 
-    [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Promotion_Title, CampaignResources.Names.Promotion_Description,
-     Resources.CampaignResources.Names.Promotion_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-calling-2",
-       FactoryUrl: "/api/campaign/promotion/factory")]
-
-    public class SocialMediaPost
+    [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.SocialMediaPost_Title, CampaignResources.Names.SocialMediaPost_Description,
+     Resources.CampaignResources.Names.SocialMediaPost_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-calling-2",
+       FactoryUrl: "/api/campaign/promotion/post/factory")]
+    public class SocialMediaPost : IFormDescriptor
     {
-        public string Title { get; set; }
+        public SocialMediaPost()
+        {
+            Id = Guid.NewGuid().ToId();
+        }
+
+        public string Id { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Post_Title, IsRequired: true, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
+        public string Name { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Post_Content, IsRequired: true, FieldType: FieldTypes.MultiLineText, ResourceType: typeof(CampaignResources))]
         public string Content { get; set; }
-        public EntityHeader Account {get; set;}
+
+        [FormField(LabelResource: CampaignResources.Names.Post_Account, IsRequired: false, FieldType: FieldTypes.EntityHeaderPicker, 
+            WaterMark:CampaignResources.Names.Post_Account_Watermark, ResourceType: typeof(CampaignResources))]
+        public EntityHeader SocialMediaAccount {get; set;}
+
+        [FormField(LabelResource: CampaignResources.Names.Post_SiteContent, IsRequired: false, HelpResource:CampaignResources.Names.Post_SiteContent_Help, 
+            WaterMark:CampaignResources.Names.Post_SiteContent_Watermark, FieldType: FieldTypes.EntityHeaderPicker, ResourceType: typeof(CampaignResources))]
         public EntityHeader SiteContent { get; set;}
+
+        public List<string> GetFormFields()
+        {
+            return new List<string>()
+            {
+                nameof(Name),
+                nameof(SocialMediaAccount),
+                nameof(SiteContent),
+                nameof(Content),
+            };
+        }
     }
 }

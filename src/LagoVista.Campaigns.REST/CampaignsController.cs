@@ -55,16 +55,19 @@ namespace LagoVista.Campaigns.REST
         [HttpGet("/api/campaign/promotion/factory")]
         public DetailResponse<Promotion> CreatePromotion()
         {
-            var campaign = DetailResponse<Promotion>.Create();
-            campaign.Model.Id = Guid.NewGuid().ToId();
-            return campaign;
+            return DetailResponse<Promotion>.Create();
+        }
+
+        [HttpGet("/api/campaign/promotion/post/factory")]
+        public DetailResponse<SocialMediaPost> CreateMediaPosts()
+        {
+            return DetailResponse<SocialMediaPost>.Create();
         }
 
         [HttpGet("/api/campaign/factory")]
         public DetailResponse<Campaign> CreateCampaigns()
         {
             var campaign = DetailResponse<Campaign>.Create();
-            campaign.Model.Id = Guid.NewGuid().ToId();
             SetAuditProperties(campaign.Model);
             SetOwnedProperties(campaign.Model);
             return campaign;

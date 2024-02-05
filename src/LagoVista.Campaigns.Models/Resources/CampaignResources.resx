@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Campaign_BudgetAllocated" xml:space="preserve">
+    <value>Budget Allocated</value>
+  </data>
+  <data name="Campaign_BudgetAllocated_Help" xml:space="preserve">
+    <value>The Budget Allocated amount is the total budget amount that is available for all the promotions</value>
+  </data>
   <data name="Campaign_Description" xml:space="preserve">
     <value>A campaign is an effort to promote something that will help grow an initiative for our company.</value>
   </data>
@@ -131,6 +137,15 @@
   </data>
   <data name="Campaign_Title" xml:space="preserve">
     <value>Campaign</value>
+  </data>
+  <data name="Campaign_TotalBudget" xml:space="preserve">
+    <value>Total Budget</value>
+  </data>
+  <data name="Campaign_TotalBudget_Help" xml:space="preserve">
+    <value>The Total Budget is the accumulated budget of all the promotions.</value>
+  </data>
+  <data name="Campaign_TotalSpend" xml:space="preserve">
+    <value>Total Spend</value>
   </data>
   <data name="Common_Description" xml:space="preserve">
     <value>Description</value>
@@ -162,6 +177,27 @@
   <data name="Common_Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="Post_Account" xml:space="preserve">
+    <value>Social Media Account</value>
+  </data>
+  <data name="Post_Account_Watermark" xml:space="preserve">
+    <value>-select social media account-</value>
+  </data>
+  <data name="Post_Content" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Post_SiteContent" xml:space="preserve">
+    <value>Site Content</value>
+  </data>
+  <data name="Post_SiteContent_Help" xml:space="preserve">
+    <value>Optionally select site content that can be associated with this social media post.</value>
+  </data>
+  <data name="Post_SiteContent_Watermark" xml:space="preserve">
+    <value>-select associated site content-</value>
+  </data>
+  <data name="Post_Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
   <data name="Promotion_Budget" xml:space="preserve">
     <value>Budget</value>
   </data>
@@ -176,6 +212,12 @@
   </data>
   <data name="Promotion_Title" xml:space="preserve">
     <value>Promotion</value>
+  </data>
+  <data name="SocialMediaPost_Description" xml:space="preserve">
+    <value>A Social Media Post is a content to be presented on Social Media to drive users to the Softwar Logistics web site.</value>
+  </data>
+  <data name="SocialMediaPost_Title" xml:space="preserve">
+    <value>Social Media Post</value>
   </data>
   <data name="SocialMedia_Account" xml:space="preserve">
     <value>Social Media Account</value>

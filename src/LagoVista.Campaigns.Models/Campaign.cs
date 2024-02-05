@@ -1,7 +1,9 @@
 ﻿using LagoVista.Campaigns.Models.Resources;
+using LagoVista.Core;
 using LagoVista.Core.Attributes;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
+using System;
 using System.Collections.Generic;
 
 namespace LagoVista.Campaigns.Models
@@ -14,6 +16,7 @@ namespace LagoVista.Campaigns.Models
     {
         public Campaign()
         {
+            Id = Guid.NewGuid().ToId();
             Icon = "icon-ae-call-center";
         }
 
@@ -29,7 +32,19 @@ namespace LagoVista.Campaigns.Models
 
         [FormField(LabelResource: CampaignResources.Names.Campaign_EndDate, FieldType: FieldTypes.Date, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string EndDate { get; set; }
-    
+
+        [FormField(LabelResource: CampaignResources.Names.Campaign_BudgetAllocated, HelpResource:CampaignResources.Names.Campaign_BudgetAllocated_Help, 
+                IsUserEditable: true, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
+        public Decimal BudgetAllocated { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Campaign_TotalBudget, HelpResource: CampaignResources.Names.Campaign_TotalBudget_Help, 
+                IsUserEditable: false, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
+        public Decimal TotalBudget { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Campaign_TotalSpend, IsUserEditable: false, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
+        public Decimal TotalSpend { get; set; }
+
+
         public CampaignSummary CreateSummary()
         {
             return new CampaignSummary()
@@ -42,6 +57,9 @@ namespace LagoVista.Campaigns.Models
                 Icon = Icon,
                 StartDate = StartDate,
                 EndDate = EndDate,
+                BudgetAllocated = BudgetAllocated,
+                TotalBudget = TotalBudget,
+                TotalSpend = TotalSpend
             };
         }
 
@@ -54,10 +72,14 @@ namespace LagoVista.Campaigns.Models
                 nameof(Icon),
                 nameof(StartDate),
                 nameof(EndDate),
+                nameof(BudgetAllocated),
+                nameof(TotalBudget),
+                nameof(TotalSpend),
                 nameof(Promotions),
                 nameof(Description),
             };
         }
+
 
         ISummaryData ISummaryFactory.CreateSummary()
         {
@@ -72,5 +94,8 @@ namespace LagoVista.Campaigns.Models
     {
         public string StartDate { get; set; }
         public string EndDate { get; set; }
+        public decimal TotalSpend { get; set; }
+        public decimal TotalBudget { get; set; }
+        public decimal BudgetAllocated { get; set; }
     }
 }

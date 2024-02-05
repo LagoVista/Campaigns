@@ -6,6 +6,7 @@ using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.Validation;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns
@@ -23,6 +24,9 @@ namespace LagoVista.Campaigns
         public async Task<InvokeResult<Campaign>> AddCampaignAsync(Campaign campaign, EntityHeader org, EntityHeader user)
         {
             ValidationCheck(campaign, Actions.Create);
+
+            campaign.TotalSpend = campaign.Promotions.Sum(prm => prm.Spend);
+            campaign.TotalBudget = campaign.Promotions.Sum(prm => prm.Budget);
 
             await AuthorizeAsync(campaign, AuthorizeResult.AuthorizeActions.Create, user, org);
             await _repo.AddCampaignAsync(campaign);

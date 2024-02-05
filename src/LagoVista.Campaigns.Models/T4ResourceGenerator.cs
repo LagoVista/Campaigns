@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 
-//Resources:CampaignResources:Campaign_Description
+//Resources:CampaignResources:Campaign_BudgetAllocated
 namespace LagoVista.Campaigns.Models.Resources
 {
 	public class CampaignResources
@@ -56,6 +56,12 @@ namespace LagoVista.Campaigns.Models.Resources
 			return new HtmlString(str);
         }*/
 		
+		public static string Campaign_BudgetAllocated { get { return GetResourceString("Campaign_BudgetAllocated"); } }
+//Resources:CampaignResources:Campaign_BudgetAllocated_Help
+
+		public static string Campaign_BudgetAllocated_Help { get { return GetResourceString("Campaign_BudgetAllocated_Help"); } }
+//Resources:CampaignResources:Campaign_Description
+
 		public static string Campaign_Description { get { return GetResourceString("Campaign_Description"); } }
 //Resources:CampaignResources:Campaign_EndDate
 
@@ -69,6 +75,15 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Campaign_Title
 
 		public static string Campaign_Title { get { return GetResourceString("Campaign_Title"); } }
+//Resources:CampaignResources:Campaign_TotalBudget
+
+		public static string Campaign_TotalBudget { get { return GetResourceString("Campaign_TotalBudget"); } }
+//Resources:CampaignResources:Campaign_TotalBudget_Help
+
+		public static string Campaign_TotalBudget_Help { get { return GetResourceString("Campaign_TotalBudget_Help"); } }
+//Resources:CampaignResources:Campaign_TotalSpend
+
+		public static string Campaign_TotalSpend { get { return GetResourceString("Campaign_TotalSpend"); } }
 //Resources:CampaignResources:Common_Description
 
 		public static string Common_Description { get { return GetResourceString("Common_Description"); } }
@@ -99,6 +114,27 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Common_Name
 
 		public static string Common_Name { get { return GetResourceString("Common_Name"); } }
+//Resources:CampaignResources:Post_Account
+
+		public static string Post_Account { get { return GetResourceString("Post_Account"); } }
+//Resources:CampaignResources:Post_Account_Watermark
+
+		public static string Post_Account_Watermark { get { return GetResourceString("Post_Account_Watermark"); } }
+//Resources:CampaignResources:Post_Content
+
+		public static string Post_Content { get { return GetResourceString("Post_Content"); } }
+//Resources:CampaignResources:Post_SiteContent
+
+		public static string Post_SiteContent { get { return GetResourceString("Post_SiteContent"); } }
+//Resources:CampaignResources:Post_SiteContent_Help
+
+		public static string Post_SiteContent_Help { get { return GetResourceString("Post_SiteContent_Help"); } }
+//Resources:CampaignResources:Post_SiteContent_Watermark
+
+		public static string Post_SiteContent_Watermark { get { return GetResourceString("Post_SiteContent_Watermark"); } }
+//Resources:CampaignResources:Post_Title
+
+		public static string Post_Title { get { return GetResourceString("Post_Title"); } }
 //Resources:CampaignResources:Promotion_Budget
 
 		public static string Promotion_Budget { get { return GetResourceString("Promotion_Budget"); } }
@@ -129,14 +165,25 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:SocialMedia_AccountName
 
 		public static string SocialMedia_AccountName { get { return GetResourceString("SocialMedia_AccountName"); } }
+//Resources:CampaignResources:SocialMediaPost_Description
+
+		public static string SocialMediaPost_Description { get { return GetResourceString("SocialMediaPost_Description"); } }
+//Resources:CampaignResources:SocialMediaPost_Title
+
+		public static string SocialMediaPost_Title { get { return GetResourceString("SocialMediaPost_Title"); } }
 
 		public static class Names
 		{
+			public const string Campaign_BudgetAllocated = "Campaign_BudgetAllocated";
+			public const string Campaign_BudgetAllocated_Help = "Campaign_BudgetAllocated_Help";
 			public const string Campaign_Description = "Campaign_Description";
 			public const string Campaign_EndDate = "Campaign_EndDate";
 			public const string Campaign_Promotions = "Campaign_Promotions";
 			public const string Campaign_StartDate = "Campaign_StartDate";
 			public const string Campaign_Title = "Campaign_Title";
+			public const string Campaign_TotalBudget = "Campaign_TotalBudget";
+			public const string Campaign_TotalBudget_Help = "Campaign_TotalBudget_Help";
+			public const string Campaign_TotalSpend = "Campaign_TotalSpend";
 			public const string Common_Description = "Common_Description";
 			public const string Common_Icon = "Common_Icon";
 			public const string Common_IsPublic = "Common_IsPublic";
@@ -147,6 +194,13 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Common_LastUpdated = "Common_LastUpdated";
 			public const string Common_LastUpdatedBy = "Common_LastUpdatedBy";
 			public const string Common_Name = "Common_Name";
+			public const string Post_Account = "Post_Account";
+			public const string Post_Account_Watermark = "Post_Account_Watermark";
+			public const string Post_Content = "Post_Content";
+			public const string Post_SiteContent = "Post_SiteContent";
+			public const string Post_SiteContent_Help = "Post_SiteContent_Help";
+			public const string Post_SiteContent_Watermark = "Post_SiteContent_Watermark";
+			public const string Post_Title = "Post_Title";
 			public const string Promotion_Budget = "Promotion_Budget";
 			public const string Promotion_Description = "Promotion_Description";
 			public const string Promotion_Posts = "Promotion_Posts";
@@ -157,6 +211,8 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string SocialMedia_AccountId = "SocialMedia_AccountId";
 			public const string SocialMedia_AccountKey = "SocialMedia_AccountKey";
 			public const string SocialMedia_AccountName = "SocialMedia_AccountName";
+			public const string SocialMediaPost_Description = "SocialMediaPost_Description";
+			public const string SocialMediaPost_Title = "SocialMediaPost_Title";
 		}
 	}
 }
