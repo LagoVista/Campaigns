@@ -138,9 +138,15 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_Budget
 
 		public static string Promotion_Budget { get { return GetResourceString("Promotion_Budget"); } }
+//Resources:CampaignResources:Promotion_DailyGoal
+
+		public static string Promotion_DailyGoal { get { return GetResourceString("Promotion_DailyGoal"); } }
 //Resources:CampaignResources:Promotion_Description
 
 		public static string Promotion_Description { get { return GetResourceString("Promotion_Description"); } }
+//Resources:CampaignResources:Promotion_ExcludeWeekend
+
+		public static string Promotion_ExcludeWeekend { get { return GetResourceString("Promotion_ExcludeWeekend"); } }
 //Resources:CampaignResources:Promotion_Posts
 
 		public static string Promotion_Posts { get { return GetResourceString("Promotion_Posts"); } }
@@ -202,7 +208,9 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Post_SiteContent_Watermark = "Post_SiteContent_Watermark";
 			public const string Post_Title = "Post_Title";
 			public const string Promotion_Budget = "Promotion_Budget";
+			public const string Promotion_DailyGoal = "Promotion_DailyGoal";
 			public const string Promotion_Description = "Promotion_Description";
+			public const string Promotion_ExcludeWeekend = "Promotion_ExcludeWeekend";
 			public const string Promotion_Posts = "Promotion_Posts";
 			public const string Promotion_Spend = "Promotion_Spend";
 			public const string Promotion_Title = "Promotion_Title";

@@ -1,4 +1,6 @@
 ﻿using LagoVista.Campaigns.Models;
+using LagoVista.Core;
+using LagoVista.Core.Exceptions;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Managers;
 using LagoVista.Core.Models;
@@ -55,6 +57,38 @@ namespace LagoVista.Campaigns
             await AuthorizeOrgAccessAsync(user, org, typeof(CampaignSummary), Actions.Read);
             return await _repo.GetCampaigns(request, org.Id);
         }
+
+        public async Task IncrementPromotionProgressAsync(string campaignKey, string promotionKey, EntityHeader org, EntityHeader user)
+        {
+            var campaign = await _repo.GetCampaignByKeyAsync(org.Id, campaignKey);
+            if (campaign == null)
+                throw new RecordNotFoundException(nameof(Campaign), campaignKey);
+
+            var promo = campaign.Promotions.FirstOrDefault(prm => prm.Key == promotionKey);
+            if (promo == null)
+                throw new RecordNotFoundException(nameof(Promotion), promotionKey);
+
+
+            var progress = promo.Progress.FirstOrDefault(prg => prg.Date == DateTime.Today.ToDateOnly());
+            if(progress == null)
+            {
+                progress = new PromotionProgress()
+                {
+                     Count = 1,
+                     Date = DateTime.Today.ToDateOnly(),
+                     Goal = promo.DailyGoal,
+                };
+
+                promo.Progress.Add(progress);
+            }
+            else
+            {
+                progress.Goal = promo.DailyGoal;
+                progress.Count++;
+            }
+
+            await _repo.UpdateCampaignAsync(campaign);
+         }
 
         public async Task<InvokeResult<Campaign>> UpdateCampaignAsync(Campaign campaign, EntityHeader org, EntityHeader user)
         {

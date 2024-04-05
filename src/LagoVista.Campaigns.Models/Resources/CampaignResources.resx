@@ -201,8 +201,14 @@
   <data name="Promotion_Budget" xml:space="preserve">
     <value>Budget</value>
   </data>
+  <data name="Promotion_DailyGoal" xml:space="preserve">
+    <value>Daily Goal</value>
+  </data>
   <data name="Promotion_Description" xml:space="preserve">
     <value>A promotion is a specific tactical initiative that will help support campaign</value>
+  </data>
+  <data name="Promotion_ExcludeWeekend" xml:space="preserve">
+    <value>Exclude Weekends</value>
   </data>
   <data name="Promotion_Posts" xml:space="preserve">
     <value>Posts</value>

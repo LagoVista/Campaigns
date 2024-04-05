@@ -1,6 +1,5 @@
 ﻿using LagoVista.Campaigns.Models;
 using LagoVista.Core.Models.UIMetaData;
-using LagoVista.Core.Validation;
 using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns
@@ -11,9 +10,7 @@ namespace LagoVista.Campaigns
         Task DeleteCampaignAsync(string id);
         Task UpdateCampaignAsync(Campaign campaign);
         Task<Campaign> GetCampaignAsync(string id);
-
-
-
+        Task<Campaign> GetCampaignByKeyAsync(string orgId, string key);
         Task<ListResponse<CampaignSummary>> GetCampaigns(ListRequest request, string orgId);
     }
 }

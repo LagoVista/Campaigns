@@ -1,5 +1,4 @@
 ﻿using LagoVista.Campaigns.Models;
-using LagoVista.Core;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
 using LagoVista.IoT.Logging.Loggers;
@@ -38,6 +37,12 @@ namespace LagoVista.Campaigns.REST
         public async Task<InvokeResult> DeleteCampaign(String id)
         {
             return await _campaignManager.DeleteCampaignAsync(id, OrgEntityHeader, UserEntityHeader);
+        }
+
+        [HttpGet("/api/campaign/{campaignkey}/{promokey}/increment")]
+        public async Task IncrementProgressAsync(string campaignkey, string promokey)
+        {
+            await _campaignManager.IncrementPromotionProgressAsync(campaignkey, promokey, OrgEntityHeader, UserEntityHeader);
         }
 
         [HttpPost("/api/campaign")]

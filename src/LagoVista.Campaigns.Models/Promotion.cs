@@ -42,6 +42,15 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Promotion_Spend, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
         public Decimal Spend { get; set; }
 
+
+        [FormField(LabelResource: CampaignResources.Names.Promotion_ExcludeWeekend, IsRequired: true, FieldType: FieldTypes.CheckBox, ResourceType: typeof(CampaignResources))]
+        public bool ExcludeWeekends { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Promotion_DailyGoal, IsRequired: true, FieldType: FieldTypes.Integer, ResourceType: typeof(CampaignResources))]
+        public int DailyGoal { get; set; }
+
+        public List<PromotionProgress> Progress { get; set; } = new List<PromotionProgress>();
+
        
         [FormField(LabelResource: CampaignResources.Names.Promotion_Posts, FieldType: FieldTypes.ChildListInline, FactoryUrl: "/api/campaign/promotion/post/factory",
             ResourceType: typeof(CampaignResources))]
@@ -54,6 +63,8 @@ namespace LagoVista.Campaigns.Models
                 nameof(Name),
                 nameof(Key),
                 nameof(Icon),
+                nameof(ExcludeWeekends),
+                nameof(DailyGoal),
                 nameof(Budget),
                 nameof(Spend),
                 nameof(Description),

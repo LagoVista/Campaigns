@@ -3,6 +3,7 @@ using LagoVista.CloudStorage.DocumentDB;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Logging.Loggers;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns.Repos
@@ -25,6 +26,7 @@ namespace LagoVista.Campaigns.Repos
             return CreateDocumentAsync(campaign);
         }
 
+
         public Task<Campaign> GetCampaignAsync(string id)
         {
             return GetDocumentAsync(id);
@@ -43,6 +45,11 @@ namespace LagoVista.Campaigns.Repos
         public Task UpdateCampaignAsync(Campaign campaign)
         {
             return UpsertDocumentAsync(campaign);
+        }
+
+        public async Task<Campaign> GetCampaignByKeyAsync(string orgId, string key)
+        {
+            return (await QueryAsync(cmp => cmp.Key == key && cmp.OwnerOrganization.Id == orgId)).FirstOrDefault();
         }
     }
 }
