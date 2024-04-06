@@ -58,16 +58,25 @@ namespace LagoVista.Campaigns
             return await _repo.GetCampaigns(request, org.Id);
         }
 
-        public async Task IncrementPromotionProgressAsync(string campaignKey, string promotionKey, EntityHeader org, EntityHeader user)
+        public async Task IncrementPromotionProgressAsync(string campaignKey, string promotionKey, EntityHeader org, EntityHeader user, bool throwOnNotFound = true)
         {
             var campaign = await _repo.GetCampaignByKeyAsync(org.Id, campaignKey);
             if (campaign == null)
-                throw new RecordNotFoundException(nameof(Campaign), campaignKey);
+            {
+                if (throwOnNotFound)
+                    throw new RecordNotFoundException(nameof(Campaign), campaignKey);
+                else
+                    return;
+            }
 
             var promo = campaign.Promotions.FirstOrDefault(prm => prm.Key == promotionKey);
             if (promo == null)
-                throw new RecordNotFoundException(nameof(Promotion), promotionKey);
-
+            {
+                if (throwOnNotFound)
+                    throw new RecordNotFoundException(nameof(Promotion), promotionKey);
+                else
+                    return;
+            }
 
             var progress = promo.Progress.FirstOrDefault(prg => prg.Date == DateTime.Today.ToDateOnly());
             if(progress == null)
