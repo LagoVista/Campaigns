@@ -1,8 +1,11 @@
 ﻿using LagoVista.Campaigns.Models;
 using LagoVista.CloudStorage.DocumentDB;
+using LagoVista.Core;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Logging.Loggers;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -50,6 +53,12 @@ namespace LagoVista.Campaigns.Repos
         public async Task<Campaign> GetCampaignByKeyAsync(string orgId, string key)
         {
             return (await QueryAsync(cmp => cmp.Key == key && cmp.OwnerOrganization.Id == orgId)).FirstOrDefault();
+        }
+
+        public Task<IEnumerable<Campaign>> GetActiveCampaignsByIndustryAsync(string orgId, string industryId)
+        {
+            var today = DateTime.Now.ToDateOnly();
+            return QueryAsync(cmp => cmp.OwnerOrganization.Id == orgId && cmp.Industry.Id == industryId && String.Compare(cmp.StartDate, today) <= 0 && String.Compare(cmp.EndDate, today) >= 0);
         }
     }
 }

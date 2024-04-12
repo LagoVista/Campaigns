@@ -99,6 +99,40 @@ namespace LagoVista.Campaigns
             await _repo.UpdateCampaignAsync(campaign);
          }
 
+        public async Task IncrementPromotionProgressAsync(PromotionTypes promoType, string industryId, string nicheId, EntityHeader org, EntityHeader user, bool throwOnNotFound = true)
+        {
+            var campaigns = await _repo.GetActiveCampaignsByIndustryAsync(org.Id, industryId);
+            foreach (var campaign in campaigns)
+            {
+                if (EntityHeader.IsNullOrEmpty(campaign.IndustryNiche) || campaign.IndustryNiche?.Id == nicheId)
+                {
+                    var promos = campaign.Promotions.Where(prm => prm.PromotionType?.Value == promoType);
+                    foreach (var promo in promos)
+                    {
+                        var progress = promo.Progress.FirstOrDefault(prg => prg.Date == DateTime.Today.ToDateOnly());
+                        if (progress == null)
+                        {
+                            progress = new PromotionProgress()
+                            {
+                                Count = 1,
+                                Date = DateTime.Today.ToDateOnly(),
+                                Goal = promo.DailyGoal,
+                            };
+
+                            promo.Progress.Add(progress);
+                        }
+                        else
+                        {
+                            progress.Goal = promo.DailyGoal;
+                            progress.Count++;
+                        }
+                    }
+                }
+
+                await _repo.UpdateCampaignAsync(campaign);
+            }
+        }
+
         public async Task<InvokeResult<Campaign>> UpdateCampaignAsync(Campaign campaign, EntityHeader org, EntityHeader user)
         {
             ValidationCheck(campaign, Actions.Update);
