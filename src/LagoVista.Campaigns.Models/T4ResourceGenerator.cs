@@ -66,6 +66,12 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Campaign_EndDate
 
 		public static string Campaign_EndDate { get { return GetResourceString("Campaign_EndDate"); } }
+//Resources:CampaignResources:Campaign_Industry
+
+		public static string Campaign_Industry { get { return GetResourceString("Campaign_Industry"); } }
+//Resources:CampaignResources:Campaign_Niche
+
+		public static string Campaign_Niche { get { return GetResourceString("Campaign_Niche"); } }
 //Resources:CampaignResources:Campaign_Promotions
 
 		public static string Campaign_Promotions { get { return GetResourceString("Campaign_Promotions"); } }
@@ -150,12 +156,33 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_Posts
 
 		public static string Promotion_Posts { get { return GetResourceString("Promotion_Posts"); } }
+//Resources:CampaignResources:Promotion_PromoType
+
+		public static string Promotion_PromoType { get { return GetResourceString("Promotion_PromoType"); } }
 //Resources:CampaignResources:Promotion_Spend
 
 		public static string Promotion_Spend { get { return GetResourceString("Promotion_Spend"); } }
 //Resources:CampaignResources:Promotion_Title
 
 		public static string Promotion_Title { get { return GetResourceString("Promotion_Title"); } }
+//Resources:CampaignResources:Promotion_Type_ColdCall
+
+		public static string Promotion_Type_ColdCall { get { return GetResourceString("Promotion_Type_ColdCall"); } }
+//Resources:CampaignResources:Promotion_Type_Email
+
+		public static string Promotion_Type_Email { get { return GetResourceString("Promotion_Type_Email"); } }
+//Resources:CampaignResources:Promotion_Type_Other
+
+		public static string Promotion_Type_Other { get { return GetResourceString("Promotion_Type_Other"); } }
+//Resources:CampaignResources:Promotion_Type_Select
+
+		public static string Promotion_Type_Select { get { return GetResourceString("Promotion_Type_Select"); } }
+//Resources:CampaignResources:Promotion_Type_SocialMedia
+
+		public static string Promotion_Type_SocialMedia { get { return GetResourceString("Promotion_Type_SocialMedia"); } }
+//Resources:CampaignResources:Promotion_Type_WebAd
+
+		public static string Promotion_Type_WebAd { get { return GetResourceString("Promotion_Type_WebAd"); } }
 //Resources:CampaignResources:SocialMedia_Account
 
 		public static string SocialMedia_Account { get { return GetResourceString("SocialMedia_Account"); } }
@@ -184,6 +211,8 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Campaign_BudgetAllocated_Help = "Campaign_BudgetAllocated_Help";
 			public const string Campaign_Description = "Campaign_Description";
 			public const string Campaign_EndDate = "Campaign_EndDate";
+			public const string Campaign_Industry = "Campaign_Industry";
+			public const string Campaign_Niche = "Campaign_Niche";
 			public const string Campaign_Promotions = "Campaign_Promotions";
 			public const string Campaign_StartDate = "Campaign_StartDate";
 			public const string Campaign_Title = "Campaign_Title";
@@ -212,8 +241,15 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Promotion_Description = "Promotion_Description";
 			public const string Promotion_ExcludeWeekend = "Promotion_ExcludeWeekend";
 			public const string Promotion_Posts = "Promotion_Posts";
+			public const string Promotion_PromoType = "Promotion_PromoType";
 			public const string Promotion_Spend = "Promotion_Spend";
 			public const string Promotion_Title = "Promotion_Title";
+			public const string Promotion_Type_ColdCall = "Promotion_Type_ColdCall";
+			public const string Promotion_Type_Email = "Promotion_Type_Email";
+			public const string Promotion_Type_Other = "Promotion_Type_Other";
+			public const string Promotion_Type_Select = "Promotion_Type_Select";
+			public const string Promotion_Type_SocialMedia = "Promotion_Type_SocialMedia";
+			public const string Promotion_Type_WebAd = "Promotion_Type_WebAd";
 			public const string SocialMedia_Account = "SocialMedia_Account";
 			public const string SocialMedia_Account_Help = "SocialMedia_Account_Help";
 			public const string SocialMedia_AccountId = "SocialMedia_AccountId";

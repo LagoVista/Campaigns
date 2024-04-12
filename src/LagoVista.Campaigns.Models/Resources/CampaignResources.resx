@@ -129,6 +129,12 @@
   <data name="Campaign_EndDate" xml:space="preserve">
     <value>End Date</value>
   </data>
+  <data name="Campaign_Industry" xml:space="preserve">
+    <value>Industry</value>
+  </data>
+  <data name="Campaign_Niche" xml:space="preserve">
+    <value>Niche</value>
+  </data>
   <data name="Campaign_Promotions" xml:space="preserve">
     <value>Promotions</value>
   </data>
@@ -213,11 +219,32 @@
   <data name="Promotion_Posts" xml:space="preserve">
     <value>Posts</value>
   </data>
+  <data name="Promotion_PromoType" xml:space="preserve">
+    <value>Promotion Type</value>
+  </data>
   <data name="Promotion_Spend" xml:space="preserve">
     <value>Spend</value>
   </data>
   <data name="Promotion_Title" xml:space="preserve">
     <value>Promotion</value>
+  </data>
+  <data name="Promotion_Type_ColdCall" xml:space="preserve">
+    <value>Cold Call</value>
+  </data>
+  <data name="Promotion_Type_Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Promotion_Type_Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Promotion_Type_Select" xml:space="preserve">
+    <value>-select promotion type-</value>
+  </data>
+  <data name="Promotion_Type_SocialMedia" xml:space="preserve">
+    <value>Social Media</value>
+  </data>
+  <data name="Promotion_Type_WebAd" xml:space="preserve">
+    <value>Web Advertisement</value>
   </data>
   <data name="SocialMediaPost_Description" xml:space="preserve">
     <value>A Social Media Post is a content to be presented on Social Media to drive users to the Softwar Logistics web site.</value>

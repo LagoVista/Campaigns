@@ -12,7 +12,7 @@ namespace LagoVista.Campaigns.Models
         Resources.CampaignResources.Names.Campaign_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-call-center",
         GetUrl: "/api/campaign/{id}", GetListUrl: "/api/campaigns", SaveUrl: "/api/campaign", DeleteUrl: "/api/campaign/{id}", FactoryUrl: "/api/campaign/factory")]
 
-    public class Campaign : CampaignModelBase, IFormDescriptor, IIconEntity, ISummaryFactory
+    public class Campaign : CampaignModelBase, IFormDescriptor, IFormDescriptorCol2, IIconEntity, ISummaryFactory
     {
         public Campaign()
         {
@@ -45,6 +45,13 @@ namespace LagoVista.Campaigns.Models
         public Decimal TotalSpend { get; set; }
 
 
+        [FormField(LabelResource: CampaignResources.Names.Campaign_Industry, IsRequired: false, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industries", ResourceType: typeof(CampaignResources))]
+        public EntityHeader Industry { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Campaign_Niche, IsRequired: false, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industry/{industry.id}/niches", ResourceType: typeof(CampaignResources))]
+        public EntityHeader IndustryNiche { get; set; }
+
+
         public CampaignSummary CreateSummary()
         {
             return new CampaignSummary()
@@ -72,14 +79,22 @@ namespace LagoVista.Campaigns.Models
                 nameof(Icon),
                 nameof(StartDate),
                 nameof(EndDate),
-                nameof(BudgetAllocated),
-                nameof(TotalBudget),
-                nameof(TotalSpend),
-                nameof(Promotions),
+                nameof(Industry),
+                nameof(IndustryNiche),                
                 nameof(Description),
             };
         }
 
+        public List<string> GetFormFieldsCol2()
+        {
+            return new List<string>()
+            {
+                nameof(BudgetAllocated),
+                nameof(TotalBudget),
+                nameof(TotalSpend),
+                nameof(Promotions),
+            };
+        }
 
         ISummaryData ISummaryFactory.CreateSummary()
         {
