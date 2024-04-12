@@ -87,6 +87,7 @@ namespace LagoVista.Campaigns.Models
             {
                 nameof(Name),
                 nameof(Key),
+                nameof(PromotionType),
                 nameof(Icon),
                 nameof(ExcludeWeekends),
                 nameof(DailyGoal),
