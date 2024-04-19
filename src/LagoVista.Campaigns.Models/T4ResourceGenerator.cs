@@ -90,6 +90,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Campaign_TotalSpend
 
 		public static string Campaign_TotalSpend { get { return GetResourceString("Campaign_TotalSpend"); } }
+//Resources:CampaignResources:Common_Category
+
+		public static string Common_Category { get { return GetResourceString("Common_Category"); } }
 //Resources:CampaignResources:Common_Description
 
 		public static string Common_Description { get { return GetResourceString("Common_Description"); } }
@@ -120,6 +123,48 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Common_Name
 
 		public static string Common_Name { get { return GetResourceString("Common_Name"); } }
+//Resources:CampaignResources:Common_SelectCategory
+
+		public static string Common_SelectCategory { get { return GetResourceString("Common_SelectCategory"); } }
+//Resources:CampaignResources:Kpi_Description
+
+		public static string Kpi_Description { get { return GetResourceString("Kpi_Description"); } }
+//Resources:CampaignResources:Kpi_Period
+
+		public static string Kpi_Period { get { return GetResourceString("Kpi_Period"); } }
+//Resources:CampaignResources:Kpi_Period_Day
+
+		public static string Kpi_Period_Day { get { return GetResourceString("Kpi_Period_Day"); } }
+//Resources:CampaignResources:Kpi_Period_Hour
+
+		public static string Kpi_Period_Hour { get { return GetResourceString("Kpi_Period_Hour"); } }
+//Resources:CampaignResources:Kpi_Period_Month
+
+		public static string Kpi_Period_Month { get { return GetResourceString("Kpi_Period_Month"); } }
+//Resources:CampaignResources:Kpi_Period_Select
+
+		public static string Kpi_Period_Select { get { return GetResourceString("Kpi_Period_Select"); } }
+//Resources:CampaignResources:Kpi_Period_Week
+
+		public static string Kpi_Period_Week { get { return GetResourceString("Kpi_Period_Week"); } }
+//Resources:CampaignResources:Kpi_TargetValue
+
+		public static string Kpi_TargetValue { get { return GetResourceString("Kpi_TargetValue"); } }
+//Resources:CampaignResources:Kpi_Title
+
+		public static string Kpi_Title { get { return GetResourceString("Kpi_Title"); } }
+//Resources:CampaignResources:Kpis_Title
+
+		public static string Kpis_Title { get { return GetResourceString("Kpis_Title"); } }
+//Resources:CampaignResources:MetricsDefinition_Description
+
+		public static string MetricsDefinition_Description { get { return GetResourceString("MetricsDefinition_Description"); } }
+//Resources:CampaignResources:MetricsDefinition_Title
+
+		public static string MetricsDefinition_Title { get { return GetResourceString("MetricsDefinition_Title"); } }
+//Resources:CampaignResources:MetricsDefinitions_TItle
+
+		public static string MetricsDefinitions_TItle { get { return GetResourceString("MetricsDefinitions_TItle"); } }
 //Resources:CampaignResources:Post_Account
 
 		public static string Post_Account { get { return GetResourceString("Post_Account"); } }
@@ -219,6 +264,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Campaign_TotalBudget = "Campaign_TotalBudget";
 			public const string Campaign_TotalBudget_Help = "Campaign_TotalBudget_Help";
 			public const string Campaign_TotalSpend = "Campaign_TotalSpend";
+			public const string Common_Category = "Common_Category";
 			public const string Common_Description = "Common_Description";
 			public const string Common_Icon = "Common_Icon";
 			public const string Common_IsPublic = "Common_IsPublic";
@@ -229,6 +275,20 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Common_LastUpdated = "Common_LastUpdated";
 			public const string Common_LastUpdatedBy = "Common_LastUpdatedBy";
 			public const string Common_Name = "Common_Name";
+			public const string Common_SelectCategory = "Common_SelectCategory";
+			public const string Kpi_Description = "Kpi_Description";
+			public const string Kpi_Period = "Kpi_Period";
+			public const string Kpi_Period_Day = "Kpi_Period_Day";
+			public const string Kpi_Period_Hour = "Kpi_Period_Hour";
+			public const string Kpi_Period_Month = "Kpi_Period_Month";
+			public const string Kpi_Period_Select = "Kpi_Period_Select";
+			public const string Kpi_Period_Week = "Kpi_Period_Week";
+			public const string Kpi_TargetValue = "Kpi_TargetValue";
+			public const string Kpi_Title = "Kpi_Title";
+			public const string Kpis_Title = "Kpis_Title";
+			public const string MetricsDefinition_Description = "MetricsDefinition_Description";
+			public const string MetricsDefinition_Title = "MetricsDefinition_Title";
+			public const string MetricsDefinitions_TItle = "MetricsDefinitions_TItle";
 			public const string Post_Account = "Post_Account";
 			public const string Post_Account_Watermark = "Post_Account_Watermark";
 			public const string Post_Content = "Post_Content";

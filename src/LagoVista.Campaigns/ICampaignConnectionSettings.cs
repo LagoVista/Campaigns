@@ -7,6 +7,7 @@ namespace LagoVista.Campaigns
         IConnectionSettings CampaignDocDbStorage { get; }
 
         IConnectionSettings CampaignTableStorage { get; }
+        IConnectionSettings MetricsStorageConnection { get; }
 
         bool ShouldConsolidateCollections { get; }
     }

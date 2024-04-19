@@ -6,8 +6,8 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.IoT.Web.Common" Version="3.0.1963.1145" />
-    <PackageReference Include="LagoVista.UserAdmin" Version="3.0.1963.1145" />
+    <PackageReference Include="LagoVista.IoT.Web.Common" Version="3.0.2529.0426" />
+    <PackageReference Include="LagoVista.UserAdmin" Version="3.0.2529.0426" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Campaigns.Models\LagoVista.Campaigns.Models.csproj" />

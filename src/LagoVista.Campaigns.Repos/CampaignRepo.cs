@@ -57,8 +57,7 @@ namespace LagoVista.Campaigns.Repos
 
         public Task<IEnumerable<Campaign>> GetActiveCampaignsByIndustryAsync(string orgId, string industryId)
         {
-            var today = DateTime.Now.ToDateOnly();
-            return QueryAsync(cmp => cmp.OwnerOrganization.Id == orgId && cmp.Industry.Id == industryId && String.Compare(cmp.StartDate, today) <= 0 && String.Compare(cmp.EndDate, today) >= 0);
+            return QueryAsync(cmp => cmp.OwnerOrganization.Id == orgId && cmp.Industry.Id == industryId);
         }
     }
 }

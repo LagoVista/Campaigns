@@ -54,6 +54,7 @@ namespace LagoVista.Campaigns.REST
         [HttpPut("/api/campaign")]
         public Task<InvokeResult<Campaign>> UpdateCampaignAsycn([FromBody] Campaign campaign)
         {
+            SetUpdatedProperties(campaign);
             return _campaignManager.UpdateCampaignAsync(campaign, OrgEntityHeader, UserEntityHeader);
         }
 

@@ -101,6 +101,8 @@ namespace LagoVista.Campaigns
 
         public async Task IncrementPromotionProgressAsync(PromotionTypes promoType, string industryId, string nicheId, EntityHeader org, EntityHeader user, bool throwOnNotFound = true)
         {
+            var today = DateTime.Now.ToDateOnly();
+
             var campaigns = await _repo.GetActiveCampaignsByIndustryAsync(org.Id, industryId);
             foreach (var campaign in campaigns)
             {
