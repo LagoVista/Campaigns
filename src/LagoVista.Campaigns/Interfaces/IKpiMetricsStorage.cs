@@ -6,15 +6,13 @@ namespace LagoVista.Campaigns.Interfaces
 {
 
     /*
-    create table KpiMetrics (
-    time TIMESTAMPTZ not null,
+    create table Metrics (
+    time TimestampTz not null,
     span character not null,
     orgid text not null,
     org text not null,
     userid text null,
     username text null,
-    kpiid text not null,
-    kpi text not null,
     categoryid text null,
     category text null,
     attr1id text not null,
@@ -25,7 +23,12 @@ namespace LagoVista.Campaigns.Interfaces
     attr3 text null,    
     value double precision not null);
 
-    SELECT create_hypertable('KpiMetrics', 'time');
+    SELECT create_hypertable('Metrics', 'time');
+
+grant connect on database metricstest to metricsdevuser;
+GRANT ALL PRIVILEGES ON DATABASE "metricstest" to metricsdevuser;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to metricsdevuser;
+
 
 );*/
 

@@ -10,14 +10,14 @@ using System.Text;
 namespace LagoVista.Campaigns.Models
 {
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.MetricsDefinition_Title, CampaignResources.Names.MetricsDefinition_Description,
-           Resources.CampaignResources.Names.MetricsDefinition_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-call-center",
+           Resources.CampaignResources.Names.MetricsDefinition_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-pz-stock-1",
             GetUrl: "/api/metrics/definition/{id}", GetListUrl: "/api/metrics/definitions", SaveUrl: "/api/metrics/definition", DeleteUrl: "/api/metrics/definition/{id}", FactoryUrl: "/api/metrics/definition/factory")]
     public class MetricsDefinition : CampaignModelBase, IFormDescriptor, IIconEntity, ISummaryFactory, ICategorized
     {
         public MetricsDefinition() 
         {
             Id = Guid.NewGuid().ToId();
-            Icon = "icon-ae-call-center";
+            Icon = "icon-pz-stock-1";
         }
 
         [FormField(LabelResource: CampaignResources.Names.Common_Category, FieldType: FieldTypes.Category, WaterMark: CampaignResources.Names.Common_SelectCategory, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]

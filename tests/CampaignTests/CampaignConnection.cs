@@ -4,32 +4,24 @@ using LagoVista.Core.Models;
 using LagoVista.IoT.Logging.Loggers;
 using LagoVista.IoT.Logging.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CampaignTests
 {
-    internal class CampaignConnection : ICampaignConnectionSettings
+    internal class LocalMetricStorageConnectionSettings : IMetricStorageConnectionSettings
     {
-        public CampaignConnection()
+        public LocalMetricStorageConnectionSettings()
         {
-            MetricsStorageConnection = new ConnectionSettings()
+            MetricsStorageDBConenction = new ConnectionSettings()
             {
                 Uri = Environment.GetEnvironmentVariable("DEV_PSSQL_URL"),
                 UserName = Environment.GetEnvironmentVariable("DEV_PSSQL_USER"),
+                ResourceName = Environment.GetEnvironmentVariable("TEST_PSSQL_DB"),
                 Password = Environment.GetEnvironmentVariable("DEV_PSSQL_PASSWORD")
             };
         }
 
-        public IConnectionSettings CampaignDocDbStorage { get; }
-
-        public IConnectionSettings CampaignTableStorage { get; }
-
-        public IConnectionSettings MetricsStorageConnection { get; }
-
-        public bool ShouldConsolidateCollections => true;
+        public IConnectionSettings MetricsStorageDBConenction { get;  }
     }
 
     internal class Writer : ILogWriter

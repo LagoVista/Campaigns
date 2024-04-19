@@ -21,9 +21,8 @@ namespace LagoVista.Campaigns.Models
         Month
     }
 
-
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Kpi_Title, CampaignResources.Names.Kpi_Description,
-            Resources.CampaignResources.Names.Kpi_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-call-center",
+            Resources.CampaignResources.Names.Kpi_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-pz-presentation,
                        GetUrl: "/api/kpi/{id}", GetListUrl: "/api/kpis", SaveUrl: "/api/kpi", DeleteUrl: "/api/kpi/{id}", FactoryUrl: "/api/kpi/factory")]
     public class Kpi : CampaignModelBase, IFormDescriptor, IIconEntity, ISummaryFactory, ICategorized
     {
@@ -35,7 +34,7 @@ namespace LagoVista.Campaigns.Models
         public Kpi()
         {
             Id = Guid.NewGuid().ToId();
-            Icon = "icon-ae-call-center";
+            Icon = "icon-pz-presentation";
         }
 
         public List<string> GetFormFields()
