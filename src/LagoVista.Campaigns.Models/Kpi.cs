@@ -22,7 +22,7 @@ namespace LagoVista.Campaigns.Models
     }
 
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Kpi_Title, CampaignResources.Names.Kpi_Description,
-            Resources.CampaignResources.Names.Kpi_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-pz-presentation,
+            Resources.CampaignResources.Names.Kpi_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-pz-presentation",
                        GetUrl: "/api/kpi/{id}", GetListUrl: "/api/kpis", SaveUrl: "/api/kpi", DeleteUrl: "/api/kpi/{id}", FactoryUrl: "/api/kpi/factory")]
     public class Kpi : CampaignModelBase, IFormDescriptor, IIconEntity, ISummaryFactory, ICategorized
     {
@@ -45,21 +45,22 @@ namespace LagoVista.Campaigns.Models
                 nameof(Key),
                 nameof(Icon),
                 nameof(Category),
-                nameof(Period),
                 nameof(TargetValue),
+                nameof(Period),
                 nameof(Description)
             };
         }
 
 
-        [FormField(LabelResource: CampaignResources.Names.Kpi_Period, FieldType: FieldTypes.Picker, WaterMark: CampaignResources.Names.Kpi_Period_Select, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Period, FieldType: FieldTypes.Picker, WaterMark: CampaignResources.Names.Kpi_Period_Select, EnumType:typeof(KpiPeriod), 
+            ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public EntityHeader<KpiPeriod> Period { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Common_Category, FieldType: FieldTypes.Category, WaterMark: CampaignResources.Names.Common_SelectCategory, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public EntityHeader Category { get; set; }
 
 
-        [FormField(LabelResource: CampaignResources.Names.Kpi_TargetValue, IsUserEditable: false, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
+        [FormField(LabelResource: CampaignResources.Names.Kpi_TargetValue, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
         public Decimal TargetValue { get; set; }
 
         public KpiSummary CreateSummary()

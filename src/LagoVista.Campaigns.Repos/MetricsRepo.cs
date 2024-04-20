@@ -1,4 +1,5 @@
-﻿using LagoVista.Campaigns.Models;
+﻿using LagoVista.Campaigns.Interfaces;
+using LagoVista.Campaigns.Models;
 using LagoVista.Core;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns.Repos
 {
-    public class MetricsRepo
+    public class MetricsRepo : IMetricsRepo
     {
         IConnectionSettings _connectionSettings;
 
