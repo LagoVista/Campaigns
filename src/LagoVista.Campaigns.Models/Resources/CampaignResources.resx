@@ -219,6 +219,24 @@
   <data name="Kpi_Title" xml:space="preserve">
     <value>Key Performance Indicator</value>
   </data>
+  <data name="MetricDefinition_Attr1Key" xml:space="preserve">
+    <value>Attribute 1 Key</value>
+  </data>
+  <data name="MetricDefinition_Attr1Name" xml:space="preserve">
+    <value>Attribute 1 Name</value>
+  </data>
+  <data name="MetricDefinition_Attr2Key" xml:space="preserve">
+    <value>Attribute 2 Key</value>
+  </data>
+  <data name="MetricDefinition_Attr2Name" xml:space="preserve">
+    <value>Attribute 2 Name</value>
+  </data>
+  <data name="MetricDefinition_Attr3Key" xml:space="preserve">
+    <value>Attribute 3 Key</value>
+  </data>
+  <data name="MetricDefinition_Attr3Name" xml:space="preserve">
+    <value>Attribute 3 Name</value>
+  </data>
   <data name="MetricsDefinitions_TItle" xml:space="preserve">
     <value>Metrics Definitions</value>
   </data>
