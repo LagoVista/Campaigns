@@ -8,6 +8,8 @@ namespace LagoVista.Campaigns.Interfaces
     /*
     create table Metrics (
     time TimestampTz not null,
+    metric text not null,
+    metricid text not null,
     span character not null,
     orgid text not null,
     org text not null,
@@ -25,9 +27,11 @@ namespace LagoVista.Campaigns.Interfaces
 
     SELECT create_hypertable('Metrics', 'time');
 
-grant connect on database metricstest to metricsdevuser;
-GRANT ALL PRIVILEGES ON DATABASE "metricstest" to metricsdevuser;
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to metricsdevuser;
+alter user metricsuser with password '*******************';
+
+grant connect on database metricstest to metricsuser
+GRANT ALL PRIVILEGES ON DATABASE "metricstest" to metricsuser;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public to metricsuser;
 
 
 );*/

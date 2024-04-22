@@ -126,15 +126,33 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Common_SelectCategory
 
 		public static string Common_SelectCategory { get { return GetResourceString("Common_SelectCategory"); } }
+//Resources:CampaignResources:Kpi_Attribute1
+
+		public static string Kpi_Attribute1 { get { return GetResourceString("Kpi_Attribute1"); } }
+//Resources:CampaignResources:Kpi_Attribute2
+
+		public static string Kpi_Attribute2 { get { return GetResourceString("Kpi_Attribute2"); } }
+//Resources:CampaignResources:Kpi_Attribute3
+
+		public static string Kpi_Attribute3 { get { return GetResourceString("Kpi_Attribute3"); } }
 //Resources:CampaignResources:Kpi_Description
 
 		public static string Kpi_Description { get { return GetResourceString("Kpi_Description"); } }
+//Resources:CampaignResources:Kpi_Metric
+
+		public static string Kpi_Metric { get { return GetResourceString("Kpi_Metric"); } }
+//Resources:CampaignResources:Kpi_Metric_Select
+
+		public static string Kpi_Metric_Select { get { return GetResourceString("Kpi_Metric_Select"); } }
 //Resources:CampaignResources:Kpi_Period
 
 		public static string Kpi_Period { get { return GetResourceString("Kpi_Period"); } }
 //Resources:CampaignResources:Kpi_Period_Day
 
 		public static string Kpi_Period_Day { get { return GetResourceString("Kpi_Period_Day"); } }
+//Resources:CampaignResources:Kpi_Period_Each
+
+		public static string Kpi_Period_Each { get { return GetResourceString("Kpi_Period_Each"); } }
 //Resources:CampaignResources:Kpi_Period_Hour
 
 		public static string Kpi_Period_Hour { get { return GetResourceString("Kpi_Period_Hour"); } }
@@ -294,9 +312,15 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Common_LastUpdatedBy = "Common_LastUpdatedBy";
 			public const string Common_Name = "Common_Name";
 			public const string Common_SelectCategory = "Common_SelectCategory";
+			public const string Kpi_Attribute1 = "Kpi_Attribute1";
+			public const string Kpi_Attribute2 = "Kpi_Attribute2";
+			public const string Kpi_Attribute3 = "Kpi_Attribute3";
 			public const string Kpi_Description = "Kpi_Description";
+			public const string Kpi_Metric = "Kpi_Metric";
+			public const string Kpi_Metric_Select = "Kpi_Metric_Select";
 			public const string Kpi_Period = "Kpi_Period";
 			public const string Kpi_Period_Day = "Kpi_Period_Day";
+			public const string Kpi_Period_Each = "Kpi_Period_Each";
 			public const string Kpi_Period_Hour = "Kpi_Period_Hour";
 			public const string Kpi_Period_Month = "Kpi_Period_Month";
 			public const string Kpi_Period_Select = "Kpi_Period_Select";

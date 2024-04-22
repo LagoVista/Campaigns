@@ -41,6 +41,7 @@ namespace LagoVista.Campaigns.Repos
                 case KpiPeriod.Day: span = "D"; break;
                 case KpiPeriod.Hour: span = "H"; break;
                 case KpiPeriod.Week: span = "W"; break;
+                case KpiPeriod.Each: span = "E"; break;
             }
 
             using (var cn = OpenConnection())

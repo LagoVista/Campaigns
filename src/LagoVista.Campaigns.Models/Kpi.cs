@@ -17,19 +17,22 @@ namespace LagoVista.Campaigns.Models
         Day,
         [EnumLabel(Kpi.Kpi_Period_Week, CampaignResources.Names.Kpi_Period_Week, typeof(CampaignResources))]
         Week,
-        [EnumLabel(Kpi.Kpi_Period_Hour, CampaignResources.Names.Kpi_Period_Hour, typeof(CampaignResources))]
-        Month
+        [EnumLabel(Kpi.Kpi_Period_Month, CampaignResources.Names.Kpi_Period_Month, typeof(CampaignResources))]
+        Month,
+        [EnumLabel(Kpi.Kpi_Period_Each, CampaignResources.Names.Kpi_Period_Each, typeof(CampaignResources))]
+        Each
     }
 
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Kpi_Title, CampaignResources.Names.Kpi_Description,
             Resources.CampaignResources.Names.Kpi_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-pz-presentation",
                        GetUrl: "/api/kpi/{id}", GetListUrl: "/api/kpis", SaveUrl: "/api/kpi", DeleteUrl: "/api/kpi/{id}", FactoryUrl: "/api/kpi/factory")]
-    public class Kpi : CampaignModelBase, IFormDescriptor, IIconEntity, ISummaryFactory, ICategorized
+    public class Kpi : CampaignModelBase, IFormDescriptor, IFormDescriptorCol2, IIconEntity, ISummaryFactory, ICategorized
     {
         public const string Kpi_Period_Month = "month";
         public const string Kpi_Period_Day = "day";
         public const string Kpi_Period_Week = "week";
         public const string Kpi_Period_Hour = "hour";
+        public const string Kpi_Period_Each = "each";
 
         public Kpi()
         {
@@ -44,13 +47,15 @@ namespace LagoVista.Campaigns.Models
                 nameof(Name),
                 nameof(Key),
                 nameof(Icon),
-                nameof(Category),
-                nameof(TargetValue),
-                nameof(Period),
+                nameof(Category),                
                 nameof(Description)
             };
         }
 
+
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Metric, WaterMark:CampaignResources.Names.Kpi_Metric_Select, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/metrics/definitions",
+            ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
+        public EntityHeader Metric { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Kpi_Period, FieldType: FieldTypes.Picker, WaterMark: CampaignResources.Names.Kpi_Period_Select, EnumType:typeof(KpiPeriod), 
             ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
@@ -58,6 +63,15 @@ namespace LagoVista.Campaigns.Models
 
         [FormField(LabelResource: CampaignResources.Names.Common_Category, FieldType: FieldTypes.Category, WaterMark: CampaignResources.Names.Common_SelectCategory, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public EntityHeader Category { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute1, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Attr1 { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute2, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Attr2 { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute3, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Attr3 { get; set; }
 
 
         [FormField(LabelResource: CampaignResources.Names.Kpi_TargetValue, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
@@ -80,6 +94,19 @@ namespace LagoVista.Campaigns.Models
         ISummaryData ISummaryFactory.CreateSummary()
         {
             return CreateSummary();
+        }
+
+        public List<string> GetFormFieldsCol2()
+        {
+            return new List<string>()
+            {
+                nameof(TargetValue),
+                nameof(Metric),
+                nameof(Period),
+                nameof(Attr1),
+                nameof(Attr2),
+                nameof(Attr3),
+            };
         }
 
         [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
