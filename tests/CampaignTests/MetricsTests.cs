@@ -1,5 +1,7 @@
 using LagoVista.Campaigns.Repos;
 using LagoVista.Core;
+using LagoVista.IoT.Logging.Loggers;
+using LagoVista.IoT.Logging.Utils;
 using MongoDB.Bson;
 using NUnit.Framework;
 using System;
@@ -14,7 +16,7 @@ namespace CampaignTests
         [SetUp]
         public void Setup()
         {
-            _metricsRepo = new MetricsRepo(new LocalMetricStorageConnectionSettings());
+            _metricsRepo = new MetricsRepo(new LocalMetricStorageConnectionSettings(), new AdminLogger(new ConsoleLogWriter()));
         }
 
         [Test]

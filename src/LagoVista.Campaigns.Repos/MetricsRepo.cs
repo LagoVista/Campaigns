@@ -3,8 +3,11 @@ using LagoVista.Campaigns.Models;
 using LagoVista.Core;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
+using LagoVista.IoT.Logging.Loggers;
+using MongoDB.Driver.Core.Configuration;
 using Npgsql;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns.Repos
@@ -12,10 +15,12 @@ namespace LagoVista.Campaigns.Repos
     public class MetricsRepo : IMetricsRepo
     {
         IConnectionSettings _connectionSettings;
+        IAdminLogger _adminLogger;
 
-        public MetricsRepo(IMetricStorageConnectionSettings repoSettings)
+        public MetricsRepo(IMetricStorageConnectionSettings repoSettings, IAdminLogger adminLogger)
         {
             _connectionSettings = repoSettings.MetricsStorageDBConenction;
+            _adminLogger = adminLogger;
         }
 
 
@@ -31,55 +36,66 @@ namespace LagoVista.Campaigns.Repos
 
         public async Task AddMetric(KpiMetric metric)
         {
-            var insertClause = "insert into Metrics(time, span, orgid, org, userid, username, categoryid, category, metric, metricid, attr1id, attr1, attr2id, attr2, attr3id, attr3, value)";
-            var valuesClause = $"values (@time, @span, @org, @orgId, @user, @userId, @categoryId, @category, @metric, @metricid, @attr1id,   @attr1, @attr2id, @attr2, @attr3id, @attr3, @value)";
-
-            var span = "-";
-            switch(metric.Period)
+            try
             {
-                case KpiPeriod.Month: span = "M"; break;
-                case KpiPeriod.Day: span = "D"; break;
-                case KpiPeriod.Hour: span = "H"; break;
-                case KpiPeriod.Week: span = "W"; break;
-                case KpiPeriod.Each: span = "E"; break;
-            }
+                var insertClause = "insert into Metrics(time, span, orgid, org, userid, username, categoryid, category, metric, metricid, attr1id, attr1, attr2id, attr2, attr3id, attr3, value)";
+                var valuesClause = $"values (@time, @span, @org, @orgId, @user, @userId, @categoryId, @category, @metric, @metricid, @attr1id,   @attr1, @attr2id, @attr2, @attr3id, @attr3, @value)";
 
-            using (var cn = OpenConnection())
-            using (var cmd = new NpgsqlCommand())
-            {
-                cmd.Connection = cn;
-                cmd.CommandText = $"{insertClause} {valuesClause}";
-                var tsParameter = new NpgsqlParameter()
+                var span = "-";
+                switch (metric.Period)
                 {
-                    ParameterName = "@time",
-                    DbType = System.Data.DbType.DateTime,
-                    Value = metric.TimeStamp.ToDateTime(),
-                };
-                cmd.Parameters.Add(tsParameter);
-                cmd.Parameters.Add(new NpgsqlParameter("@span", span));
-                cmd.Parameters.Add(new NpgsqlParameter("@org", metric.Org.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("@orgId", metric.Org.Id));
-                cmd.Parameters.Add(new NpgsqlParameter("@category", metric.Category.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("@categoryId", metric.Category.Id));
-                cmd.Parameters.Add(new NpgsqlParameter("@metric", metric.Metric.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("@metricId", metric.Metric.Id));
+                    case KpiPeriod.Month: span = "M"; break;
+                    case KpiPeriod.Day: span = "D"; break;
+                    case KpiPeriod.Hour: span = "H"; break;
+                    case KpiPeriod.Week: span = "W"; break;
+                    case KpiPeriod.Each: span = "E"; break;
+                }
 
-                cmd.Parameters.Add(new NpgsqlParameter("@user", EntityHeader.IsNullOrEmpty(metric.User) ? (object)DBNull.Value : (object)metric.User.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("@userId", EntityHeader.IsNullOrEmpty(metric.User) ? (object)DBNull.Value : metric.User.Id));
+                using (var cn = OpenConnection())
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = $"{insertClause} {valuesClause}";
+                    var tsParameter = new NpgsqlParameter()
+                    {
+                        ParameterName = "@time",
+                        DbType = System.Data.DbType.DateTime,
+                        Value = metric.TimeStamp.ToDateTime(),
+                    };
+                    cmd.Parameters.Add(tsParameter);
+                    cmd.Parameters.Add(new NpgsqlParameter("@span", span));
+                    cmd.Parameters.Add(new NpgsqlParameter("@org", metric.Org.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@orgId", metric.Org.Id));
+                    cmd.Parameters.Add(new NpgsqlParameter("@category", metric.Category.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@categoryId", metric.Category.Id));
+                    cmd.Parameters.Add(new NpgsqlParameter("@metric", metric.Metric.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@metricId", metric.Metric.Id));
 
-                cmd.Parameters.Add(new NpgsqlParameter("@attr1id", EntityHeader.IsNullOrEmpty(metric.Attr1) ? (object)DBNull.Value : metric.Attr1.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("@attr1", EntityHeader.IsNullOrEmpty(metric.Attr1) ? (object)DBNull.Value : metric.Attr1.Id));
-                cmd.Parameters.Add(new NpgsqlParameter("@attr2id", EntityHeader.IsNullOrEmpty(metric.Attr2) ? (object)DBNull.Value : metric.Attr2.Text));
-                cmd.Parameters.Add(new NpgsqlParameter("@attr2", EntityHeader.IsNullOrEmpty(metric.Attr2) ? (object)DBNull.Value : metric.Attr2.Id));
-                cmd.Parameters.Add(new NpgsqlParameter("@attr3id", EntityHeader.IsNullOrEmpty(metric.Attr3) ? (object)DBNull.Value : metric.Attr3.Text));   
-                cmd.Parameters.Add(new NpgsqlParameter("@attr3", EntityHeader.IsNullOrEmpty(metric.Attr3) ? (object)DBNull.Value : metric.Attr3.Id));
+                    cmd.Parameters.Add(new NpgsqlParameter("@user", EntityHeader.IsNullOrEmpty(metric.User) ? (object)DBNull.Value : (object)metric.User.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@userId", EntityHeader.IsNullOrEmpty(metric.User) ? (object)DBNull.Value : metric.User.Id));
 
-                cmd.Parameters.Add(new NpgsqlParameter("@value", metric.Value));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr1id", EntityHeader.IsNullOrEmpty(metric.Attr1) ? (object)DBNull.Value : metric.Attr1.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr1", EntityHeader.IsNullOrEmpty(metric.Attr1) ? (object)DBNull.Value : metric.Attr1.Id));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr2id", EntityHeader.IsNullOrEmpty(metric.Attr2) ? (object)DBNull.Value : metric.Attr2.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr2", EntityHeader.IsNullOrEmpty(metric.Attr2) ? (object)DBNull.Value : metric.Attr2.Id));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr3id", EntityHeader.IsNullOrEmpty(metric.Attr3) ? (object)DBNull.Value : metric.Attr3.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr3", EntityHeader.IsNullOrEmpty(metric.Attr3) ? (object)DBNull.Value : metric.Attr3.Id));
 
-                var recordCount = await cmd.ExecuteNonQueryAsync();
-                if (recordCount != 1)
-                    throw new Exception();
+                    cmd.Parameters.Add(new NpgsqlParameter("@value", metric.Value));
+
+                    var recordCount = await cmd.ExecuteNonQueryAsync();
+                    if (recordCount != 1)
+                        throw new Exception();
+                }
             }
+            catch (Exception ex)
+            {
+                var password = _connectionSettings.Password.ToCharArray().First() + "***" + _connectionSettings.Password.ToCharArray().Last();
+
+                _adminLogger.AddError("[MetricsRepo__AddMetirc]", ex.Message, _connectionSettings.Uri.ToKVP("uri"), 
+                    _connectionSettings.UserName.ToKVP("username"), password.ToKVP("password"), _connectionSettings.ResourceName.ToKVP("database"));
+            }
+
         }
     }
 }
