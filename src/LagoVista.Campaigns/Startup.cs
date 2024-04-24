@@ -20,6 +20,9 @@ namespace LagoVista.Campaigns
             services.AddTransient<IKpiManager, KpiManager>();
             services.AddTransient<IMetricsDefinitionManager, MetricsDefinitionManager>();
             services.AddTransient<ISocialMediaAccountManager, SocialMediaAccountManager>();
+
+            var connectionSettings = new MetricStorageConnectionSettings(configurationRoot, logger);
+            services.AddSingleton<IMetricStorageConnectionSettings>(connectionSettings);
         }
     }
 
