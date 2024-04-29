@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using LagoVista.Campaigns.Models;
+using System.Collections.Generic;
 
 namespace LagoVista.Kpis.REST
 {
@@ -52,6 +53,12 @@ namespace LagoVista.Kpis.REST
         {
             SetUpdatedProperties(kpi);
             return _kpiManager.UpdateKpiAsync(kpi, OrgEntityHeader, UserEntityHeader);
+        }
+
+        [HttpGet("/api/kpi/metrics/{id}")]
+        public Task<IEnumerable<KpiMetricsValue>> GetMetricValues(String id)
+        {
+            return _kpiManager.GetMetricsValuesAsync(id, GetListRequestFromHeader(), OrgEntityHeader, UserEntityHeader);
         }
 
         [HttpGet("/api/kpi/factory")]

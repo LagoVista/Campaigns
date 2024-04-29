@@ -41,7 +41,7 @@ namespace LagoVista.Campaigns.Repos
             return (await QueryAsync(cmp => cmp.Key == key && cmp.OwnerOrganization.Id == orgId)).FirstOrDefault();
         }
 
-        public Task<ListResponse<KpiSummary>> GetKpis(ListRequest request, string orgId)
+        public Task<ListResponse<KpiSummary>> GetKpisAsync(ListRequest request, string orgId)
         {
             return QuerySummaryAsync<KpiSummary, Kpi>(k => k.OwnerOrganization.Id == orgId, k => k.Name, request);
         }

@@ -3,11 +3,16 @@ using LagoVista.Campaigns.Models;
 using LagoVista.Core;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
+using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Logging.Loggers;
 using MongoDB.Driver.Core.Configuration;
 using Npgsql;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns.Repos
@@ -33,6 +38,101 @@ namespace LagoVista.Campaigns.Repos
             conn.Open();
             return conn;
         }
+
+        public async Task<IEnumerable<KpiMetricsValue>> GetMetricsForKpi(ListRequest listRequest, Kpi kpi)
+        {
+            using (var cn = OpenConnection())
+            using (var cmd = new NpgsqlCommand())
+            {
+                var sql = @"select time_bucket('1 day', ""time"")  as day,
+ count(value) value
+ from Metrics
+ where metricid = @metricId ";
+
+                var bldr = new StringBuilder();
+                bldr.Append($" @metric={kpi.Metric.Id};");
+                cmd.Parameters.Add(new NpgsqlParameter("@metricId", kpi.Metric.Id));
+
+                if (!EntityHeader.IsNullOrEmpty(kpi.Attr1))
+                {
+                    sql += " and attr1 = @attr1 ";
+                    bldr.Append($" @attr1={kpi.Attr1.Id};");
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr1", kpi.Attr1.Id));
+                }
+
+                if (!EntityHeader.IsNullOrEmpty(kpi.Attr2))
+                {
+                    sql += " and attr2 = @attr2 ";
+                    bldr.Append($" @attr2={kpi.Attr2.Id};");
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr2", kpi.Attr2.Id));
+                }
+                else
+                    sql += " and attr2 is null ";
+
+                if (!EntityHeader.IsNullOrEmpty(kpi.Attr3))
+                {
+                    sql += " and attr3 = @attr3 ";
+                    bldr.Append($" @attr3={kpi.Attr3.Id};");
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr3", kpi.Attr3.Id));
+                }
+
+                sql += "and time between @start and @end ";
+
+                
+                var start = new DateTime(listRequest.StartDate.ToDateTime().Year,
+                    listRequest.StartDate.ToDateTime().Month,
+                    listRequest.StartDate.ToDateTime().Day,0,0,0,
+                     kind: DateTimeKind.Utc);
+
+                var end = new DateTime(listRequest.EndDate.ToDateTime().Year,
+                    listRequest.EndDate.ToDateTime().Month,
+                    listRequest.EndDate.ToDateTime().Day, 0, 0, 0,
+                     kind: DateTimeKind.Utc);
+
+
+                cmd.Parameters.Add(new NpgsqlParameter() { ParameterName = "@start", DbType = System.Data.DbType.DateTime, Value = start} );
+                cmd.Parameters.Add(new NpgsqlParameter() { ParameterName = "@end", DbType = System.Data.DbType.DateTime, Value = end });
+
+                bldr.Append($"@start={start}; @end={end};");
+
+                sql += @"group by day
+                         order by day;";
+
+                cmd.Connection = cn;
+                cmd.CommandText = sql;
+
+                _adminLogger.Trace($"[MetricsRepo__GetMetricsForKpi] - {sql} {bldr}");
+
+                var tempMetrics = new List<KpiMetricsValue>();
+
+                var reader = await cmd.ExecuteReaderAsync();
+                while (reader.Read()) {
+                    tempMetrics.Add(new KpiMetricsValue() {
+                        TimeStamp = Convert.ToDateTime(reader[0]).ToJSONString(),
+                        Value = Convert.ToDouble(reader[1])
+                    });
+                }
+
+                var current = start;
+
+                var metrics = new List<KpiMetricsValue>();
+                while(current < end)
+                {
+                    var hasMetric = tempMetrics.FirstOrDefault(tmp => tmp.TimeStamp == current.ToJSONString());
+                    
+                    metrics.Add(new KpiMetricsValue()
+                    {
+                        TimeStamp = current.ToJSONString(),
+                        Value = hasMetric == null ? 0 : hasMetric.Value
+                    });
+
+                    current = current.AddDays(1);
+                }
+
+
+                return metrics;
+            }
+         }
 
         public async Task AddMetric(KpiMetric metric)
         {

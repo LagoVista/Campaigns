@@ -3,6 +3,7 @@ using LagoVista.Core.Validation;
 using System.Threading.Tasks;
 using LagoVista.Campaigns.Models;
 using LagoVista.Core.Models.UIMetaData;
+using System.Collections.Generic;
 
 namespace LagoVista.Kpis.Interfaces
 {
@@ -17,5 +18,7 @@ namespace LagoVista.Kpis.Interfaces
         Task<InvokeResult> UpdateKpiAsync(Kpi kpi, EntityHeader org, EntityHeader user);
 
         Task<ListResponse<KpiSummary>> GetKpisAsync(ListRequest request, EntityHeader org, EntityHeader user);
+
+        Task<IEnumerable<KpiMetricsValue>> GetMetricsValuesAsync(string kpiId, ListRequest request, EntityHeader org, EntityHeader user);
     }
 }

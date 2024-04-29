@@ -5,7 +5,11 @@ using System.Threading.Tasks;
 namespace LagoVista.Campaigns.Interfaces
 {
 
+
+
     /*
+create extension TimeScaleDB;
+
     create table Metrics (
     time TimestampTz not null,
     metric text not null,
@@ -17,11 +21,11 @@ namespace LagoVista.Campaigns.Interfaces
     username text null,
     categoryid text null,
     category text null,
-    attr1id text not null,
+    attr1id text null,
     attr1 text null,
-    attr2id text not null,
+    attr2id text null,
     attr2 text null,
-    attr3id text not null,
+    attr3id text null,
     attr3 text null,    
     value double precision not null);
 

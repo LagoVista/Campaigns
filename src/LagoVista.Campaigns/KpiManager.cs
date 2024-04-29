@@ -8,6 +8,8 @@ using LagoVista.Kpis.Interfaces;
 using System;
 using System.Threading.Tasks;
 using LagoVista.Campaigns.Models;
+using System.Collections.Generic;
+using LagoVista.Campaigns.Interfaces;
 
 namespace LagoVista.Kpis
 {
@@ -15,14 +17,16 @@ namespace LagoVista.Kpis
 
     public class KpiManager : ManagerBase, IKpiManager
     {
-        public IKpiRepo _kpiRepo;
+        private IKpiRepo _kpiRepo;
+        private IMetricsRepo _metricsRepo;
 
-        public KpiManager(IKpiRepo kpiRepo, ILogger logger, IAppConfig appConfig, IDependencyManager dependencyManager, ISecurity security) :
+
+        public KpiManager(IMetricsRepo metricsRepo, IKpiRepo kpiRepo, ILogger logger, IAppConfig appConfig, IDependencyManager dependencyManager, ISecurity security) :
             base(logger, appConfig, dependencyManager, security)
         {
             _kpiRepo = kpiRepo ?? throw new ArgumentNullException(nameof(kpiRepo));
+            _metricsRepo = metricsRepo ?? throw new ArgumentNullException(nameof(metricsRepo));
         }
-
 
         public async Task<InvokeResult> AddKpiAsync(Kpi kpi, EntityHeader org, EntityHeader user)
         {
@@ -60,7 +64,15 @@ namespace LagoVista.Kpis
         public async Task<ListResponse<KpiSummary>> GetKpisAsync(ListRequest request, EntityHeader org, EntityHeader user)
         {
             await AuthorizeOrgAccessAsync(user, org, typeof(KpiSummary), Actions.Read);
-            return await _kpiRepo.GetKpis(request, org.Id);
+            return await _kpiRepo.GetKpisAsync(request, org.Id);
+        }
+
+        public async Task<IEnumerable<KpiMetricsValue>> GetMetricsValuesAsync(string kpiId, ListRequest request, EntityHeader org, EntityHeader user)
+        {
+            await AuthorizeOrgAccessAsync(user, org, typeof(KpiMetricsValue), Actions.Read);
+
+            var kpi = await _kpiRepo.GetKpiAsync(kpiId);
+            return await _metricsRepo.GetMetricsForKpi(request, kpi);
         }
 
         public async Task<InvokeResult> UpdateKpiAsync(Kpi kpi, EntityHeader org, EntityHeader user)
