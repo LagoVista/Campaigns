@@ -9,6 +9,7 @@ using System;
 using System.Threading.Tasks;
 using LagoVista.Campaigns.Models;
 using System.Collections.Generic;
+using LagoVista.Core;
 
 namespace LagoVista.Kpis.REST
 {
@@ -56,9 +57,19 @@ namespace LagoVista.Kpis.REST
         }
 
         [HttpGet("/api/kpi/metrics/{id}")]
-        public Task<IEnumerable<KpiMetricsValue>> GetMetricValues(String id)
+        public async Task<ListResponse<KpiMetricsValue>> GetMetricValues(String id)
         {
-            return _kpiManager.GetMetricsValuesAsync(id, GetListRequestFromHeader(), OrgEntityHeader, UserEntityHeader);
+            var request = GetListRequestFromHeader();
+
+            if (String.IsNullOrEmpty(request.StartDate))
+                request.StartDate = DateTime.Now.AddDays(-15).ToDateOnly();
+
+            if (String.IsNullOrEmpty(request.EndDate))
+                request.EndDate = DateTime.Now.AddDays(1).ToDateOnly();
+
+            var result = await  _kpiManager.GetMetricsValuesAsync(id, request, OrgEntityHeader, UserEntityHeader);
+
+            return ListResponse<KpiMetricsValue>.Create(result);
         }
 
         [HttpGet("/api/kpi/factory")]
