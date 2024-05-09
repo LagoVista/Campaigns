@@ -66,8 +66,6 @@ namespace LagoVista.Campaigns.Repos
                     bldr.Append($" @attr2={kpi.Attr2.Id};");
                     cmd.Parameters.Add(new NpgsqlParameter("@attr2", kpi.Attr2.Id));
                 }
-                else
-                    sql += " and attr2 is null ";
 
                 if (!EntityHeader.IsNullOrEmpty(kpi.Attr3))
                 {
