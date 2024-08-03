@@ -72,6 +72,12 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Campaign_Niche
 
 		public static string Campaign_Niche { get { return GetResourceString("Campaign_Niche"); } }
+//Resources:CampaignResources:Campaign_Owner
+
+		public static string Campaign_Owner { get { return GetResourceString("Campaign_Owner"); } }
+//Resources:CampaignResources:Campaign_Owner_Select
+
+		public static string Campaign_Owner_Select { get { return GetResourceString("Campaign_Owner_Select"); } }
 //Resources:CampaignResources:Campaign_Promotions
 
 		public static string Campaign_Promotions { get { return GetResourceString("Campaign_Promotions"); } }
@@ -231,9 +237,24 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_Description
 
 		public static string Promotion_Description { get { return GetResourceString("Promotion_Description"); } }
+//Resources:CampaignResources:Promotion_EmailTemplate
+
+		public static string Promotion_EmailTemplate { get { return GetResourceString("Promotion_EmailTemplate"); } }
+//Resources:CampaignResources:Promotion_EmailTemplate_Select
+
+		public static string Promotion_EmailTemplate_Select { get { return GetResourceString("Promotion_EmailTemplate_Select"); } }
 //Resources:CampaignResources:Promotion_ExcludeWeekend
 
 		public static string Promotion_ExcludeWeekend { get { return GetResourceString("Promotion_ExcludeWeekend"); } }
+//Resources:CampaignResources:Promotion_ExternalCampaignId
+
+		public static string Promotion_ExternalCampaignId { get { return GetResourceString("Promotion_ExternalCampaignId"); } }
+//Resources:CampaignResources:Promotion_Owner
+
+		public static string Promotion_Owner { get { return GetResourceString("Promotion_Owner"); } }
+//Resources:CampaignResources:Promotion_Owner_Select
+
+		public static string Promotion_Owner_Select { get { return GetResourceString("Promotion_Owner_Select"); } }
 //Resources:CampaignResources:Promotion_Posts
 
 		public static string Promotion_Posts { get { return GetResourceString("Promotion_Posts"); } }
@@ -243,6 +264,12 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_Spend
 
 		public static string Promotion_Spend { get { return GetResourceString("Promotion_Spend"); } }
+//Resources:CampaignResources:Promotion_Survey
+
+		public static string Promotion_Survey { get { return GetResourceString("Promotion_Survey"); } }
+//Resources:CampaignResources:Promotion_Survey_Select
+
+		public static string Promotion_Survey_Select { get { return GetResourceString("Promotion_Survey_Select"); } }
 //Resources:CampaignResources:Promotion_Title
 
 		public static string Promotion_Title { get { return GetResourceString("Promotion_Title"); } }
@@ -294,6 +321,8 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Campaign_EndDate = "Campaign_EndDate";
 			public const string Campaign_Industry = "Campaign_Industry";
 			public const string Campaign_Niche = "Campaign_Niche";
+			public const string Campaign_Owner = "Campaign_Owner";
+			public const string Campaign_Owner_Select = "Campaign_Owner_Select";
 			public const string Campaign_Promotions = "Campaign_Promotions";
 			public const string Campaign_StartDate = "Campaign_StartDate";
 			public const string Campaign_Title = "Campaign_Title";
@@ -347,10 +376,17 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Promotion_Budget = "Promotion_Budget";
 			public const string Promotion_DailyGoal = "Promotion_DailyGoal";
 			public const string Promotion_Description = "Promotion_Description";
+			public const string Promotion_EmailTemplate = "Promotion_EmailTemplate";
+			public const string Promotion_EmailTemplate_Select = "Promotion_EmailTemplate_Select";
 			public const string Promotion_ExcludeWeekend = "Promotion_ExcludeWeekend";
+			public const string Promotion_ExternalCampaignId = "Promotion_ExternalCampaignId";
+			public const string Promotion_Owner = "Promotion_Owner";
+			public const string Promotion_Owner_Select = "Promotion_Owner_Select";
 			public const string Promotion_Posts = "Promotion_Posts";
 			public const string Promotion_PromoType = "Promotion_PromoType";
 			public const string Promotion_Spend = "Promotion_Spend";
+			public const string Promotion_Survey = "Promotion_Survey";
+			public const string Promotion_Survey_Select = "Promotion_Survey_Select";
 			public const string Promotion_Title = "Promotion_Title";
 			public const string Promotion_Type_ColdCall = "Promotion_Type_ColdCall";
 			public const string Promotion_Type_Email = "Promotion_Type_Email";

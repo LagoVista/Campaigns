@@ -17,10 +17,10 @@ namespace LagoVista.Campaigns
     {
         private readonly ICampaignRepo _repo;
 
-        public CampaignManager(ICampaignRepo campaignRepo,  ILogger logger, IAppConfig appConfig, IDependencyManager dependencyManager, ISecurity security) :
+        public CampaignManager(ICampaignRepo campaignRepo, ILogger logger, IAppConfig appConfig, IDependencyManager dependencyManager, ISecurity security) :
             base(logger, appConfig, dependencyManager, security)
         {
-           _repo = campaignRepo ?? throw new ArgumentNullException(nameof(campaignRepo));
+            _repo = campaignRepo ?? throw new ArgumentNullException(nameof(campaignRepo));
         }
 
         public async Task<InvokeResult<Campaign>> AddCampaignAsync(Campaign campaign, EntityHeader org, EntityHeader user)
@@ -48,8 +48,31 @@ namespace LagoVista.Campaigns
         {
             var campaign = await _repo.GetCampaignAsync(id);
             await AuthorizeAsync(campaign, AuthorizeResult.AuthorizeActions.Read, user, org);
-
             return campaign;
+        }
+
+        public async Task<BasicCampaignInformation> GetBasicCampaignInformationAsync(string id)
+        {
+            var campaign = await _repo.GetCampaignAsync(id);
+            var basicCampaign = new BasicCampaignInformation()
+            {
+                Name = campaign.Name,
+                OwnerOrganization = campaign.OwnerOrganization,
+                Industry = campaign.Industry,
+                IndustryNiche = campaign.IndustryNiche
+            };
+            foreach (var promo in campaign.Promotions)
+            {
+                basicCampaign.Promotions.Add(new BasicPromotionInformation()
+                {
+                    Id = promo.Id,
+                    Name = promo.Name,
+                    Survey = promo.Survey,
+                    Owner = promo.Owner,
+                });
+            }
+
+            return basicCampaign;
         }
 
         public async Task<ListResponse<CampaignSummary>> GetCampaignsAsync(ListRequest request, EntityHeader org, EntityHeader user)
@@ -79,13 +102,13 @@ namespace LagoVista.Campaigns
             }
 
             var progress = promo.Progress.FirstOrDefault(prg => prg.Date == DateTime.Today.ToDateOnly());
-            if(progress == null)
+            if (progress == null)
             {
                 progress = new PromotionProgress()
                 {
-                     Count = 1,
-                     Date = DateTime.Today.ToDateOnly(),
-                     Goal = promo.DailyGoal,
+                    Count = 1,
+                    Date = DateTime.Today.ToDateOnly(),
+                    Goal = promo.DailyGoal,
                 };
 
                 promo.Progress.Add(progress);
@@ -97,7 +120,7 @@ namespace LagoVista.Campaigns
             }
 
             await _repo.UpdateCampaignAsync(campaign);
-         }
+        }
 
         public async Task IncrementPromotionProgressAsync(PromotionTypes promoType, string industryId, string nicheId, EntityHeader org, EntityHeader user, bool throwOnNotFound = true)
         {

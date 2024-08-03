@@ -46,10 +46,19 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Common_Name, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string Name { get; set; }
 
-
         [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string Icon { get; set; }
 
+        [FKeyProperty("EmailTemplate", WhereClause:"EmailTemplate.Id = {0}")]
+        [FormField(LabelResource: CampaignResources.Names.Promotion_EmailTemplate, IsRequired: false, EntityHeaderPickerUrl: "/api/sales/emailtemplates", FieldType: FieldTypes.EntityHeaderPicker, WaterMark: CampaignResources.Names.Promotion_EmailTemplate_Select, ResourceType: typeof(CampaignResources))]
+        public EntityHeader EmailTemplate { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Promotion_ExternalCampaignId, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
+        public string ExternalCampaignId { get; set; }
+
+        [FKeyProperty("Survey", WhereClause: "Survey.Id = {0}")]
+        [FormField(LabelResource: CampaignResources.Names.Promotion_Survey, IsRequired: false, EntityHeaderPickerUrl: "/api/surveyadmin/surveys", FieldType: FieldTypes.EntityHeaderPicker, WaterMark: CampaignResources.Names.Promotion_Survey_Select, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Survey { get; set; }
 
         [ListColumn(HeaderResource: CampaignResources.Names.Common_Key, ResourceType: typeof(CampaignResources))]
         [FormField(LabelResource: CampaignResources.Names.Common_Key, HelpResource: CampaignResources.Names.Common_Key_Help, FieldType: FieldTypes.Key, RegExValidationMessageResource: CampaignResources.Names.Common_Key_Validation, ResourceType: typeof(CampaignResources), IsRequired: true)]
@@ -64,6 +73,8 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Promotion_Spend, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
         public Decimal Spend { get; set; }
 
+        [FormField(LabelResource: CampaignResources.Names.Promotion_Owner, IsRequired: false, FieldType: FieldTypes.UserPicker, WaterMark: CampaignResources.Names.Promotion_Owner_Select, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Owner { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_ExcludeWeekend, IsRequired: true, FieldType: FieldTypes.CheckBox, ResourceType: typeof(CampaignResources))]
         public bool ExcludeWeekends { get; set; }
@@ -88,6 +99,10 @@ namespace LagoVista.Campaigns.Models
                 nameof(Name),
                 nameof(Key),
                 nameof(PromotionType),
+                nameof(EmailTemplate),
+                nameof(Survey),
+                nameof(Owner),
+                nameof(ExternalCampaignId),
                 nameof(Icon),
                 nameof(ExcludeWeekends),
                 nameof(DailyGoal),

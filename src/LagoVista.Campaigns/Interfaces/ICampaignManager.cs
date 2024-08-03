@@ -9,6 +9,7 @@ namespace LagoVista.Campaigns
     public interface ICampaignManager
     {
         Task<InvokeResult<Campaign>> AddCampaignAsync(Campaign campaign, EntityHeader org, EntityHeader user);
+        Task<BasicCampaignInformation> GetBasicCampaignInformationAsync(string id);
         Task<Campaign> GetCampaignAsync(string id, EntityHeader org, EntityHeader user);
 
         Task<InvokeResult> DeleteCampaignAsync(string id, EntityHeader org, EntityHeader user);

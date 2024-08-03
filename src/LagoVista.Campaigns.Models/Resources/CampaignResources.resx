@@ -135,6 +135,12 @@
   <data name="Campaign_Niche" xml:space="preserve">
     <value>Niche</value>
   </data>
+  <data name="Campaign_Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Campaign_Owner_Select" xml:space="preserve">
+    <value>-select owner-</value>
+  </data>
   <data name="Campaign_Promotions" xml:space="preserve">
     <value>Promotions</value>
   </data>
@@ -294,8 +300,23 @@
   <data name="Promotion_Description" xml:space="preserve">
     <value>A promotion is a specific tactical initiative that will help support campaign</value>
   </data>
+  <data name="Promotion_EmailTemplate" xml:space="preserve">
+    <value>Email Template</value>
+  </data>
+  <data name="Promotion_EmailTemplate_Select" xml:space="preserve">
+    <value>-select email template-</value>
+  </data>
   <data name="Promotion_ExcludeWeekend" xml:space="preserve">
     <value>Exclude Weekends</value>
+  </data>
+  <data name="Promotion_ExternalCampaignId" xml:space="preserve">
+    <value>External Campaign Link/Id</value>
+  </data>
+  <data name="Promotion_Owner" xml:space="preserve">
+    <value>Owner</value>
+  </data>
+  <data name="Promotion_Owner_Select" xml:space="preserve">
+    <value>-select owner-</value>
   </data>
   <data name="Promotion_Posts" xml:space="preserve">
     <value>Posts</value>
@@ -305,6 +326,12 @@
   </data>
   <data name="Promotion_Spend" xml:space="preserve">
     <value>Spend</value>
+  </data>
+  <data name="Promotion_Survey" xml:space="preserve">
+    <value>Survey</value>
+  </data>
+  <data name="Promotion_Survey_Select" xml:space="preserve">
+    <value>-select survey-</value>
   </data>
   <data name="Promotion_Title" xml:space="preserve">
     <value>Promotion</value>

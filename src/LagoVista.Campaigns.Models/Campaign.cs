@@ -44,10 +44,14 @@ namespace LagoVista.Campaigns.Models
         public Decimal TotalSpend { get; set; }
 
 
-        [FormField(LabelResource: CampaignResources.Names.Campaign_Industry, IsRequired: false, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industries", ResourceType: typeof(CampaignResources))]
+        [FormField(LabelResource: CampaignResources.Names.Campaign_Owner, IsRequired: false, FieldType: FieldTypes.UserPicker, WaterMark: CampaignResources.Names.Campaign_Owner_Select, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Owner { get; set; }
+
+
+        [FormField(LabelResource: CampaignResources.Names.Campaign_Industry, IsRequired: true, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industries", ResourceType: typeof(CampaignResources))]
         public EntityHeader Industry { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.Campaign_Niche, IsRequired: false, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industry/{industry.id}/niches", ResourceType: typeof(CampaignResources))]
+        [FormField(LabelResource: CampaignResources.Names.Campaign_Niche, IsRequired: true, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industry/{industry.id}/niches", ResourceType: typeof(CampaignResources))]
         public EntityHeader IndustryNiche { get; set; }
 
 
@@ -76,6 +80,7 @@ namespace LagoVista.Campaigns.Models
                 nameof(Name),
                 nameof(Key),
                 nameof(Icon),
+                nameof(Owner),
                 nameof(StartDate),
                 nameof(EndDate),
                 nameof(Industry),
@@ -100,6 +105,24 @@ namespace LagoVista.Campaigns.Models
             return CreateSummary();
         }
     }
+
+    public class BasicCampaignInformation
+    {
+        public string Name { get; set; }
+        public EntityHeader OwnerOrganization { get; set; }
+        public EntityHeader Industry { get; set; }
+        public EntityHeader IndustryNiche { get; set; }
+        public List<BasicPromotionInformation> Promotions { get; } = new List<BasicPromotionInformation>();
+    }
+
+    public class BasicPromotionInformation
+    {
+        public string Id { get; set; }
+        public EntityHeader Survey { get; set; }
+        public string Name { get; set; }
+        public EntityHeader Owner { get; set; }
+    }
+
 
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Campaign_Title, CampaignResources.Names.Campaign_Description,
         Resources.CampaignResources.Names.Campaign_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-call-center",
