@@ -49,11 +49,7 @@ namespace LagoVista.Campaigns.Models
 
 
         [FormField(LabelResource: CampaignResources.Names.Campaign_Industry, IsRequired: true, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industries", ResourceType: typeof(CampaignResources))]
-        public EntityHeader Industry { get; set; }
-
-        [FormField(LabelResource: CampaignResources.Names.Campaign_Niche, IsRequired: true, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industry/{industry.id}/niches", ResourceType: typeof(CampaignResources))]
-        public EntityHeader IndustryNiche { get; set; }
-
+        public EntityHeader Industry { get; set; } 
 
         public CampaignSummary CreateSummary()
         {
@@ -83,8 +79,7 @@ namespace LagoVista.Campaigns.Models
                 nameof(Owner),
                 nameof(StartDate),
                 nameof(EndDate),
-                nameof(Industry),
-                nameof(IndustryNiche),                
+                nameof(Industry),                       
                 nameof(Description),
             };
         }
@@ -111,7 +106,7 @@ namespace LagoVista.Campaigns.Models
         public string Name { get; set; }
         public EntityHeader OwnerOrganization { get; set; }
         public EntityHeader Industry { get; set; }
-        public EntityHeader IndustryNiche { get; set; }
+     
         public List<BasicPromotionInformation> Promotions { get; } = new List<BasicPromotionInformation>();
     }
 
@@ -119,6 +114,8 @@ namespace LagoVista.Campaigns.Models
     {
         public string Id { get; set; }
         public EntityHeader Survey { get; set; }
+
+        public EntityHeader IndustryNiche { get; set; }
         public string Name { get; set; }
         public EntityHeader Owner { get; set; }
     }

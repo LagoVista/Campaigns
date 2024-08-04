@@ -249,12 +249,24 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_ExternalCampaignId
 
 		public static string Promotion_ExternalCampaignId { get { return GetResourceString("Promotion_ExternalCampaignId"); } }
+//Resources:CampaignResources:Promotion_IndustryNiche
+
+		public static string Promotion_IndustryNiche { get { return GetResourceString("Promotion_IndustryNiche"); } }
+//Resources:CampaignResources:Promotion_LandingPage
+
+		public static string Promotion_LandingPage { get { return GetResourceString("Promotion_LandingPage"); } }
+//Resources:CampaignResources:Promotion_LandingPage_Select
+
+		public static string Promotion_LandingPage_Select { get { return GetResourceString("Promotion_LandingPage_Select"); } }
 //Resources:CampaignResources:Promotion_Owner
 
 		public static string Promotion_Owner { get { return GetResourceString("Promotion_Owner"); } }
 //Resources:CampaignResources:Promotion_Owner_Select
 
 		public static string Promotion_Owner_Select { get { return GetResourceString("Promotion_Owner_Select"); } }
+//Resources:CampaignResources:Promotion_Persona
+
+		public static string Promotion_Persona { get { return GetResourceString("Promotion_Persona"); } }
 //Resources:CampaignResources:Promotion_Posts
 
 		public static string Promotion_Posts { get { return GetResourceString("Promotion_Posts"); } }
@@ -380,8 +392,12 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Promotion_EmailTemplate_Select = "Promotion_EmailTemplate_Select";
 			public const string Promotion_ExcludeWeekend = "Promotion_ExcludeWeekend";
 			public const string Promotion_ExternalCampaignId = "Promotion_ExternalCampaignId";
+			public const string Promotion_IndustryNiche = "Promotion_IndustryNiche";
+			public const string Promotion_LandingPage = "Promotion_LandingPage";
+			public const string Promotion_LandingPage_Select = "Promotion_LandingPage_Select";
 			public const string Promotion_Owner = "Promotion_Owner";
 			public const string Promotion_Owner_Select = "Promotion_Owner_Select";
+			public const string Promotion_Persona = "Promotion_Persona";
 			public const string Promotion_Posts = "Promotion_Posts";
 			public const string Promotion_PromoType = "Promotion_PromoType";
 			public const string Promotion_Spend = "Promotion_Spend";

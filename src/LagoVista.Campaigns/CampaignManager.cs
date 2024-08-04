@@ -59,7 +59,7 @@ namespace LagoVista.Campaigns
                 Name = campaign.Name,
                 OwnerOrganization = campaign.OwnerOrganization,
                 Industry = campaign.Industry,
-                IndustryNiche = campaign.IndustryNiche
+
             };
             foreach (var promo in campaign.Promotions)
             {
@@ -69,6 +69,7 @@ namespace LagoVista.Campaigns
                     Name = promo.Name,
                     Survey = promo.Survey,
                     Owner = promo.Owner,
+                    IndustryNiche = promo.IndustryNiche
                 });
             }
 
@@ -129,28 +130,25 @@ namespace LagoVista.Campaigns
             var campaigns = await _repo.GetActiveCampaignsByIndustryAsync(org.Id, industryId);
             foreach (var campaign in campaigns)
             {
-                if (EntityHeader.IsNullOrEmpty(campaign.IndustryNiche) || campaign.IndustryNiche?.Id == nicheId)
+                var promos = campaign.Promotions.Where(prm => prm.PromotionType?.Value == promoType);
+                foreach (var promo in promos)
                 {
-                    var promos = campaign.Promotions.Where(prm => prm.PromotionType?.Value == promoType);
-                    foreach (var promo in promos)
+                    var progress = promo.Progress.FirstOrDefault(prg => prg.Date == DateTime.Today.ToDateOnly() && promo.IndustryNiche?.Id == nicheId);
+                    if (progress == null)
                     {
-                        var progress = promo.Progress.FirstOrDefault(prg => prg.Date == DateTime.Today.ToDateOnly());
-                        if (progress == null)
+                        progress = new PromotionProgress()
                         {
-                            progress = new PromotionProgress()
-                            {
-                                Count = 1,
-                                Date = DateTime.Today.ToDateOnly(),
-                                Goal = promo.DailyGoal,
-                            };
+                            Count = 1,
+                            Date = DateTime.Today.ToDateOnly(),
+                            Goal = promo.DailyGoal,
+                        };
 
-                            promo.Progress.Add(progress);
-                        }
-                        else
-                        {
-                            progress.Goal = promo.DailyGoal;
-                            progress.Count++;
-                        }
+                        promo.Progress.Add(progress);
+                    }
+                    else
+                    {
+                        progress.Goal = promo.DailyGoal;
+                        progress.Count++;
                     }
                 }
 

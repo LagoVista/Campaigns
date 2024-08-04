@@ -49,11 +49,15 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string Icon { get; set; }
 
+
+        [FormField(LabelResource: CampaignResources.Names.Promotion_IndustryNiche, IsRequired: true, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industry/{parent.industry.id}/niches", ResourceType: typeof(CampaignResources))]
+        public EntityHeader IndustryNiche { get; set; }
+
         [FKeyProperty("EmailTemplate", WhereClause:"EmailTemplate.Id = {0}")]
         [FormField(LabelResource: CampaignResources.Names.Promotion_EmailTemplate, IsRequired: false, EntityHeaderPickerUrl: "/api/sales/emailtemplates", FieldType: FieldTypes.EntityHeaderPicker, WaterMark: CampaignResources.Names.Promotion_EmailTemplate_Select, ResourceType: typeof(CampaignResources))]
         public EntityHeader EmailTemplate { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.Promotion_ExternalCampaignId, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
+        [FormField(LabelResource: CampaignResources.Names.Promotion_ExternalCampaignId, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: false)]
         public string ExternalCampaignId { get; set; }
 
         [FKeyProperty("Survey", WhereClause: "Survey.Id = {0}")]
@@ -86,6 +90,9 @@ namespace LagoVista.Campaigns.Models
             EnumType: typeof(PromotionTypes), WaterMark: CampaignResources.Names.Promotion_Type_Select)]
         public EntityHeader<PromotionTypes> PromotionType { get; set; }
 
+        [FormField(LabelResource: CampaignResources.Names.Promotion_LandingPage, WaterMark:CampaignResources.Names.Promotion_LandingPage_Select, FieldType: FieldTypes.Custom, CustomFieldType:"landingpagepicker", ResourceType: typeof(CampaignResources))]
+        public EntityHeader LandingPage { get; set; }
+
         public List<PromotionProgress> Progress { get; set; } = new List<PromotionProgress>();
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_Posts, FieldType: FieldTypes.ChildListInline, FactoryUrl: "/api/campaign/promotion/post/factory",
@@ -98,8 +105,10 @@ namespace LagoVista.Campaigns.Models
             {
                 nameof(Name),
                 nameof(Key),
+                nameof(IndustryNiche),
                 nameof(PromotionType),
                 nameof(EmailTemplate),
+                nameof(LandingPage),
                 nameof(Survey),
                 nameof(Owner),
                 nameof(ExternalCampaignId),
@@ -119,5 +128,14 @@ namespace LagoVista.Campaigns.Models
                 nameof(Posts),
             };
         }
+    }
+
+    public class LandingPageSummary
+    {
+        public EntityHeader Page { get; set; }
+        public EntityHeader Industry { get; set; }
+        public EntityHeader Niche { get; set; }
+        public EntityHeader Persona { get; set; }
+        public string Link { get; set; }
     }
 }

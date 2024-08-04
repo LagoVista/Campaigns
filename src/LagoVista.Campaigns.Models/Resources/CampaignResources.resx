@@ -312,11 +312,23 @@
   <data name="Promotion_ExternalCampaignId" xml:space="preserve">
     <value>External Campaign Link/Id</value>
   </data>
+  <data name="Promotion_IndustryNiche" xml:space="preserve">
+    <value>Industry Niche</value>
+  </data>
+  <data name="Promotion_LandingPage" xml:space="preserve">
+    <value>Landing Page</value>
+  </data>
+  <data name="Promotion_LandingPage_Select" xml:space="preserve">
+    <value>-select landing page-</value>
+  </data>
   <data name="Promotion_Owner" xml:space="preserve">
     <value>Owner</value>
   </data>
   <data name="Promotion_Owner_Select" xml:space="preserve">
     <value>-select owner-</value>
+  </data>
+  <data name="Promotion_Persona" xml:space="preserve">
+    <value>Persona</value>
   </data>
   <data name="Promotion_Posts" xml:space="preserve">
     <value>Posts</value>
