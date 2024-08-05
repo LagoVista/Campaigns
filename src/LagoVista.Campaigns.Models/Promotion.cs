@@ -91,7 +91,7 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader<PromotionTypes> PromotionType { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_LandingPage, WaterMark:CampaignResources.Names.Promotion_LandingPage_Select, FieldType: FieldTypes.Custom, CustomFieldType:"landingpagepicker", ResourceType: typeof(CampaignResources))]
-        public EntityHeader LandingPage { get; set; }
+        public LandingPageSummary LandingPage { get; set; }
 
         public List<PromotionProgress> Progress { get; set; } = new List<PromotionProgress>();
 
@@ -132,6 +132,7 @@ namespace LagoVista.Campaigns.Models
 
     public class LandingPageSummary
     {
+        public string Id { get; set; }
         public EntityHeader Page { get; set; }
         public EntityHeader Industry { get; set; }
         public EntityHeader Niche { get; set; }
