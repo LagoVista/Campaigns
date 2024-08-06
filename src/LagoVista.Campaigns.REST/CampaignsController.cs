@@ -45,6 +45,13 @@ namespace LagoVista.Campaigns.REST
             await _campaignManager.IncrementPromotionProgressAsync(campaignkey, promokey, OrgEntityHeader, UserEntityHeader);
         }
 
+        [AllowAnonymous]
+        [HttpGet("/api/public/campaign/{campaignId}/{promoId}/increment")]
+        public async Task PublicIncrementProgressAsync(string campaignId, string promoId)
+        {
+            await _campaignManager.IncrementPromotionProgressAsync(campaignId, promoId);
+        }
+
         [HttpPost("/api/campaign")]
         public Task<InvokeResult<Campaign>> AddCampaignAsycn([FromBody] Campaign campaign)
         {

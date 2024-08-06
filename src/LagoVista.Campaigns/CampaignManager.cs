@@ -123,6 +123,41 @@ namespace LagoVista.Campaigns
             await _repo.UpdateCampaignAsync(campaign);
         }
 
+        public async Task IncrementPromotionProgressAsync(string campaignId, string promoId)
+        {
+            var campaign = await _repo.GetCampaignAsync(campaignId);
+            if (campaign == null)
+            {
+                  return;
+            }
+
+            var promo = campaign.Promotions.FirstOrDefault(prm => prm.Id == promoId);
+            if (promo == null)
+            {
+                  return;
+            }
+
+            var progress = promo.Progress.FirstOrDefault(prg => prg.Date == DateTime.Today.ToDateOnly());
+            if (progress == null)
+            {
+                progress = new PromotionProgress()
+                {
+                    Count = 1,
+                    Date = DateTime.Today.ToDateOnly(),
+                    Goal = promo.DailyGoal,
+                };
+
+                promo.Progress.Add(progress);
+            }
+            else
+            {
+                progress.Goal = promo.DailyGoal;
+                progress.Count++;
+            }
+
+            await _repo.UpdateCampaignAsync(campaign);
+        }
+
         public async Task IncrementPromotionProgressAsync(PromotionTypes promoType, string industryId, string nicheId, EntityHeader org, EntityHeader user, bool throwOnNotFound = true)
         {
             var today = DateTime.Now.ToDateOnly();

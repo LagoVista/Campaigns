@@ -19,5 +19,6 @@ namespace LagoVista.Campaigns
 
         Task IncrementPromotionProgressAsync(string campaignKey, string promotionKey, EntityHeader org, EntityHeader user, bool throwOnNotFound = true);
         Task IncrementPromotionProgressAsync(PromotionTypes promoType, string industryId, string nicheId, EntityHeader org, EntityHeader user, bool throwOnNotFound = true);
+        Task IncrementPromotionProgressAsync(string campaignId, string promoId);
     }
 }
