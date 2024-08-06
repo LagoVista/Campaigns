@@ -50,7 +50,7 @@ namespace LagoVista.Campaigns.Models
         public string Icon { get; set; }
 
 
-        [FormField(LabelResource: CampaignResources.Names.Promotion_IndustryNiche, IsRequired: true, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industry/{parent.industry.id}/niches", ResourceType: typeof(CampaignResources))]
+        [FormField(LabelResource: CampaignResources.Names.Promotion_IndustryNiche, IsRequired: false, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industry/{parent.industry.id}/niches", ResourceType: typeof(CampaignResources))]
         public EntityHeader IndustryNiche { get; set; }
 
         [FKeyProperty("EmailTemplate", WhereClause:"EmailTemplate.Id = {0}")]
