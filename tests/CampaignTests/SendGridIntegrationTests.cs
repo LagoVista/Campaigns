@@ -15,7 +15,7 @@ namespace CampaignTests
 {
     public class SendGridIntegrationTests
     {
-        private readonly IEmailSender _emailSender;
+        private  IEmailSender _emailSender;
 
         [SetUp]
         public void Setup()
