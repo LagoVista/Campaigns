@@ -276,6 +276,12 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_Posts
 
 		public static string Promotion_Posts { get { return GetResourceString("Promotion_Posts"); } }
+//Resources:CampaignResources:Promotion_ProductPage
+
+		public static string Promotion_ProductPage { get { return GetResourceString("Promotion_ProductPage"); } }
+//Resources:CampaignResources:Promotion_ProductPage_Select
+
+		public static string Promotion_ProductPage_Select { get { return GetResourceString("Promotion_ProductPage_Select"); } }
 //Resources:CampaignResources:Promotion_PromoType
 
 		public static string Promotion_PromoType { get { return GetResourceString("Promotion_PromoType"); } }
@@ -407,6 +413,8 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Promotion_Owner_Select = "Promotion_Owner_Select";
 			public const string Promotion_Persona = "Promotion_Persona";
 			public const string Promotion_Posts = "Promotion_Posts";
+			public const string Promotion_ProductPage = "Promotion_ProductPage";
+			public const string Promotion_ProductPage_Select = "Promotion_ProductPage_Select";
 			public const string Promotion_PromoType = "Promotion_PromoType";
 			public const string Promotion_Spend = "Promotion_Spend";
 			public const string Promotion_Survey = "Promotion_Survey";

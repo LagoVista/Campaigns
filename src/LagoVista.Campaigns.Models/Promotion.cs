@@ -96,6 +96,13 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Promotion_LandingPage, WaterMark:CampaignResources.Names.Promotion_LandingPage_Select, FieldType: FieldTypes.Custom, CustomFieldType:"landingpagepicker", ResourceType: typeof(CampaignResources))]
         public LandingPageSummary LandingPage { get; set; }
 
+        [FormField(LabelResource: CampaignResources.Names.Promotion_ProductPage, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_ProductPage_Select, EntityHeaderPickerUrl: "/api/product/page/list", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
+        public EntityHeader ProductPage { get; set; }
+
+
+        [FormField(LabelResource: CampaignResources.Names.Promotion_EmailList, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_EmailList_Select, EntityHeaderPickerUrl: "/api/product/page/list", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
+        public EntityHeader EmailList { get; set; }
+
         public List<PromotionProgress> Progress { get; set; } = new List<PromotionProgress>();
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_Posts, FieldType: FieldTypes.ChildListInline, FactoryUrl: "/api/campaign/promotion/post/factory",
@@ -113,6 +120,7 @@ namespace LagoVista.Campaigns.Models
                 nameof(EmailTemplate),
                 nameof(LandingPage),
                 nameof(Survey),
+                nameof(ProductPage),
                 nameof(Owner),
                 nameof(ExternalCampaignId),
                 nameof(Icon),

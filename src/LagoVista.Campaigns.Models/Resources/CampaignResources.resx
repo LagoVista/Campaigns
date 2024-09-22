@@ -339,6 +339,12 @@
   <data name="Promotion_Posts" xml:space="preserve">
     <value>Posts</value>
   </data>
+  <data name="Promotion_ProductPage" xml:space="preserve">
+    <value>Product Page</value>
+  </data>
+  <data name="Promotion_ProductPage_Select" xml:space="preserve">
+    <value>-select product page-</value>
+  </data>
   <data name="Promotion_PromoType" xml:space="preserve">
     <value>Promotion Type</value>
   </data>
