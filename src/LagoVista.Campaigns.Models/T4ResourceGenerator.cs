@@ -237,6 +237,12 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_Description
 
 		public static string Promotion_Description { get { return GetResourceString("Promotion_Description"); } }
+//Resources:CampaignResources:Promotion_EmailList
+
+		public static string Promotion_EmailList { get { return GetResourceString("Promotion_EmailList"); } }
+//Resources:CampaignResources:Promotion_EmailList_Select
+
+		public static string Promotion_EmailList_Select { get { return GetResourceString("Promotion_EmailList_Select"); } }
 //Resources:CampaignResources:Promotion_EmailTemplate
 
 		public static string Promotion_EmailTemplate { get { return GetResourceString("Promotion_EmailTemplate"); } }
@@ -388,6 +394,8 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Promotion_Budget = "Promotion_Budget";
 			public const string Promotion_DailyGoal = "Promotion_DailyGoal";
 			public const string Promotion_Description = "Promotion_Description";
+			public const string Promotion_EmailList = "Promotion_EmailList";
+			public const string Promotion_EmailList_Select = "Promotion_EmailList_Select";
 			public const string Promotion_EmailTemplate = "Promotion_EmailTemplate";
 			public const string Promotion_EmailTemplate_Select = "Promotion_EmailTemplate_Select";
 			public const string Promotion_ExcludeWeekend = "Promotion_ExcludeWeekend";

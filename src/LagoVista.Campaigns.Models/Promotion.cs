@@ -57,6 +57,9 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Promotion_EmailTemplate, IsRequired: false, EntityHeaderPickerUrl: "/api/sales/emailtemplates", FieldType: FieldTypes.EntityHeaderPicker, WaterMark: CampaignResources.Names.Promotion_EmailTemplate_Select, ResourceType: typeof(CampaignResources))]
         public EntityHeader EmailTemplate { get; set; }
 
+        
+        public EntityHeader Contact { get; set; }
+
         [FormField(LabelResource: CampaignResources.Names.Promotion_ExternalCampaignId, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: false)]
         public string ExternalCampaignId { get; set; }
 
