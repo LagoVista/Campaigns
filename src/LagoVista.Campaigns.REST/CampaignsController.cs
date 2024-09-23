@@ -26,6 +26,13 @@ namespace LagoVista.Campaigns.REST
             return _campaignManager.GetCampaignsAsync(GetListRequestFromHeader(), OrgEntityHeader, UserEntityHeader);
         }
 
+        [HttpGet("/api/campaign/{id}/promotions")]
+        public async Task<ListResponse<Promotion>> GetPromotions(string id)
+        {
+            var campaign = await _campaignManager.GetCampaignAsync(id, OrgEntityHeader, UserEntityHeader);
+            return ListResponse<Promotion>.Create(campaign.Promotions);
+        }
+
         [HttpGet("/api/campaign/{id}")]
         public async Task<DetailResponse<Campaign>> GetCampaign(String id)
         {
