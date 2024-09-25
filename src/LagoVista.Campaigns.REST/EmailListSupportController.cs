@@ -39,6 +39,18 @@ namespace LagoVista.Campaigns.REST
             return _emailSender.GetListsAsync(OrgEntityHeader, UserEntityHeader);
         }
 
+        [HttpGet("/api/email/mailinglist/{id}/refresh")]
+        public Task<InvokeResult> RefreshEmailList(string id)
+        {
+            return _emailSender.RefreshSegementAsync(id, OrgEntityHeader, UserEntityHeader);
+        }
+
+        [HttpDelete("/api/email/mailinglist/{id}")]
+        public Task<InvokeResult> DeleteMailingList(string id)
+        {
+            return _emailSender.DeleteEmailListAsync(id, OrgEntityHeader, UserEntityHeader);
+        }
+
         [HttpGet("/api/email/senders")]
         public Task<ListResponse<EntityHeader>> GetEmailSendersAsync()
         {
