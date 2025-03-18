@@ -50,7 +50,9 @@ namespace LagoVista.Campaigns.Models
                 Id = Id,
                 Description = Description,
                 IsPublic = IsPublic,
-                Category = Category,
+                Category = Category?.Text,
+                CategoryId = Category?.Id,
+                CategoryKey = Category?.Key,
                 Key = Key,
             };
         }
@@ -89,7 +91,7 @@ namespace LagoVista.Campaigns.Models
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.MetricsDefinitions_TItle, CampaignResources.Names.MetricsDefinition_Description,
            Resources.CampaignResources.Names.MetricsDefinition_Description, EntityDescriptionAttribute.EntityTypes.Summary, typeof(CampaignResources), Icon: "icon-ae-call-center",
            GetUrl: "/api/metrics/definition/{id}", GetListUrl: "/api/metrics/definition", SaveUrl: "/api/metrics/definition", DeleteUrl: "/api/metrics/definition/{id}", FactoryUrl: "/api/metrics/definition/factory")]
-    public class MetricsDefinitionSummary : CategorizedSummaryData
+    public class MetricsDefinitionSummary : SummaryData
     {
 
     }

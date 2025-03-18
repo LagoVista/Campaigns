@@ -86,7 +86,9 @@ namespace LagoVista.Campaigns.Models
                 Id = Id,
                 Description = Description,
                 IsPublic = IsPublic,
-                Category = Category,
+                CategoryId = Category?.Id,
+                CategoryKey = Category?.Key,
+                Category = Category?.Text,
                 Key = Key,
             };
         }
@@ -117,7 +119,7 @@ namespace LagoVista.Campaigns.Models
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Kpis_Title, CampaignResources.Names.Kpi_Description,
             Resources.CampaignResources.Names.Kpi_Description, EntityDescriptionAttribute.EntityTypes.Summary, typeof(CampaignResources), Icon: "icon-ae-call-center",
             GetUrl: "/api/kpi/{id}", GetListUrl: "/api/kpis", SaveUrl: "/api/kpi", DeleteUrl: "/api/kpi/{id}", FactoryUrl: "/api/kpi/factory")]
-    public class KpiSummary : CategorizedSummaryData
+    public class KpiSummary : SummaryData
     {
         public decimal TargetValue { get; set; }
     }
