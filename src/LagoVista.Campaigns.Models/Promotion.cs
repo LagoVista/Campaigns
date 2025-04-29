@@ -151,20 +151,4 @@ namespace LagoVista.Campaigns.Models
         public string Link { get; set; }
     }
 
-    public interface IEmailLinks
-    {
-        public EntityHeader Org { get; set; }
-        public EntityHeader Template { get; set; }
-        public EntityHeader Industry { get; set; }
-        public EntityHeader IndustryNiche { get; set; }
-        public EntityHeader IndustryPersona { get; set; }
-        public EntityHeader NichePersona { get; set; }
-        public EntityHeader Survey { get; set; }
-        public EntityHeader Campaign { get; set; }
-        public EntityHeader Promotion { get; set; }
-        public string EmailAddress { get; set; }
-        public EntityHeader ProductPage { get; set; }
-        public LandingPageSummary LandingPage { get; set; }
-    }
-
 }
