@@ -22,7 +22,7 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Industry { get; }
         public EntityHeader IndustryNiche { get; }
         public EntityHeader IndustryPersona { get; }
-        public EntityHeader NichePersona { get;  }
+        public EntityHeader IndustryNichePersona { get;  }
         public EntityHeader Survey { get; }
         public EntityHeader Campaign { get;}
         public EntityHeader Promotion { get;  }

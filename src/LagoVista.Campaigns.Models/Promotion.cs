@@ -100,8 +100,11 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader ProductPage { get; set; }
 
 
-        [FormField(LabelResource: CampaignResources.Names.Promotion_EmailList, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_EmailList_Select, EntityHeaderPickerUrl: "/api/product/page/list", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
+        [FormField(LabelResource: CampaignResources.Names.Promotion_EmailList, HelpResource: CampaignResources.Names.Promotion_EmailList_Help, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_EmailList_Select, EntityHeaderPickerUrl: "/api/email/lists", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
         public EntityHeader EmailList { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Promotion_EmailMailers, HelpResource: CampaignResources.Names.Promotion_EmailMailers_Help, FieldType: FieldTypes.ChildListInlinePicker, WaterMark: CampaignResources.Names.Promotion_EmailList_Select, FactoryUrl: "/api/email/mailers", ResourceType: typeof(CampaignResources) )]
+        public List<EntityHeader> EmailMailers { get; set; } = new List<EntityHeader>();
 
         public List<PromotionProgress> Progress { get; set; } = new List<PromotionProgress>();
 

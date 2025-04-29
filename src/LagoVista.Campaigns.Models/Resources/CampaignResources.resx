@@ -303,8 +303,17 @@
   <data name="Promotion_EmailList" xml:space="preserve">
     <value>Email List</value>
   </data>
+  <data name="Promotion_EmailList_Help" xml:space="preserve">
+    <value>Email Lists are larger lists of contacts that have been added to a 3rd party mail system such as SendGrid, where Email Mailers are smaller list of contacts wthin NuvIoT that can be sent an email.</value>
+  </data>
   <data name="Promotion_EmailList_Select" xml:space="preserve">
     <value>-select email list-</value>
+  </data>
+  <data name="Promotion_EmailMailers" xml:space="preserve">
+    <value>Email Mailers</value>
+  </data>
+  <data name="Promotion_EmailMailers_Help" xml:space="preserve">
+    <value>Email Mailers are smaller lists of contacts within NuvIoT that will be sent an email, where Email Lists are lists within SendGrid that are likely larger.</value>
   </data>
   <data name="Promotion_EmailTemplate" xml:space="preserve">
     <value>Email Template</value>
