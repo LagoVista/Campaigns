@@ -22,6 +22,32 @@ namespace LagoVista.Campaigns.Repos
         IConnectionSettings _connectionSettings;
         IAdminLogger _adminLogger;
 
+        /*
+CREATE TABLE public.metrics (
+    "time" timestamp with time zone NOT NULL,
+    metric text NOT NULL,
+    metricid text NOT NULL,
+    span character(1) NOT NULL,
+    orgid text NOT NULL,
+    org text NOT NULL,
+    userid text,
+    username text,
+    categoryid text,
+    category text,
+    attr1id text,
+    attr1 text,
+    attr2id text,
+    attr2 text,
+    attr3id text,
+    attr3 text,
+    value double precision NOT NULL
+);          
+  
+        
+
+         */
+
+
         public MetricsRepo(IMetricStorageConnectionSettings repoSettings, IAdminLogger adminLogger)
         {
             _connectionSettings = repoSettings.MetricsStorageDBConenction;
