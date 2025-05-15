@@ -141,6 +141,12 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Kpi_Attribute3
 
 		public static string Kpi_Attribute3 { get { return GetResourceString("Kpi_Attribute3"); } }
+//Resources:CampaignResources:Kpi_Attribute4
+
+		public static string Kpi_Attribute4 { get { return GetResourceString("Kpi_Attribute4"); } }
+//Resources:CampaignResources:Kpi_Attribute5
+
+		public static string Kpi_Attribute5 { get { return GetResourceString("Kpi_Attribute5"); } }
 //Resources:CampaignResources:Kpi_Description
 
 		public static string Kpi_Description { get { return GetResourceString("Kpi_Description"); } }
@@ -198,6 +204,18 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:MetricDefinition_Attr3Name
 
 		public static string MetricDefinition_Attr3Name { get { return GetResourceString("MetricDefinition_Attr3Name"); } }
+//Resources:CampaignResources:MetricDefinition_Attr4Key
+
+		public static string MetricDefinition_Attr4Key { get { return GetResourceString("MetricDefinition_Attr4Key"); } }
+//Resources:CampaignResources:MetricDefinition_Attr4Name
+
+		public static string MetricDefinition_Attr4Name { get { return GetResourceString("MetricDefinition_Attr4Name"); } }
+//Resources:CampaignResources:MetricDefinition_Attr5Key
+
+		public static string MetricDefinition_Attr5Key { get { return GetResourceString("MetricDefinition_Attr5Key"); } }
+//Resources:CampaignResources:MetricDefinition_Attr5Name
+
+		public static string MetricDefinition_Attr5Name { get { return GetResourceString("MetricDefinition_Attr5Name"); } }
 //Resources:CampaignResources:MetricsDefinition_Description
 
 		public static string MetricsDefinition_Description { get { return GetResourceString("MetricsDefinition_Description"); } }
@@ -377,6 +395,8 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Kpi_Attribute1 = "Kpi_Attribute1";
 			public const string Kpi_Attribute2 = "Kpi_Attribute2";
 			public const string Kpi_Attribute3 = "Kpi_Attribute3";
+			public const string Kpi_Attribute4 = "Kpi_Attribute4";
+			public const string Kpi_Attribute5 = "Kpi_Attribute5";
 			public const string Kpi_Description = "Kpi_Description";
 			public const string Kpi_Metric = "Kpi_Metric";
 			public const string Kpi_Metric_Select = "Kpi_Metric_Select";
@@ -396,6 +416,10 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string MetricDefinition_Attr2Name = "MetricDefinition_Attr2Name";
 			public const string MetricDefinition_Attr3Key = "MetricDefinition_Attr3Key";
 			public const string MetricDefinition_Attr3Name = "MetricDefinition_Attr3Name";
+			public const string MetricDefinition_Attr4Key = "MetricDefinition_Attr4Key";
+			public const string MetricDefinition_Attr4Name = "MetricDefinition_Attr4Name";
+			public const string MetricDefinition_Attr5Key = "MetricDefinition_Attr5Key";
+			public const string MetricDefinition_Attr5Name = "MetricDefinition_Attr5Name";
 			public const string MetricsDefinition_Description = "MetricsDefinition_Description";
 			public const string MetricsDefinition_Title = "MetricsDefinition_Title";
 			public const string MetricsDefinitions_TItle = "MetricsDefinitions_TItle";

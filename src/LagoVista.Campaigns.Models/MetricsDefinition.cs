@@ -20,9 +20,6 @@ namespace LagoVista.Campaigns.Models
             Icon = "icon-pz-stock-1";
         }
 
-        [FormField(LabelResource: CampaignResources.Names.Common_Category, FieldType: FieldTypes.Category, WaterMark: CampaignResources.Names.Common_SelectCategory, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
-        public EntityHeader Category { get; set; }
-
         [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr1Name, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
         public string Attribute1Name { get; set; }
         [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr1Key, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
@@ -33,9 +30,18 @@ namespace LagoVista.Campaigns.Models
         public string Attribute2Key { get; set; }
         [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr3Name, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
         public string Attribute3Name { get; set; }
-
         [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr3Key, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
         public string Attribute3Key { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr4Name, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
+        public string Attribute4Name { get; set; }
+        [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr4Key, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
+        public string Attribute4Key { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr5Name, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
+        public string Attribute5Name { get; set; }
+        [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr5Key, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
+        public string Attribute5Key { get; set; }
 
 
         [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
@@ -43,18 +49,9 @@ namespace LagoVista.Campaigns.Models
     
         public MetricsDefinitionSummary CreateSummary()
         {
-            return new MetricsDefinitionSummary()
-            {
-                Name = Name,
-                Icon = Icon,
-                Id = Id,
-                Description = Description,
-                IsPublic = IsPublic,
-                Category = Category?.Text,
-                CategoryId = Category?.Id,
-                CategoryKey = Category?.Key,
-                Key = Key,
-            };
+            var summary = new MetricsDefinitionSummary();
+            summary.Populate(this);
+            return summary;
         }
 
         public List<string> GetFormFields()
@@ -63,6 +60,7 @@ namespace LagoVista.Campaigns.Models
             {
                 nameof(Name),
                 nameof(Key),
+                nameof(IsPublic),
                 nameof(Category),
                 nameof(Icon),
                 nameof(Description)
@@ -79,6 +77,10 @@ namespace LagoVista.Campaigns.Models
                 nameof(Attribute2Key),
                 nameof(Attribute3Name),
                 nameof(Attribute3Key),
+                nameof(Attribute4Name),
+                nameof(Attribute4Key),
+                nameof(Attribute5Name),
+                nameof(Attribute5Key),
             };
         }
 

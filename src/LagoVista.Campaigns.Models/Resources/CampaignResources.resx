@@ -261,8 +261,14 @@
   <data name="MetricDefinition_Attr3Name" xml:space="preserve">
     <value>Attribute 3 Name</value>
   </data>
+  <data name="MetricDefinition_Attr4Name" xml:space="preserve">
+    <value>Attribute 4 Name</value>
+  </data>
   <data name="MetricsDefinitions_TItle" xml:space="preserve">
     <value>Metrics Definitions</value>
+  </data>
+  <data name="MetricDefinition_Attr4Key" xml:space="preserve">
+    <value>Attribute 4 Key</value>
   </data>
   <data name="MetricsDefinition_Description" xml:space="preserve">
     <value>A Metric Definition defines a measurement point of a behavior or action that is being tracked.</value>
@@ -407,5 +413,17 @@
   </data>
   <data name="SocialMedia_Account_Help" xml:space="preserve">
     <value>A Social Media Account is an account where content can be posted</value>
+  </data>
+  <data name="MetricDefinition_Attr5Name" xml:space="preserve">
+    <value>Attribute 5 Name</value>
+  </data>
+  <data name="MetricDefinition_Attr5Key" xml:space="preserve">
+    <value>Attribute 5 Key</value>
+  </data>
+  <data name="Kpi_Attribute4" xml:space="preserve">
+    <value>Attribute 4</value>
+  </data>
+  <data name="Kpi_Attribute5" xml:space="preserve">
+    <value>Attribute 5</value>
   </data>
 </root>

@@ -38,12 +38,12 @@ namespace LagoVista.Campaigns.Repos
 
         public async Task<MetricsDefinition> GetMetricsDefinitionByKeyAscyn(string orgId, string key)
         {
-            return (await QueryAsync(cmp => cmp.Key == key && cmp.OwnerOrganization.Id == orgId)).FirstOrDefault();
+            return (await QueryAsync(cmp => cmp.Key == key && (cmp.OwnerOrganization.Id == orgId || cmp.IsPublic))).FirstOrDefault();
         }
 
         public Task<ListResponse<MetricsDefinitionSummary>> GetMetricsDefinitionsAsync(ListRequest request, string orgId)
         {
-            return QuerySummaryAsync<MetricsDefinitionSummary, MetricsDefinition>(k => k.OwnerOrganization.Id == orgId, k => k.Name, request);
+            return QuerySummaryAsync<MetricsDefinitionSummary, MetricsDefinition>(k => (k.OwnerOrganization.Id == orgId || k.IsPublic), k => k.Name, request);
         }
 
         public Task UpdateMetricsDefinitionAsync(MetricsDefinition metricsDefinition)

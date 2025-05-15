@@ -53,20 +53,18 @@ namespace LagoVista.Campaigns.Models
 
         public CampaignSummary CreateSummary()
         {
-            return new CampaignSummary()
+            var summary = new CampaignSummary()
             {
-                Id = Id,
-                Description = Description,
-                Name = Name,
-                IsPublic = IsPublic,
-                Key = Key,
-                Icon = Icon,
                 StartDate = StartDate,
                 EndDate = EndDate,
                 BudgetAllocated = BudgetAllocated,
                 TotalBudget = TotalBudget,
                 TotalSpend = TotalSpend
             };
+
+            summary.Populate(this);
+
+            return summary;
         }
 
         public List<string> GetFormFields()

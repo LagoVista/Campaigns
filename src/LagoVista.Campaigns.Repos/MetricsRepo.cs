@@ -12,6 +12,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -23,6 +24,7 @@ namespace LagoVista.Campaigns.Repos
         IAdminLogger _adminLogger;
 
         /*
+Cdrop table public.metrics;
 CREATE TABLE public.metrics (
     "time" timestamp with time zone NOT NULL,
     metric text NOT NULL,
@@ -40,13 +42,31 @@ CREATE TABLE public.metrics (
     attr2 text,
     attr3id text,
     attr3 text,
+    attr4id text,
+    attr4 text,
+    attr5id text,
+    attr5 text,
     value double precision NOT NULL
 );          
-  
-        
 
-         */
+drop table metrics_definition;
+CREATE TABLE metrics_definition(
+    id  char(32),
+    name         text not null,
+    key          text not null,
+	attr1name text not null,
+	attr2name text not null,
+	attr3name text not null,	
+	attr4name text not null,
+	attr5name text not null
+); 
 
+insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name) values('4A84863CF9654F009E6463C87B46D5D6', 'directemailssent', 'Direct Emails Sent', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion' );
+insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name) values('A8D44B760C83469EB6814100F79476FF', 'directemailsopened', 'Direct Emails Opended', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion');
+insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name) values('A9677684F14A443E93A320147929A035', 'directemailclicks', 'Direct Emails Clicked', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion');
+
+
+        */
 
         public MetricsRepo(IMetricStorageConnectionSettings repoSettings, IAdminLogger adminLogger)
         {
@@ -55,10 +75,10 @@ CREATE TABLE public.metrics (
         }
 
 
-        protected NpgsqlConnection OpenConnection()
+        protected NpgsqlConnection OpenConnection(string orgId)
         {
             var connString = $"Host={_connectionSettings.Uri};Username={_connectionSettings.UserName};Password={_connectionSettings.Password};";// ;
-            connString += $"Database={_connectionSettings.ResourceName}";
+            connString += $"Database={_connectionSettings.ResourceName}{orgId}";
 
             var conn = new NpgsqlConnection(connString);
             conn.Open();
@@ -67,7 +87,7 @@ CREATE TABLE public.metrics (
 
         public async Task<IEnumerable<KpiMetricsValue>> GetMetricsForKpi(ListRequest listRequest, Kpi kpi)
         {
-            using (var cn = OpenConnection())
+            using (var cn = OpenConnection(kpi.OwnerOrganization.Id))
             using (var cmd = new NpgsqlCommand())
             {
                 var sql = @"select time_bucket('1 day', ""time"")  as day,
@@ -100,8 +120,21 @@ CREATE TABLE public.metrics (
                     cmd.Parameters.Add(new NpgsqlParameter("@attr3", kpi.Attr3.Id));
                 }
 
-                sql += "and time between @start and @end ";
+                if (!EntityHeader.IsNullOrEmpty(kpi.Attr4))
+                {
+                    sql += " and attr4 = @attr4 ";
+                    bldr.Append($" @attr4={kpi.Attr4.Id};");
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr4", kpi.Attr4.Id));
+                }
 
+                if (!EntityHeader.IsNullOrEmpty(kpi.Attr5))
+                {
+                    sql += " and attr5 = @attr5 ";
+                    bldr.Append($" @attr5={kpi.Attr5.Id};");
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr5", kpi.Attr5.Id));
+                }
+
+                sql += "and time between @start and @end ";
                 
                 var start = new DateTime(listRequest.StartDate.ToDateTime().Year,
                     listRequest.StartDate.ToDateTime().Month,
@@ -156,14 +189,81 @@ CREATE TABLE public.metrics (
 
                 return metrics;
             }
-         }
+   
+        }
+
+
+        public async Task AddMetricsDefinition(MetricsDefinition metricsDefinition)
+        {
+            try
+            {
+                var insertClause = "insert into metrics_definition(org, orgid, name, key, metrics_definition_id)";
+                var valuesClause = $"values (@org, @orgId, @name, @key, @def_id)";
+
+
+                using (var cn = OpenConnection(metricsDefinition.OwnerOrganization.Id))
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = $"{insertClause} {valuesClause} ";
+                    cmd.Parameters.Add(new NpgsqlParameter("@org", metricsDefinition.OwnerOrganization.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@orgid", metricsDefinition.OwnerOrganization.Id));
+                    cmd.Parameters.Add(new NpgsqlParameter("@name", metricsDefinition.Name));
+                    cmd.Parameters.Add(new NpgsqlParameter("@key", metricsDefinition.Key));
+                    cmd.Parameters.Add(new NpgsqlParameter("@def_id", metricsDefinition.Id));
+
+                    var recordCount = await cmd.ExecuteNonQueryAsync();
+                    if (recordCount != 1)
+                        throw new Exception();
+                }
+            }
+            catch (Exception ex)
+            {
+                var password = _connectionSettings.Password.ToCharArray().First() + "***" + _connectionSettings.Password.ToCharArray().Last();
+
+                _adminLogger.AddError("[MetricsRepo__AddMetirc]", ex.Message, _connectionSettings.Uri.ToKVP("uri"),
+                    _connectionSettings.UserName.ToKVP("username"), password.ToKVP("password"), _connectionSettings.ResourceName.ToKVP("database"));
+
+                throw;
+            }
+        }
+
+        public async Task UpdateMetricsDefinition(MetricsDefinition metricsDefinition)
+        {
+            try
+            {
+                var updateClause = @"Updates metrics_definition(name = @name) where metrics_definition_id = @def_id )";
+                
+
+                using (var cn = OpenConnection(metricsDefinition.OwnerOrganization.Id))
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = cn;
+                    cmd.CommandText = updateClause;
+                    cmd.Parameters.Add(new NpgsqlParameter("@name", metricsDefinition.Name));
+                    cmd.Parameters.Add(new NpgsqlParameter("@def_id", metricsDefinition.Id));
+
+                    var recordCount = await cmd.ExecuteNonQueryAsync();
+                    if (recordCount != 1)
+                        throw new Exception();
+                }
+            }
+            catch (Exception ex)
+            {
+                var password = _connectionSettings.Password.ToCharArray().First() + "***" + _connectionSettings.Password.ToCharArray().Last();
+
+                _adminLogger.AddError("[MetricsRepo__AddMetirc]", ex.Message, _connectionSettings.Uri.ToKVP("uri"),
+                    _connectionSettings.UserName.ToKVP("username"), password.ToKVP("password"), _connectionSettings.ResourceName.ToKVP("database"));
+            }
+        }
+
 
         public async Task AddMetric(KpiMetric metric)
         {
             try
             {
-                var insertClause = "insert into Metrics(time, span, orgid, org, userid, username, categoryid, category, metric, metricid, attr1id, attr1, attr2id, attr2, attr3id, attr3, value)";
-                var valuesClause = $"values (@time, @span, @org, @orgId, @user, @userId, @categoryId, @category, @metric, @metricid, @attr1id,   @attr1, @attr2id, @attr2, @attr3id, @attr3, @value)";
+                var insertClause = "insert into Metrics(time, span, orgid, org, userid, username, categoryid, category, metric, metricid,   attr1id,  attr1,   attr2id,  attr2,   attr3id,  attr3,   attr4id,  attr4,   attr5id,  attr5,  value)";
+                var valuesClause = $"values (@time, @span, @org, @orgId, @user, @userId, @categoryId, @category, @metric, @metricid,       @attr1id, @attr1,  @attr2id, @attr2,  @attr3id, @attr3,  @attr4id, @attr4,  @attr5id, @attr5, @value)";
 
                 var span = "-";
                 switch (metric.Period)
@@ -175,7 +275,7 @@ CREATE TABLE public.metrics (
                     case KpiPeriod.Each: span = "E"; break;
                 }
 
-                using (var cn = OpenConnection())
+                using (var cn = OpenConnection(metric.Org.Id))
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = cn;
@@ -204,6 +304,11 @@ CREATE TABLE public.metrics (
                     cmd.Parameters.Add(new NpgsqlParameter("@attr2", EntityHeader.IsNullOrEmpty(metric.Attr2) ? (object)DBNull.Value : metric.Attr2.Id));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr3id", EntityHeader.IsNullOrEmpty(metric.Attr3) ? (object)DBNull.Value : metric.Attr3.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr3", EntityHeader.IsNullOrEmpty(metric.Attr3) ? (object)DBNull.Value : metric.Attr3.Id));
+
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr4id", EntityHeader.IsNullOrEmpty(metric.Attr4) ? (object)DBNull.Value : metric.Attr4.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr4", EntityHeader.IsNullOrEmpty(metric.Attr4) ? (object)DBNull.Value : metric.Attr4.Id));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr5id", EntityHeader.IsNullOrEmpty(metric.Attr5) ? (object)DBNull.Value : metric.Attr5.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr5", EntityHeader.IsNullOrEmpty(metric.Attr5) ? (object)DBNull.Value : metric.Attr5.Id));
 
                     cmd.Parameters.Add(new NpgsqlParameter("@value", metric.Value));
 

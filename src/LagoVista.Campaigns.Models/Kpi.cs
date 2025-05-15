@@ -61,9 +61,6 @@ namespace LagoVista.Campaigns.Models
             ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public EntityHeader<KpiPeriod> Period { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.Common_Category, FieldType: FieldTypes.Category, WaterMark: CampaignResources.Names.Common_SelectCategory, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
-        public EntityHeader Category { get; set; }
-
         [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute1, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
         public EntityHeader Attr1 { get; set; }
 
@@ -72,6 +69,13 @@ namespace LagoVista.Campaigns.Models
 
         [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute3, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
         public EntityHeader Attr3 { get; set; }
+
+
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute4, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Attr4 { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute5, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Attr5 { get; set; }
 
 
         [FormField(LabelResource: CampaignResources.Names.Kpi_TargetValue, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
@@ -108,6 +112,8 @@ namespace LagoVista.Campaigns.Models
                 nameof(Attr1),
                 nameof(Attr2),
                 nameof(Attr3),
+                nameof(Attr4),
+                nameof(Attr5),
             };
         }
 

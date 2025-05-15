@@ -18,6 +18,8 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Attr1 { get; set; }
         public EntityHeader Attr2 { get; set; }
         public EntityHeader Attr3 { get; set; }
+        public EntityHeader Attr4 { get; set; }
+        public EntityHeader Attr5 { get; set; }
         public decimal Value { get; set; }
     }
 }
