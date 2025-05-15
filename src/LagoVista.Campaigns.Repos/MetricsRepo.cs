@@ -221,7 +221,7 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
             {
                 var password = _connectionSettings.Password.ToCharArray().First() + "***" + _connectionSettings.Password.ToCharArray().Last();
 
-                _adminLogger.AddError("[MetricsRepo__AddMetirc]", ex.Message, _connectionSettings.Uri.ToKVP("uri"),
+                _adminLogger.AddError("[MetricsRepo__AddMetricsDefinition]", ex.Message, _connectionSettings.Uri.ToKVP("uri"),
                     _connectionSettings.UserName.ToKVP("username"), password.ToKVP("password"), _connectionSettings.ResourceName.ToKVP("database"));
 
                 throw;
@@ -252,7 +252,7 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
             {
                 var password = _connectionSettings.Password.ToCharArray().First() + "***" + _connectionSettings.Password.ToCharArray().Last();
 
-                _adminLogger.AddError("[MetricsRepo__AddMetirc]", ex.Message, _connectionSettings.Uri.ToKVP("uri"),
+                _adminLogger.AddError("[MetricsRepo__UpdateMetricsDefinition]", ex.Message, _connectionSettings.Uri.ToKVP("uri"),
                     _connectionSettings.UserName.ToKVP("username"), password.ToKVP("password"), _connectionSettings.ResourceName.ToKVP("database"));
             }
         }
