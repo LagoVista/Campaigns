@@ -78,7 +78,7 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
         protected NpgsqlConnection OpenConnection(string orgId)
         {
             var connString = $"Host={_connectionSettings.Uri};Username={_connectionSettings.UserName};Password={_connectionSettings.Password};";// ;
-            connString += $"Database={_connectionSettings.ResourceName}{orgId}";
+            connString += $"Database={_connectionSettings.ResourceName}{orgId.ToLower()}";
 
             var conn = new NpgsqlConnection(connString);
             conn.Open();
@@ -316,6 +316,8 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
                     if (recordCount != 1)
                         throw new Exception();
                 }
+
+                _adminLogger.Trace($"[MetricsRepo__Addmetric] Inserted Metric: {metric.Metric.Text}");
             }
             catch (Exception ex)
             {
