@@ -147,6 +147,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Kpi_Attribute5
 
 		public static string Kpi_Attribute5 { get { return GetResourceString("Kpi_Attribute5"); } }
+//Resources:CampaignResources:Kpi_Attribute6
+
+		public static string Kpi_Attribute6 { get { return GetResourceString("Kpi_Attribute6"); } }
 //Resources:CampaignResources:Kpi_Description
 
 		public static string Kpi_Description { get { return GetResourceString("Kpi_Description"); } }
@@ -216,6 +219,12 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:MetricDefinition_Attr5Name
 
 		public static string MetricDefinition_Attr5Name { get { return GetResourceString("MetricDefinition_Attr5Name"); } }
+//Resources:CampaignResources:MetricDefinition_Attr6Key
+
+		public static string MetricDefinition_Attr6Key { get { return GetResourceString("MetricDefinition_Attr6Key"); } }
+//Resources:CampaignResources:MetricDefinition_Attr6Name
+
+		public static string MetricDefinition_Attr6Name { get { return GetResourceString("MetricDefinition_Attr6Name"); } }
 //Resources:CampaignResources:MetricsDefinition_Description
 
 		public static string MetricsDefinition_Description { get { return GetResourceString("MetricsDefinition_Description"); } }
@@ -397,6 +406,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Kpi_Attribute3 = "Kpi_Attribute3";
 			public const string Kpi_Attribute4 = "Kpi_Attribute4";
 			public const string Kpi_Attribute5 = "Kpi_Attribute5";
+			public const string Kpi_Attribute6 = "Kpi_Attribute6";
 			public const string Kpi_Description = "Kpi_Description";
 			public const string Kpi_Metric = "Kpi_Metric";
 			public const string Kpi_Metric_Select = "Kpi_Metric_Select";
@@ -420,6 +430,8 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string MetricDefinition_Attr4Name = "MetricDefinition_Attr4Name";
 			public const string MetricDefinition_Attr5Key = "MetricDefinition_Attr5Key";
 			public const string MetricDefinition_Attr5Name = "MetricDefinition_Attr5Name";
+			public const string MetricDefinition_Attr6Key = "MetricDefinition_Attr6Key";
+			public const string MetricDefinition_Attr6Name = "MetricDefinition_Attr6Name";
 			public const string MetricsDefinition_Description = "MetricsDefinition_Description";
 			public const string MetricsDefinition_Title = "MetricsDefinition_Title";
 			public const string MetricsDefinitions_TItle = "MetricsDefinitions_TItle";

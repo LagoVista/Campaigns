@@ -46,6 +46,8 @@ CREATE TABLE public.metrics (
     attr4 text,
     attr5id text,
     attr5 text,
+    attr6id text,
+    attr6 text,
     value double precision NOT NULL
 );          
 
@@ -58,12 +60,13 @@ CREATE TABLE metrics_definition(
 	attr2name text not null,
 	attr3name text not null,	
 	attr4name text not null,
-	attr5name text not null
+	attr5name text not null,
+    attr6name text not null,
 ); 
 
-insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name) values('4A84863CF9654F009E6463C87B46D5D6', 'directemailssent', 'Direct Emails Sent', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion' );
-insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name) values('A8D44B760C83469EB6814100F79476FF', 'directemailsopened', 'Direct Emails Opended', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion');
-insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name) values('A9677684F14A443E93A320147929A035', 'directemailclicks', 'Direct Emails Clicked', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion');
+insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name, attr6name) values('4A84863CF9654F009E6463C87B46D5D6', 'directemailssent', 'Direct Emails Sent', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion', 'Template');
+insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name, attr6name) values('A8D44B760C83469EB6814100F79476FF', 'directemailsopened', 'Direct Emails Opended', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion', 'Template');
+insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name, attr6name) values('A9677684F14A443E93A320147929A035', 'directemailclicks', 'Direct Emails Clicked', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion', 'Template');
 
 
         */
@@ -133,6 +136,14 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
                     bldr.Append($" @attr5={kpi.Attr5.Id};");
                     cmd.Parameters.Add(new NpgsqlParameter("@attr5", kpi.Attr5.Id));
                 }
+
+                if (!EntityHeader.IsNullOrEmpty(kpi.Attr6))
+                {
+                    sql += " and attr6 = @attr6 ";
+                    bldr.Append($" @attr5={kpi.Attr6.Id};");
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr6", kpi.Attr6.Id));
+                }
+
 
                 sql += "and time between @start and @end ";
                 
@@ -262,8 +273,8 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
         {
             try
             {
-                var insertClause = "insert into Metrics(time, span, orgid, org, userid, username, categoryid, category, metric, metricid,   attr1id,  attr1,   attr2id,  attr2,   attr3id,  attr3,   attr4id,  attr4,   attr5id,  attr5,  value)";
-                var valuesClause = $"values (@time, @span, @org, @orgId, @user, @userId, @categoryId, @category, @metric, @metricid,       @attr1id, @attr1,  @attr2id, @attr2,  @attr3id, @attr3,  @attr4id, @attr4,  @attr5id, @attr5, @value)";
+                var insertClause = "insert into Metrics(time, span, orgid, org, userid, username, categoryid, category, metric, metricid,   attr1id,  attr1,   attr2id,  attr2,   attr3id,  attr3,   attr4id,  attr4,   attr5id,  attr5,   attr6id,  attr6,  value)";
+                var valuesClause = $"values (@time, @span, @org, @orgId, @user, @userId, @categoryId, @category, @metric, @metricid,       @attr1id, @attr1,  @attr2id, @attr2,  @attr3id, @attr3,  @attr4id, @attr4,  @attr5id, @attr5,  @attr6id, @attr6, @value)";
 
                 var span = "-";
                 switch (metric.Period)
@@ -300,15 +311,21 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
 
                     cmd.Parameters.Add(new NpgsqlParameter("@attr1id", EntityHeader.IsNullOrEmpty(metric.Attr1) ? (object)DBNull.Value : metric.Attr1.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr1", EntityHeader.IsNullOrEmpty(metric.Attr1) ? (object)DBNull.Value : metric.Attr1.Id));
+                    
                     cmd.Parameters.Add(new NpgsqlParameter("@attr2id", EntityHeader.IsNullOrEmpty(metric.Attr2) ? (object)DBNull.Value : metric.Attr2.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr2", EntityHeader.IsNullOrEmpty(metric.Attr2) ? (object)DBNull.Value : metric.Attr2.Id));
+                    
                     cmd.Parameters.Add(new NpgsqlParameter("@attr3id", EntityHeader.IsNullOrEmpty(metric.Attr3) ? (object)DBNull.Value : metric.Attr3.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr3", EntityHeader.IsNullOrEmpty(metric.Attr3) ? (object)DBNull.Value : metric.Attr3.Id));
 
                     cmd.Parameters.Add(new NpgsqlParameter("@attr4id", EntityHeader.IsNullOrEmpty(metric.Attr4) ? (object)DBNull.Value : metric.Attr4.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr4", EntityHeader.IsNullOrEmpty(metric.Attr4) ? (object)DBNull.Value : metric.Attr4.Id));
+
                     cmd.Parameters.Add(new NpgsqlParameter("@attr5id", EntityHeader.IsNullOrEmpty(metric.Attr5) ? (object)DBNull.Value : metric.Attr5.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr5", EntityHeader.IsNullOrEmpty(metric.Attr5) ? (object)DBNull.Value : metric.Attr5.Id));
+
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr6id", EntityHeader.IsNullOrEmpty(metric.Attr6) ? (object)DBNull.Value : metric.Attr6.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr6", EntityHeader.IsNullOrEmpty(metric.Attr6) ? (object)DBNull.Value : metric.Attr6.Id));
 
                     cmd.Parameters.Add(new NpgsqlParameter("@value", metric.Value));
 

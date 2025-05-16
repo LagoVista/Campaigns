@@ -426,4 +426,13 @@
   <data name="Kpi_Attribute5" xml:space="preserve">
     <value>Attribute 5</value>
   </data>
+  <data name="Kpi_Attribute6" xml:space="preserve">
+    <value>Attribute 6</value>
+  </data>
+  <data name="MetricDefinition_Attr6Name" xml:space="preserve">
+    <value>Attribute 6 Name</value>
+  </data>
+  <data name="MetricDefinition_Attr6Key" xml:space="preserve">
+    <value>Attribute 6 Key</value>
+  </data>
 </root>

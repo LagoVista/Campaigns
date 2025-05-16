@@ -43,6 +43,11 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr5Key, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
         public string Attribute5Key { get; set; }
 
+        [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr6Name, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
+        public string Attribute6Name { get; set; }
+        [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr6Key, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
+        public string Attribute6Key { get; set; }
+
 
         [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string Icon { get; set; }
@@ -81,6 +86,8 @@ namespace LagoVista.Campaigns.Models
                 nameof(Attribute4Key),
                 nameof(Attribute5Name),
                 nameof(Attribute5Key),
+                nameof(Attribute6Name),
+                nameof(Attribute6Key),
             };
         }
 
