@@ -4,7 +4,9 @@ using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.IoT.Logging.Loggers;
 using LagoVista.UserAdmin.Interfaces.Managers;
+using LagoVista.UserAdmin.Interfaces.Repos.Orgs;
 using LagoVista.UserAdmin.Interfaces.Repos.Users;
+using Moq;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -21,7 +23,7 @@ namespace CampaignTests
         [SetUp]
         public void Setup()
         {
-            _emailSender = new SendGridEmailService(new IdentitySettings(), new Moq.Mock<IAppUserRepo>().Object, new Moq.Mock<IBackgroundServiceTaskQueue>().Object, new Moq.Mock<IAppConfig>().Object,  new Moq.Mock<IAdminLogger>().Object);
+            _emailSender = new SendGridEmailService(new IdentitySettings(), new Mock<IOrganizationRepo>().Object, new Moq.Mock<IAppUserRepo>().Object, new Moq.Mock<IBackgroundServiceTaskQueue>().Object, new Moq.Mock<IAppConfig>().Object,  new Moq.Mock<IAdminLogger>().Object);
         }
 
         public class IdentitySettings : ILagoVistaAspNetCoreIdentityProviderSettings
