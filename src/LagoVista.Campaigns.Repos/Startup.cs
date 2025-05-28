@@ -13,7 +13,7 @@ namespace LagoVista.Campaigns.Repos
             services.AddTransient<ICampaignRepo, CampaignRepo>();
             services.AddTransient<IKpiRepo, KpiRepo>();
             services.AddTransient<IMetricsRepo, MetricsRepo>();
-            services.AddTransient<IMetricsDefinitionRepo, MetricsDefinitionRepo>();
+            services.AddTransient<IMetricsDefinitionRepo, MetricsRepo>();
             services.AddTransient<ISocialMediaAccountRepo, SocialMediaAccountRepo>();
         }
     }

@@ -1,12 +1,14 @@
 ﻿using LagoVista.Campaigns.Interfaces;
 using LagoVista.Campaigns.Models;
 using LagoVista.Core;
+using LagoVista.Core.Exceptions;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Logging.Loggers;
 using MongoDB.Driver.Core.Configuration;
 using Npgsql;
+using Prometheus;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +20,7 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns.Repos
 {
-    public class MetricsRepo : IMetricsRepo
+    public class MetricsRepo : IMetricsRepo, IMetricsDefinitionRepo
     {
         IConnectionSettings _connectionSettings;
         IAdminLogger _adminLogger;
@@ -51,24 +53,198 @@ CREATE TABLE public.metrics (
     value double precision NOT NULL
 );          
 
+
 drop table metrics_definition;
 CREATE TABLE metrics_definition(
     id  char(32),
     name         text not null,
+    summary      text not null,
+    help         text not null,
+    description  text not null,
     key          text not null,
-	attr1name text not null,
-	attr2name text not null,
-	attr3name text not null,	
-	attr4name text not null,
-	attr5name text not null,
-    attr6name text not null,
+    icon         text not null,
+    categoryId   text not null,
+    categoryKey  text not null,
+    categoryName text not null,
+	attr1name text null,
+	attr1key text null,
+	attr2name text null,
+	attr2key text null,
+	attr3name text null,	
+	attr3key text null,
+	attr4name text null,
+	attr4key text null,
+	attr5name text null,
+	attr5key text null,
+    attr6name text null,
+	attr6key text null,
+    readonly boolean not null
 ); 
 
-insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name, attr6name) values('4A84863CF9654F009E6463C87B46D5D6', 'directemailssent', 'Direct Emails Sent', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion', 'Template');
-insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name, attr6name) values('A8D44B760C83469EB6814100F79476FF', 'directemailsopened', 'Direct Emails Opended', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion', 'Template');
-insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, attr4name, attr5name, attr6name) values('A9677684F14A443E93A320147929A035', 'directemailclicks', 'Direct Emails Clicked', 'Industry', 'Industry Niche','Sales Stage', 'Campaign', 'Promotion', 'Template');
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+                        attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
+						readonly) 
+                values('1A84863CF9654F009E6463C87B46D5D9', 'contactpageview', 'Contact Page View', 
+                        'Contact Page View', 'Number of times a contact page  page has been viewed','',
+                        'icon-pz-stock-1','30C28365B52A428BB8C32D38C690732A', 'marketing', 'Marketing',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
+						true);
 
 
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+                        attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
+						readonly) 
+                values('2A84863CF9654F009E6463C87B46D5D8', 'contactpagesubmitted', 'Contact Us Submitted', 
+                       'Contact Us Submitted', 'Number of times a contact has populated and submitted a Contact Us page','',
+                        'icon-pz-stock-1','30C28365B52A428BB8C32D38C690732A', 'marketing', 'Marketing',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
+						true);						
+
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+                        attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
+						readonly) 
+                values('3A84863CF9654F009E6463C87B46D5D7', 'landingpageview', 'Landing Page View', 
+                       'Landing Page View', 'Number of times a landing page has been viewed','',
+                        'icon-pz-stock-1','30C28365B52A428BB8C32D38C690732A', 'marketing', 'Marketing',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
+						true);
+
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+                        attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
+						readonly) 
+                values('4A84863CF9654F009E6463C87B46D5D6', 'directemailssent', 'Direct Emails Sent', 
+                       'Total number of direct emails sent', 'Number of direct emails sent to customers','',
+                        'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
+						true);
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+                        attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
+						readonly) 
+                values('5A84863CF9654F009E6463C87B46D5D5', 'postalmailssent', 'Direct Mails (postal) Sent', 
+                       'Total number of direct email (postal) sent', 'Number of tri-fold or other direct messages sent to customers','',
+                        'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
+						true);						
+
+insert into metrics_definition(id, key, name,  
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+                        attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
+						readonly) 
+            values('A8D44B760C83469EB6814100F79476FF', 'directemailsopened', 'Direct Emails Opended', 
+                        'Total number of emails opened', 'Total number of emails that have been opened by customers.  Since some email servers will automatically open emails, only emails opened 2 minutes after send time stamp will be counted','',
+                        'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
+						true);
+
+insert into metrics_definition(id, key, name,  
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+                        attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
+						readonly) 
+            values('A9677684F14A443E93A320147929A035', 'directemailclicks', 'Direct Emails Clicked', 
+                        'Total clicks on emails sent to users.', 'Total number of clicks by users on email sent to customers.  Since some email servers will automatically open emails, only emails opened 2 minutes after send time stamp will be counted','',
+                        'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
+						true);
+
+        insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+						readonly) 
+                values('137942FCBCFB4BC6A876C31E2843E5FF', 'hostlead', 'Hot Lead',
+                       'New Hot Lead', 'Lead where they opened or clicked on an email, they may not have directly contact us','',
+                       'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',         
+                       'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+						true);
+
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+						readonly) 
+                values('237942FCBCFB4BC6A876C31E2843E5FE', 'engagedlead', 'Lead Engaged',
+                       'New Engaged Lead', 'Leads where a contact was engaged in a two way converstation and expressed interest in a product','',
+                       'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                               
+                       'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+						true);
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+						readonly) 
+                values('337942FCBCFB4BC6A876C31E2843E5FD', 'customerconverted', 'Customer Converted', 
+                       'New Customers', 'A customer that has purchased a product or service from us','',
+                       'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                               
+                       'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+						true);
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+						readonly) 
+                values('437942FCBCFB4BC6A876C31E2843E5FC', 'proposalscreated', 'Proposals Created and Submitted',
+                       'Customer Proposals Created and Submitted', 'Total number of proposals that have been created and sent out to a a customer','',
+                       'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                                                                     
+                       'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+						true);
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+						readonly) 
+                values('537942FCBCFB4BC6A876C31E2843E5FB', 'agreementscreated', 'Agreements Created and Submitted',
+                       'Customer Agreements Created and Submitted', 'Total number of proposals that have been created and sent out to a a customer','',
+                       'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                                                                                                          
+                       'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+						true);
+						
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+						readonly) 
+                values('437942FCBCFB4BC6A876C31E2843E5FC', 'proposalscreated', 'Proposals Created and Submitted',
+                       'Customer Proposals Created and Submitted', 'Total number of proposals that have been created and sent out to a a customer','',
+                       'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                                                                     
+                       'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+						true);
+
+
+CREATE EXTENSION IF NOT EXISTS timescaledb;
         */
 
         public MetricsRepo(IMetricStorageConnectionSettings repoSettings, IAdminLogger adminLogger)
@@ -204,69 +380,48 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
         }
 
 
-        public async Task AddMetricsDefinition(MetricsDefinition metricsDefinition)
+        public async Task AddMetricsDefinitionAsync(string orgId, MetricsDefinition metricsDefinition)
         {
-            try
+            var insertClause = @"insert into metrics_definition(id, name, summary, help, description, key, icon, categoryId, categoryKey, categoryName, attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, readonly)";
+            var valuesClause = $"values (@id, @name, @summary, @help, @description, @key, @icon, @categoryId, @categoryKey, @categoryName, @attr1name, @attr1key, @attr2name, @attr2key, @attr3name, @attr3key, @attr4name, @attr4key, @attr5name, @attr5key, @attr6name, @attr6key, @readonly)";
+
+            using (var cn = OpenConnection(orgId))
+            using (var cmd = new NpgsqlCommand())
             {
-                var insertClause = "insert into metrics_definition(org, orgid, name, key, metrics_definition_id)";
-                var valuesClause = $"values (@org, @orgId, @name, @key, @def_id)";
+                cmd.Connection = cn;
+                cmd.CommandText = $"{insertClause} {valuesClause}";
+                cmd.Parameters.Add(new NpgsqlParameter("@id", string.IsNullOrEmpty(metricsDefinition.Id) ? (object)DBNull.Value : metricsDefinition.Id));
+                cmd.Parameters.Add(new NpgsqlParameter("@name", string.IsNullOrEmpty(metricsDefinition.Name) ? (object)DBNull.Value : metricsDefinition.Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@key", string.IsNullOrEmpty(metricsDefinition.Key) ? (object)DBNull.Value : metricsDefinition.Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@description", string.IsNullOrEmpty(metricsDefinition.Description) ? (object)DBNull.Value : metricsDefinition.Description));
+                cmd.Parameters.Add(new NpgsqlParameter("@icon", metricsDefinition.Icon));
+                cmd.Parameters.Add(new NpgsqlParameter("@categoryId", metricsDefinition.Category?.Id ?? (object)DBNull.Value));
+                cmd.Parameters.Add(new NpgsqlParameter("@categoryKey", metricsDefinition.Category?.Key ?? (object)DBNull.Value));
+                cmd.Parameters.Add(new NpgsqlParameter("@categoryName", metricsDefinition.Category?.Text ?? (object)DBNull.Value));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr1name", string.IsNullOrEmpty(metricsDefinition.Attribute1Name) ? (object)DBNull.Value : metricsDefinition.Attribute1Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr2name", string.IsNullOrEmpty(metricsDefinition.Attribute2Name) ? (object)DBNull.Value : metricsDefinition.Attribute2Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr3name", string.IsNullOrEmpty(metricsDefinition.Attribute3Name) ? (object)DBNull.Value : metricsDefinition.Attribute3Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr4name", string.IsNullOrEmpty(metricsDefinition.Attribute4Name) ? (object)DBNull.Value : metricsDefinition.Attribute4Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr5name", string.IsNullOrEmpty(metricsDefinition.Attribute5Name) ? (object)DBNull.Value : metricsDefinition.Attribute5Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr6name", string.IsNullOrEmpty(metricsDefinition.Attribute6Name) ? (object)DBNull.Value : metricsDefinition.Attribute6Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr1key", string.IsNullOrEmpty(metricsDefinition.Attribute1Key) ? (object)DBNull.Value : metricsDefinition.Attribute1Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr2key", string.IsNullOrEmpty(metricsDefinition.Attribute2Key) ? (object)DBNull.Value : metricsDefinition.Attribute2Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr3key", string.IsNullOrEmpty(metricsDefinition.Attribute3Key) ? (object)DBNull.Value : metricsDefinition.Attribute3Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr4key", string.IsNullOrEmpty(metricsDefinition.Attribute4Key) ? (object)DBNull.Value : metricsDefinition.Attribute4Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr5key", string.IsNullOrEmpty(metricsDefinition.Attribute5Key) ? (object)DBNull.Value : metricsDefinition.Attribute5Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr6key", string.IsNullOrEmpty(metricsDefinition.Attribute6Key) ? (object)DBNull.Value : metricsDefinition.Attribute6Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@summary", string.IsNullOrEmpty(metricsDefinition.Summary) ? (object)DBNull.Value : metricsDefinition.Summary));
+                cmd.Parameters.Add(new NpgsqlParameter("@help", string.IsNullOrEmpty(metricsDefinition.Help) ? (object)DBNull.Value : metricsDefinition.Help));
+                cmd.Parameters.Add(new NpgsqlParameter("@readonly", metricsDefinition.IsReadOnly));
 
-
-                using (var cn = OpenConnection(metricsDefinition.OwnerOrganization.Id))
-                using (var cmd = new NpgsqlCommand())
-                {
-                    cmd.Connection = cn;
-                    cmd.CommandText = $"{insertClause} {valuesClause} ";
-                    cmd.Parameters.Add(new NpgsqlParameter("@org", metricsDefinition.OwnerOrganization.Text));
-                    cmd.Parameters.Add(new NpgsqlParameter("@orgid", metricsDefinition.OwnerOrganization.Id));
-                    cmd.Parameters.Add(new NpgsqlParameter("@name", metricsDefinition.Name));
-                    cmd.Parameters.Add(new NpgsqlParameter("@key", metricsDefinition.Key));
-                    cmd.Parameters.Add(new NpgsqlParameter("@def_id", metricsDefinition.Id));
-
-                    var recordCount = await cmd.ExecuteNonQueryAsync();
-                    if (recordCount != 1)
-                        throw new Exception();
-                }
+                var recordCount = await cmd.ExecuteNonQueryAsync();
+                if (recordCount != 1)
+                    throw new Exception();
             }
-            catch (Exception ex)
-            {
-                var password = _connectionSettings.Password.ToCharArray().First() + "***" + _connectionSettings.Password.ToCharArray().Last();
 
-                _adminLogger.AddError("[MetricsRepo__AddMetricsDefinition]", ex.Message, _connectionSettings.Uri.ToKVP("uri"),
-                    _connectionSettings.UserName.ToKVP("username"), password.ToKVP("password"), _connectionSettings.ResourceName.ToKVP("database"));
-
-                throw;
-            }
+            _adminLogger.Trace($"[MetricsRepo__Addmetric] Inserted MetricsDefinition: {metricsDefinition.Name}", orgId.ToKVP("orgId"));
         }
 
-        public async Task UpdateMetricsDefinition(MetricsDefinition metricsDefinition)
-        {
-            try
-            {
-                var updateClause = @"Updates metrics_definition(name = @name) where metrics_definition_id = @def_id )";
-                
-
-                using (var cn = OpenConnection(metricsDefinition.OwnerOrganization.Id))
-                using (var cmd = new NpgsqlCommand())
-                {
-                    cmd.Connection = cn;
-                    cmd.CommandText = updateClause;
-                    cmd.Parameters.Add(new NpgsqlParameter("@name", metricsDefinition.Name));
-                    cmd.Parameters.Add(new NpgsqlParameter("@def_id", metricsDefinition.Id));
-
-                    var recordCount = await cmd.ExecuteNonQueryAsync();
-                    if (recordCount != 1)
-                        throw new Exception();
-                }
-            }
-            catch (Exception ex)
-            {
-                var password = _connectionSettings.Password.ToCharArray().First() + "***" + _connectionSettings.Password.ToCharArray().Last();
-
-                _adminLogger.AddError("[MetricsRepo__UpdateMetricsDefinition]", ex.Message, _connectionSettings.Uri.ToKVP("uri"),
-                    _connectionSettings.UserName.ToKVP("username"), password.ToKVP("password"), _connectionSettings.ResourceName.ToKVP("database"));
-            }
-        }
 
 
         public async Task AddMetric(KpiMetric metric)
@@ -308,7 +463,7 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
 
                     cmd.Parameters.Add(new NpgsqlParameter("@user", EntityHeader.IsNullOrEmpty(metric.User) ? (object)DBNull.Value : (object)metric.User.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@userId", EntityHeader.IsNullOrEmpty(metric.User) ? (object)DBNull.Value : metric.User.Id));
-
+                     
                     cmd.Parameters.Add(new NpgsqlParameter("@attr1id", EntityHeader.IsNullOrEmpty(metric.Attr1) ? (object)DBNull.Value : metric.Attr1.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr1", EntityHeader.IsNullOrEmpty(metric.Attr1) ? (object)DBNull.Value : metric.Attr1.Id));
                     
@@ -344,6 +499,200 @@ insert into metrics_definition(id, name, key, attr1name, attr2name, attr3name, a
                     _connectionSettings.UserName.ToKVP("username"), password.ToKVP("password"), _connectionSettings.ResourceName.ToKVP("database"));
             }
 
+        }
+
+        public Task DeleteMetricsDefinitionAsync(string orgId, string id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task UpdateMetricsDefinitionAsync(string orgId, MetricsDefinition metricsDefinition)
+        {
+            var updateClause = @"
+update metrics_definition
+   set  name = @name,
+        description = @description,
+        icon = @icon,
+        category = @categoryId,
+        categoryKey = @categoryKey,
+        categoryName = @categoryName,
+        attr1name = @attr1name,
+        attr1key = @attr1key,
+        attr2name = @attr2name,
+        attr2key = @attr2key,
+        attr3name = @attr3name,
+        attr3key = @attr3key,
+        attr4name = @attr4name,
+        attr4key = @attr4key,
+        attr5name = @attr5name,
+        attr5key = @attr5key,
+        attr6name = @attr6name,
+        attr6key = @attr6key
+       where id = @id and readonly = false;";
+
+            using (var cn = OpenConnection(orgId))
+            using (var cmd = new NpgsqlCommand())
+            {
+                cmd.Connection = cn;
+                cmd.CommandText = $"{updateClause}";
+                cmd.Parameters.Add(new NpgsqlParameter("@id", string.IsNullOrEmpty(metricsDefinition.Id) ? (object)DBNull.Value : metricsDefinition.Id));
+                cmd.Parameters.Add(new NpgsqlParameter("@name", string.IsNullOrEmpty(metricsDefinition.Name) ? (object)DBNull.Value : metricsDefinition.Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@key", string.IsNullOrEmpty(metricsDefinition.Key) ? (object)DBNull.Value : metricsDefinition.Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@description", string.IsNullOrEmpty(metricsDefinition.Description) ? (object)DBNull.Value : metricsDefinition.Description));
+                cmd.Parameters.Add(new NpgsqlParameter("@icon", metricsDefinition.Icon));
+                cmd.Parameters.Add(new NpgsqlParameter("@categoryId", metricsDefinition.Category?.Id ?? (object)DBNull.Value));
+                cmd.Parameters.Add(new NpgsqlParameter("@categoryKey", metricsDefinition.Category?.Key ?? (object)DBNull.Value));
+                cmd.Parameters.Add(new NpgsqlParameter("@categoryName", metricsDefinition.Category?.Text ?? (object)DBNull.Value));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr1name", string.IsNullOrEmpty(metricsDefinition.Attribute1Name) ? (object)DBNull.Value : metricsDefinition.Attribute1Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr2name", string.IsNullOrEmpty(metricsDefinition.Attribute2Name) ? (object)DBNull.Value : metricsDefinition.Attribute2Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr3name", string.IsNullOrEmpty(metricsDefinition.Attribute3Name) ? (object)DBNull.Value : metricsDefinition.Attribute3Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr4name", string.IsNullOrEmpty(metricsDefinition.Attribute4Name) ? (object)DBNull.Value : metricsDefinition.Attribute4Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr5name", string.IsNullOrEmpty(metricsDefinition.Attribute5Name) ? (object)DBNull.Value : metricsDefinition.Attribute5Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr6name", string.IsNullOrEmpty(metricsDefinition.Attribute6Name) ? (object)DBNull.Value : metricsDefinition.Attribute6Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr1key", string.IsNullOrEmpty(metricsDefinition.Attribute1Key) ? (object)DBNull.Value : metricsDefinition.Attribute1Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr2key", string.IsNullOrEmpty(metricsDefinition.Attribute2Key) ? (object)DBNull.Value : metricsDefinition.Attribute2Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr3key", string.IsNullOrEmpty(metricsDefinition.Attribute3Key) ? (object)DBNull.Value : metricsDefinition.Attribute3Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr4key", string.IsNullOrEmpty(metricsDefinition.Attribute4Key) ? (object)DBNull.Value : metricsDefinition.Attribute4Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr5key", string.IsNullOrEmpty(metricsDefinition.Attribute5Key) ? (object)DBNull.Value : metricsDefinition.Attribute5Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr6key", string.IsNullOrEmpty(metricsDefinition.Attribute6Key) ? (object)DBNull.Value : metricsDefinition.Attribute6Key));
+
+                var recordCount = await cmd.ExecuteNonQueryAsync();
+                if (recordCount != 1)
+                    throw new Exception();
+            }
+
+            _adminLogger.Trace($"[MetricsRepo__Addmetric] Inserted MetricsDefinition: {metricsDefinition.Name}", orgId.ToKVP("orgId"));
+        }
+
+        private MetricsDefinition ReadResults(NpgsqlDataReader reader)
+        {
+            var definition = new MetricsDefinition
+            {
+                Id = reader["id"].ToString(),
+                Name = reader["name"].ToString(),
+                Summary = reader["summary"].ToString(),
+                Help = reader["help"].ToString(),
+                Description = reader["description"].ToString(),
+                Key = reader["key"].ToString(),
+                Icon = reader["icon"].ToString(),
+                Category = new EntityHeader<Core.Models.EntityHeader>
+                {
+                    Id = reader["categoryId"].ToString(),
+                    Key = reader["categoryKey"].ToString(),
+                    Text = reader["categoryName"].ToString()
+                },
+                Attribute1Name = reader["attr1name"]?.ToString(),
+                Attribute1Key = reader["attr1key"]?.ToString(),
+                Attribute2Name = reader["attr2name"]?.ToString(),
+                Attribute2Key = reader["attr2key"]?.ToString(),
+                Attribute3Name = reader["attr3name"]?.ToString(),
+                Attribute3Key = reader["attr3key"]?.ToString(),
+                Attribute4Name = reader["attr4name"]?.ToString(),
+                Attribute4Key = reader["attr4key"]?.ToString(),
+                Attribute5Name = reader["attr5name"]?.ToString(),
+                Attribute5Key = reader["attr5key"]?.ToString(),
+                Attribute6Name = reader["attr6name"]?.ToString(),
+                Attribute6Key = reader["attr6key"]?.ToString(),
+                IsReadOnly = (bool)reader["readonly"]
+            };
+
+            if (reader["categoryId"] != DBNull.Value && reader["categoryKey"] != DBNull.Value && reader["category"] != DBNull.Value)
+            {
+                definition.Category = new EntityHeader<Core.Models.EntityHeader>
+                {
+                    Id = reader["categoryId"].ToString(),
+                    Key = reader["categoryKey"].ToString(),
+                    Text = reader["categoryName"].ToString()
+                };
+            }
+
+            return definition;
+        }
+
+        public async Task<MetricsDefinition> GetMetricsDefinitionAsync(string orgId, string id)
+        {
+            var sql = @"SELECT *
+                        FROM metrics_definition
+                        WHERE id = @id";
+
+            using (var cn = OpenConnection(orgId))
+            using (var cmd = new NpgsqlCommand(sql, cn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return ReadResults(reader);
+                    }
+                    else
+                    {
+                        throw new RecordNotFoundException(nameof(MetricsDefinition), id);
+                    }
+                }
+            }
+        }
+
+        public async Task<MetricsDefinition> GetMetricsDefinitionByKeyAscyn(string orgId, string key)
+        {
+            var sql = @"SELECT *
+                        FROM metrics_definition
+                        WHERE key = @key";
+
+            using (var cn = OpenConnection(orgId))
+            using (var cmd = new NpgsqlCommand(sql, cn))
+            {
+                cmd.Parameters.AddWithValue("@key", key);
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return ReadResults(reader);
+                    }
+                    else
+                    {
+                        throw new RecordNotFoundException(nameof(MetricsDefinition), $"key={key}");
+                    }
+                }
+            }
+        }
+
+        public async Task<ListResponse<MetricsDefinitionSummary>> GetMetricsDefinitionsAsync(ListRequest request, string orgId)
+        {
+            var sql = @$"SELECT id, name, summary, key, icon, category, categoryid, categorykey
+                        FROM metrics_definition
+                         order by name
+                        limit {request.PageSize}
+                        offset {request.PageSize * request.PageIndex - 1};";
+
+            
+            using (var cn = OpenConnection(orgId))
+            using (var cmd = new NpgsqlCommand(sql, cn))
+            {
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    var results = new List<MetricsDefinitionSummary>();
+                    while (reader.Read())
+                    {
+                        var definition = new MetricsDefinitionSummary()
+                        {
+                            Id = reader["id"].ToString(),
+                            Name = reader["name"].ToString(),
+                            Description = reader["description"].ToString(),
+                            Key = reader["key"].ToString(),
+                            Icon = reader["icon"].ToString(),
+                            CategoryId = reader["categoryId"] != DBNull.Value ? reader["categoryId"].ToString() : string.Empty,
+                            CategoryKey = reader["categorykey"] != DBNull.Value ? reader["categoryKey"].ToString() : string.Empty,
+                            Category = reader["category"] != DBNull.Value ? reader["category"].ToString() : string.Empty,
+                        };
+                        results.Add(definition);
+                    }
+
+                    return ListResponse<MetricsDefinitionSummary>.Create(results, request);             
+                }
+            }
         }
     }
 }

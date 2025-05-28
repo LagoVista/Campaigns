@@ -25,31 +25,30 @@ namespace LagoVista.Campaigns
         {
             ValidationCheck(metricsDefinition, Actions.Create);
 
-            await AuthorizeAsync(metricsDefinition, AuthorizeResult.AuthorizeActions.Create, user, org);
-            await _metricsDefinitionRepo.AddMetricsDefinitionAsync(metricsDefinition);
+            await _metricsDefinitionRepo.AddMetricsDefinitionAsync(org.Id, metricsDefinition);
 
             return InvokeResult.Success;
         }
 
         public async Task<InvokeResult> DeleteMetricsDefinitionAsync(string id, EntityHeader org, EntityHeader user)
         {
-            var metricsDefinition = await _metricsDefinitionRepo.GetMetricsDefinitionAsync(id);
-            await AuthorizeAsync(metricsDefinition, AuthorizeResult.AuthorizeActions.Delete, user, org);
-            await _metricsDefinitionRepo.DeleteMetricsDefinitionAsync(id);
+            var metricsDefinition = await _metricsDefinitionRepo.GetMetricsDefinitionAsync(org.Id, id);
+            if (metricsDefinition.IsReadOnly)
+                throw new InvalidOperationException("Can not remove read only metric definition.");
+
+            await _metricsDefinitionRepo.DeleteMetricsDefinitionAsync(org.Id, id);
             return InvokeResult.Success;
         }
 
         public async Task<MetricsDefinition> GetMetricsDefinitionAsync(string id, EntityHeader org, EntityHeader user)
         {
-            var metricsDefinition = await _metricsDefinitionRepo.GetMetricsDefinitionAsync(id);
-            await AuthorizeAsync(metricsDefinition, AuthorizeResult.AuthorizeActions.Read, user, org);
+            var metricsDefinition = await _metricsDefinitionRepo.GetMetricsDefinitionAsync(org.Id, id);
             return metricsDefinition;
         }
 
         public async Task<MetricsDefinition> GetMetricsDefinitionByKeyAsync(string key, EntityHeader org, EntityHeader user)
         {
             var metricsDefinition = await _metricsDefinitionRepo.GetMetricsDefinitionByKeyAscyn(org.Id, key);
-            await AuthorizeAsync(metricsDefinition, AuthorizeResult.AuthorizeActions.Read, user, org);
             return metricsDefinition;
         }
 
@@ -62,9 +61,10 @@ namespace LagoVista.Campaigns
         public async Task<InvokeResult> UpdateMetricsDefinitionAsync(MetricsDefinition metricsDefinition, EntityHeader org, EntityHeader user)
         {
             ValidationCheck(metricsDefinition, Actions.Update);
+            if(metricsDefinition.IsReadOnly)
+                throw new InvalidOperationException("Can not update read only metric definition.");
 
-            await AuthorizeAsync(metricsDefinition, AuthorizeResult.AuthorizeActions.Create, user, org);
-            await _metricsDefinitionRepo.UpdateMetricsDefinitionAsync(metricsDefinition);
+            await _metricsDefinitionRepo.UpdateMetricsDefinitionAsync(org.Id, metricsDefinition);
 
             return InvokeResult.Success;
         }

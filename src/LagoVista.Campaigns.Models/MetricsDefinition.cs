@@ -3,6 +3,8 @@ using LagoVista.Core;
 using LagoVista.Core.Attributes;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
+using LagoVista.Core.Resources;
+using LagoVista.Core.Validation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,13 +14,38 @@ namespace LagoVista.Campaigns.Models
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.MetricsDefinition_Title, CampaignResources.Names.MetricsDefinition_Description,
            Resources.CampaignResources.Names.MetricsDefinition_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-pz-stock-1",
             GetUrl: "/api/metrics/definition/{id}", GetListUrl: "/api/metrics/definitions", SaveUrl: "/api/metrics/definition", DeleteUrl: "/api/metrics/definition/{id}", FactoryUrl: "/api/metrics/definition/factory")]
-    public class MetricsDefinition : CampaignModelBase, IFormDescriptor, IFormDescriptorCol2, IIconEntity, ISummaryFactory, ICategorized
+    public class MetricsDefinition : IFormDescriptor, IFormDescriptorCol2, IIconEntity, ISummaryFactory, ICategorized, IValidateable
     {
-        public MetricsDefinition() 
+        public MetricsDefinition()
         {
             Id = Guid.NewGuid().ToId();
             Icon = "icon-pz-stock-1";
         }
+
+        [CloneOptions(false)]
+        [FormField(LabelResource: LagoVistaCommonStrings.Names.Common_Name, FieldType: FieldTypes.Text, ResourceType: typeof(LagoVistaCommonStrings), IsRequired: true, IsUserEditable: true)]
+        public virtual string Name { get; set; }
+
+        [CloneOptions(false)]
+        [FormField(LabelResource: LagoVistaCommonStrings.Names.Common_Key, HelpResource: LagoVistaCommonStrings.Names.Common_Key_Help, FieldType: FieldTypes.Key,
+            RegExValidationMessageResource: LagoVistaCommonStrings.Names.Common_Key_Validation, ResourceType: typeof(LagoVistaCommonStrings), IsRequired: true)]
+        public virtual string Key { get; set; }
+
+        [FormField(LabelResource: LagoVistaCommonStrings.Names.Common_Category, FieldType: FieldTypes.Category, WaterMark: LagoVistaCommonStrings.Names.Common_Category_Select, ResourceType: typeof(LagoVistaCommonStrings), IsRequired: false, IsUserEditable: true)]
+        public EntityHeader Category { get; set; }
+
+        public bool IsReadOnly { get; set; }
+
+
+        public string Id { get; set; }
+
+        [FormField(LabelResource: LagoVistaCommonStrings.Names.Common_Summary, IsRequired: true, FieldType: FieldTypes.Text, ResourceType: typeof(LagoVistaCommonStrings))]
+        public string Summary { get; set; }
+
+        [FormField(LabelResource: LagoVistaCommonStrings.Names.Common_Description, IsRequired: false, FieldType: FieldTypes.MultiLineText, ResourceType: typeof(LagoVistaCommonStrings))]
+        public string Description { get; set; }
+
+        public string Help { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.MetricDefinition_Attr1Name, IsRequired: false, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources))]
         public string Attribute1Name { get; set; }
@@ -54,8 +81,20 @@ namespace LagoVista.Campaigns.Models
     
         public MetricsDefinitionSummary CreateSummary()
         {
-            var summary = new MetricsDefinitionSummary();
-            summary.Populate(this);
+            var summary = new MetricsDefinitionSummary()
+            {
+                Name = Name,
+                Key = Key,
+                Description = Description,
+                Category = Category?.Text,
+                CategoryId = Category?.Id,
+                CategoryKey = Category?.Key,
+                Id = Id,
+                Icon = Icon,
+                IsDeleted = false,
+                IsPublic = false,
+            };
+
             return summary;
         }
 
@@ -65,7 +104,7 @@ namespace LagoVista.Campaigns.Models
             {
                 nameof(Name),
                 nameof(Key),
-                nameof(IsPublic),
+                nameof(Summary),
                 nameof(Category),
                 nameof(Icon),
                 nameof(Description)

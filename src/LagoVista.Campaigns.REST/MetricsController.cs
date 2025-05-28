@@ -47,7 +47,6 @@ namespace LagoVista.Campaigns.REST
         [HttpPut("/api/metrics/definition")]
         public Task<InvokeResult> UpdatemetricsAsycn([FromBody] MetricsDefinition metrics)
         {
-            SetUpdatedProperties(metrics);
             return _metricsManager.UpdateMetricsDefinitionAsync(metrics, OrgEntityHeader, UserEntityHeader);
         }
 
@@ -55,8 +54,6 @@ namespace LagoVista.Campaigns.REST
         public DetailResponse<MetricsDefinition> Createmetricss()
         {
             var metrics = DetailResponse<MetricsDefinition>.Create();
-            SetAuditProperties(metrics.Model);
-            SetOwnedProperties(metrics.Model);
             return metrics;
         }
     }
