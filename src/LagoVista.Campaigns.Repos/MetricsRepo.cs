@@ -661,7 +661,7 @@ update metrics_definition
 
         public async Task<ListResponse<MetricsDefinitionSummary>> GetMetricsDefinitionsAsync(ListRequest request, string orgId)
         {
-            var sql = @$"SELECT id, name, summary, key, icon, category, categoryid, categorykey
+            var sql = @$"SELECT id, name, summary, key, icon, categoryName, categoryid, categorykey
                         FROM metrics_definition
                          order by name
                         limit {request.PageSize}
@@ -685,7 +685,7 @@ update metrics_definition
                             Icon = reader["icon"].ToString(),
                             CategoryId = reader["categoryId"] != DBNull.Value ? reader["categoryId"].ToString() : string.Empty,
                             CategoryKey = reader["categorykey"] != DBNull.Value ? reader["categoryKey"].ToString() : string.Empty,
-                            Category = reader["category"] != DBNull.Value ? reader["category"].ToString() : string.Empty,
+                            Category = reader["categoryName"] != DBNull.Value ? reader["categoryName"].ToString() : string.Empty,
                         };
                         results.Add(definition);
                     }
