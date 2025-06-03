@@ -40,7 +40,7 @@ namespace LagoVista.Campaigns.Models
 
         public EntityHeader ProductPage {get; set;}
 
-        public LandingPageSummary LandingPage {get; set;}
+        public LandingPageInfo LandingPage {get; set;}
 
         public string SenderEmailSignature {get; set;}
 

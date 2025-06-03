@@ -94,7 +94,7 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader<PromotionTypes> PromotionType { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_LandingPage, WaterMark:CampaignResources.Names.Promotion_LandingPage_Select, FieldType: FieldTypes.Custom, CustomFieldType:"landingpagepicker", ResourceType: typeof(CampaignResources))]
-        public LandingPageSummary LandingPage { get; set; }
+        public LandingPageInfo LandingPage { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_ProductPage, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_ProductPage_Select, EntityHeaderPickerUrl: "/api/product/page/list", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
         public EntityHeader ProductPage { get; set; }
@@ -144,7 +144,7 @@ namespace LagoVista.Campaigns.Models
         }
     }
 
-    public class LandingPageSummary
+    public class LandingPageInfo
     {
         public string Id { get; set; }
         public EntityHeader Page { get; set; }

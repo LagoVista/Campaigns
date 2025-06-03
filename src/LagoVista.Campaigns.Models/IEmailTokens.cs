@@ -27,7 +27,7 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Campaign { get;}
         public EntityHeader Promotion { get;  }
         public EntityHeader ProductPage { get;  }
-        public LandingPageSummary LandingPage { get; }
+        public LandingPageInfo LandingPage { get; }
         public string SenderEmailSignature { get; }
         public string SenderEmail { get; }
         public string SenderName { get;  }
