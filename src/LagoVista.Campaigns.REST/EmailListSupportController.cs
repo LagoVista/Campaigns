@@ -1,4 +1,5 @@
-﻿using LagoVista.Core.Models;
+﻿using LagoVista.Core.Exceptions;
+using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
 using LagoVista.IoT.Logging.Loggers;
@@ -9,6 +10,7 @@ using LagoVista.UserAdmin.Models.Users;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LagoVista.Campaigns.REST
@@ -52,16 +54,61 @@ namespace LagoVista.Campaigns.REST
         }
 
         [HttpGet("/api/email/senders")]
-        public Task<ListResponse<EntityHeader>> GetEmailSendersAsync()
+        public Task<ListResponse<EmailSenderSummary>> GetEmailSendersAsync()
         {
             return _emailSender.GetEmailSendersAsync(OrgEntityHeader, UserEntityHeader);
         }
 
+        [HttpGet("/api/email/sender/{id}")]
+        public async Task<DetailResponse<EmailSender>> GetEmailSendersAsync(string id)
+        {
+            var sender = await _emailSender.GetEmailSenderAsync(id, OrgEntityHeader, UserEntityHeader);
+            return DetailResponse<EmailSender>.Create(sender);
+        }
+
+
+        [HttpDelete("/api/email/sender/{id}")]
+        public async Task<InvokeResult> DeleteSenderAsync(string id)
+        {
+            return await _emailSender.DeleteEmailSenderAsync(id, OrgEntityHeader, UserEntityHeader);
+        }
+
+        [HttpPost("/api/email/sender")]
+        public Task<InvokeResult> AddEmailSenderAsync([FromBody] EmailSender emailSender)
+        {
+            if (emailSender == null) throw new ArgumentNullException(nameof(emailSender));
+            return _emailSender.AddEmailSenderAsync(emailSender, OrgEntityHeader, UserEntityHeader);
+        }
+
+        [HttpGet("/api/email/sender/factory")]
+        public DetailResponse<EmailSender> CreateEmailSender()
+        {
+            return DetailResponse<EmailSender>.Create(new EmailSender()
+            {
+                OrganizationId = OrgEntityHeader.Id,
+                ReplyTo = new EmailSenderAddress(),
+                From = new EmailSenderAddress(),
+            }, false);
+        }
+
+        [HttpGet("/api/email/sender/email/factory")]
+        public  DetailResponse<EmailSenderAddress> CreateEmailSenderAddress()
+        {
+            return DetailResponse<EmailSenderAddress>.Create();
+        }
+
+        [HttpPut("/api/email/sender")]
+        public Task<InvokeResult> UpdateEmailSenderAsync([FromBody] EmailSender emailSender)
+        {
+            if (emailSender == null) throw new ArgumentNullException(nameof(emailSender));
+            return _emailSender.UpdateEmailSenderAsync(emailSender, OrgEntityHeader, UserEntityHeader);
+        }
+
         [HttpGet("/api/email/sender/create/{userid}")]
-        public async Task<InvokeResult<AppUser>> AddEmailSenderAsync(string userid)
+        public async Task<InvokeResult<AppUser>> AddEmailSenderAsync(string userid, string nickname="")
         {
             var appUser = await _appUserManager.GetUserByIdAsync(userid, OrgEntityHeader, UserEntityHeader);
-            return await _emailSender.AddEmailSenderAsync(appUser, OrgEntityHeader, UserEntityHeader);
+            return await _emailSender.AddEmailSenderAsync(appUser, nickname, OrgEntityHeader, UserEntityHeader);
         }
 
         [HttpGet("/api/email/designs")]
