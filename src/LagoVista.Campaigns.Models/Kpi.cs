@@ -80,6 +80,13 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute6, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
         public EntityHeader Attr6 { get; set; }
 
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute7, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Attr7 { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute8, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
+        public EntityHeader Attr8 { get; set; }
+
+
 
         [FormField(LabelResource: CampaignResources.Names.Kpi_TargetValue, IsRequired: true, FieldType: FieldTypes.Decimal, ResourceType: typeof(CampaignResources))]
         public Decimal TargetValue { get; set; }
@@ -118,6 +125,8 @@ namespace LagoVista.Campaigns.Models
                 nameof(Attr4),
                 nameof(Attr5),
                 nameof(Attr6),
+                nameof(Attr7),
+                nameof(Attr8),
             };
         }
 

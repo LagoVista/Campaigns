@@ -50,10 +50,16 @@ CREATE TABLE public.metrics (
     attr5 text,
     attr6id text,
     attr6 text,
+    attr7id text,
+    attr7 text,
+    attr8id text,
+    attr8 text,
     value double precision NOT NULL
 );          
 
+        */
 
+        public const string CreateStandardCategoriesSQL = @"
 drop table metrics_definition;
 CREATE TABLE metrics_definition(
     id  char(32),
@@ -78,6 +84,10 @@ CREATE TABLE metrics_definition(
 	attr5key text null,
     attr6name text null,
 	attr6key text null,
+	attr7name text null,
+	attr7key text null,
+    attr8name text null,
+	attr8key text null,
     readonly boolean not null
 ); 
 
@@ -114,13 +124,13 @@ insert into metrics_definition(id, key, name,
                         icon, categoryId, categoryKey, categoryName,   
                         attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
                         attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
-						readonly) 
+						attr7name, attr7key, readonly) 
                 values('3A84863CF9654F009E6463C87B46D5D7', 'landingpageview', 'Landing Page View', 
                        'Landing Page View', 'Number of times a landing page has been viewed','',
                         'icon-pz-stock-1','30C28365B52A428BB8C32D38C690732A', 'marketing', 'Marketing',
-                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Landing Page', 'landingpage',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
                         'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
-						true);
+						'Landing Page', 'landingpage', true);
 
 
 insert into metrics_definition(id, key, name,
@@ -229,9 +239,9 @@ insert into metrics_definition(id, key, name,
                        'Customer Agreements Created and Submitted', 'Total number of proposals that have been created and sent out to a a customer','',
                        'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                                                                                                          
                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
-						true);					
+						true);";					
 
-
+        /*
         Additional ones to add
         1) Contacts in sales stage
 
@@ -310,6 +320,19 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
                     cmd.Parameters.Add(new NpgsqlParameter("@attr6", kpi.Attr6.Id));
                 }
 
+                if (!EntityHeader.IsNullOrEmpty(kpi.Attr7))
+                {
+                    sql += " and attr7 = @attr7 ";
+                    bldr.Append($" @attr7={kpi.Attr7.Id};");
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr7", kpi.Attr7.Id));
+                }
+
+                if (!EntityHeader.IsNullOrEmpty(kpi.Attr8))
+                {
+                    sql += " and attr8 = @attr8 ";
+                    bldr.Append($" @attr5={kpi.Attr8.Id};");
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr8", kpi.Attr8.Id));
+                }
 
                 sql += "and time between @start and @end ";
                 
@@ -372,8 +395,8 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
 
         public async Task AddMetricsDefinitionAsync(string orgId, MetricsDefinition metricsDefinition)
         {
-            var insertClause = @"insert into metrics_definition(id, name, summary, help, description, key, icon, categoryId, categoryKey, categoryName, attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, readonly)";
-            var valuesClause = $"values (@id, @name, @summary, @help, @description, @key, @icon, @categoryId, @categoryKey, @categoryName, @attr1name, @attr1key, @attr2name, @attr2key, @attr3name, @attr3key, @attr4name, @attr4key, @attr5name, @attr5key, @attr6name, @attr6key, @readonly)";
+            var insertClause = @"insert into metrics_definition(id, name, summary, help, description, key, icon, categoryId, categoryKey, categoryName, attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, attr7name, attr7key, attr8name, attr8key, readonly)";
+            var valuesClause = $"values (@id, @name, @summary, @help, @description, @key, @icon, @categoryId, @categoryKey, @categoryName, @attr1name, @attr1key, @attr2name, @attr2key, @attr3name, @attr3key, @attr4name, @attr4key, @attr5name, @attr5key, @attr6name, @attr6key, @attr7name, @attr7key, @attr8name, @attr8key, @readonly)";
 
             using (var cn = OpenConnection(orgId))
             using (var cmd = new NpgsqlCommand())
@@ -400,6 +423,8 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
                 cmd.Parameters.Add(new NpgsqlParameter("@attr4key", string.IsNullOrEmpty(metricsDefinition.Attribute4Key) ? (object)DBNull.Value : metricsDefinition.Attribute4Key));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr5key", string.IsNullOrEmpty(metricsDefinition.Attribute5Key) ? (object)DBNull.Value : metricsDefinition.Attribute5Key));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr6key", string.IsNullOrEmpty(metricsDefinition.Attribute6Key) ? (object)DBNull.Value : metricsDefinition.Attribute6Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr7key", string.IsNullOrEmpty(metricsDefinition.Attribute7Key) ? (object)DBNull.Value : metricsDefinition.Attribute7Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr8key", string.IsNullOrEmpty(metricsDefinition.Attribute8Key) ? (object)DBNull.Value : metricsDefinition.Attribute8Key));
                 cmd.Parameters.Add(new NpgsqlParameter("@summary", string.IsNullOrEmpty(metricsDefinition.Summary) ? (object)DBNull.Value : metricsDefinition.Summary));
                 cmd.Parameters.Add(new NpgsqlParameter("@help", string.IsNullOrEmpty(metricsDefinition.Help) ? (object)DBNull.Value : metricsDefinition.Help));
                 cmd.Parameters.Add(new NpgsqlParameter("@readonly", metricsDefinition.IsReadOnly));
@@ -418,8 +443,8 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
         {
             try
             {
-                var insertClause = "insert into Metrics(time, span, orgid, org, userid, username, categoryid, category, metric, metricid,   attr1id,  attr1,   attr2id,  attr2,   attr3id,  attr3,   attr4id,  attr4,   attr5id,  attr5,   attr6id,  attr6,  value)";
-                var valuesClause = $"values (@time, @span, @org, @orgId, @user, @userId, @categoryId, @category, @metric, @metricid,       @attr1id, @attr1,  @attr2id, @attr2,  @attr3id, @attr3,  @attr4id, @attr4,  @attr5id, @attr5,  @attr6id, @attr6, @value)";
+                var insertClause = "insert into Metrics(time, span, orgid, org, userid, username, categoryid, category, metric, metricid,   attr1id,  attr1,   attr2id,  attr2,   attr3id,  attr3,   attr4id,  attr4,   attr5id,  attr5,   attr6id,  attr6,   attr7id,  attr7,   attr8id,  attr8, value)";
+                var valuesClause = $"values (@time, @span, @org, @orgId, @user, @userId, @categoryId, @category, @metric, @metricid,       @attr1id, @attr1,  @attr2id, @attr2,  @attr3id, @attr3,  @attr4id, @attr4,  @attr5id, @attr5,  @attr6id, @attr6,  @attr7id, @attr7,  @attr8id, @attr8, @value)";
 
                 var span = "-";
                 switch (metric.Period)
@@ -472,6 +497,12 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
                     cmd.Parameters.Add(new NpgsqlParameter("@attr6id", EntityHeader.IsNullOrEmpty(metric.Attr6) ? (object)DBNull.Value : metric.Attr6.Text));
                     cmd.Parameters.Add(new NpgsqlParameter("@attr6", EntityHeader.IsNullOrEmpty(metric.Attr6) ? (object)DBNull.Value : metric.Attr6.Id));
 
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr7id", EntityHeader.IsNullOrEmpty(metric.Attr7) ? (object)DBNull.Value : metric.Attr7.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr7", EntityHeader.IsNullOrEmpty(metric.Attr7) ? (object)DBNull.Value : metric.Attr7.Id));
+
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr8id", EntityHeader.IsNullOrEmpty(metric.Attr8) ? (object)DBNull.Value : metric.Attr8.Text));
+                    cmd.Parameters.Add(new NpgsqlParameter("@attr8", EntityHeader.IsNullOrEmpty(metric.Attr8) ? (object)DBNull.Value : metric.Attr8.Id));
+
                     cmd.Parameters.Add(new NpgsqlParameter("@value", metric.Value));
 
                     var recordCount = await cmd.ExecuteNonQueryAsync();
@@ -517,7 +548,11 @@ update metrics_definition
         attr5name = @attr5name,
         attr5key = @attr5key,
         attr6name = @attr6name,
-        attr6key = @attr6key
+        attr6key = @attr6key,
+        attr7name = @attr7name,
+        attr7key = @attr7key,
+        attr8name = @attr8name,
+        attr8key = @attr8key
        where id = @id and readonly = false;";
 
             using (var cn = OpenConnection(orgId))
@@ -539,12 +574,16 @@ update metrics_definition
                 cmd.Parameters.Add(new NpgsqlParameter("@attr4name", string.IsNullOrEmpty(metricsDefinition.Attribute4Name) ? (object)DBNull.Value : metricsDefinition.Attribute4Name));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr5name", string.IsNullOrEmpty(metricsDefinition.Attribute5Name) ? (object)DBNull.Value : metricsDefinition.Attribute5Name));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr6name", string.IsNullOrEmpty(metricsDefinition.Attribute6Name) ? (object)DBNull.Value : metricsDefinition.Attribute6Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr7name", string.IsNullOrEmpty(metricsDefinition.Attribute7Name) ? (object)DBNull.Value : metricsDefinition.Attribute7Name));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr8name", string.IsNullOrEmpty(metricsDefinition.Attribute8Name) ? (object)DBNull.Value : metricsDefinition.Attribute8Name));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr1key", string.IsNullOrEmpty(metricsDefinition.Attribute1Key) ? (object)DBNull.Value : metricsDefinition.Attribute1Key));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr2key", string.IsNullOrEmpty(metricsDefinition.Attribute2Key) ? (object)DBNull.Value : metricsDefinition.Attribute2Key));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr3key", string.IsNullOrEmpty(metricsDefinition.Attribute3Key) ? (object)DBNull.Value : metricsDefinition.Attribute3Key));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr4key", string.IsNullOrEmpty(metricsDefinition.Attribute4Key) ? (object)DBNull.Value : metricsDefinition.Attribute4Key));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr5key", string.IsNullOrEmpty(metricsDefinition.Attribute5Key) ? (object)DBNull.Value : metricsDefinition.Attribute5Key));
                 cmd.Parameters.Add(new NpgsqlParameter("@attr6key", string.IsNullOrEmpty(metricsDefinition.Attribute6Key) ? (object)DBNull.Value : metricsDefinition.Attribute6Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr7key", string.IsNullOrEmpty(metricsDefinition.Attribute7Key) ? (object)DBNull.Value : metricsDefinition.Attribute7Key));
+                cmd.Parameters.Add(new NpgsqlParameter("@attr8key", string.IsNullOrEmpty(metricsDefinition.Attribute8Key) ? (object)DBNull.Value : metricsDefinition.Attribute8Key));
 
                 var recordCount = await cmd.ExecuteNonQueryAsync();
                 if (recordCount != 1)
@@ -565,12 +604,7 @@ update metrics_definition
                 Description = reader["description"].ToString(),
                 Key = reader["key"].ToString(),
                 Icon = reader["icon"].ToString(),
-                Category = new EntityHeader<Core.Models.EntityHeader>
-                {
-                    Id = reader["categoryId"].ToString(),
-                    Key = reader["categoryKey"].ToString(),
-                    Text = reader["categoryName"].ToString()
-                },
+    
                 Attribute1Name = reader["attr1name"]?.ToString(),
                 Attribute1Key = reader["attr1key"]?.ToString(),
                 Attribute2Name = reader["attr2name"]?.ToString(),
@@ -583,10 +617,14 @@ update metrics_definition
                 Attribute5Key = reader["attr5key"]?.ToString(),
                 Attribute6Name = reader["attr6name"]?.ToString(),
                 Attribute6Key = reader["attr6key"]?.ToString(),
+                Attribute7Name = reader["attr7name"]?.ToString(),
+                Attribute7Key = reader["attr7key"]?.ToString(),
+                Attribute8Name = reader["attr8name"]?.ToString(),
+                Attribute8Key = reader["attr8key"]?.ToString(),
                 IsReadOnly = (bool)reader["readonly"]
             };
 
-            if (reader["categoryId"] != DBNull.Value && reader["categoryKey"] != DBNull.Value && reader["category"] != DBNull.Value)
+            if (reader["categoryId"] != DBNull.Value && reader["categoryKey"] != DBNull.Value && reader["categoryName"] != DBNull.Value)
             {
                 definition.Category = new EntityHeader<Core.Models.EntityHeader>
                 {

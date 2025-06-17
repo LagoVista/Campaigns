@@ -447,4 +447,22 @@
   <data name="LandingPageInfo_Label" xml:space="preserve">
     <value>Link Label</value>
   </data>
+  <data name="Kpi_Attribute8" xml:space="preserve">
+    <value>Attribute 8</value>
+  </data>
+  <data name="Kpi_Attribute7" xml:space="preserve">
+    <value>Attribute 7</value>
+  </data>
+  <data name="MetricDefinition_Attr8Name" xml:space="preserve">
+    <value>Attribute 8 Name</value>
+  </data>
+  <data name="MetricDefinition_Attr8Key" xml:space="preserve">
+    <value>Attribute 8 Key</value>
+  </data>
+  <data name="MetricDefinition_Attr7Name" xml:space="preserve">
+    <value>Attribute 7 Name</value>
+  </data>
+  <data name="MetricDefinition_Attr7Key" xml:space="preserve">
+    <value>Attribute 7 Key</value>
+  </data>
 </root>

@@ -22,6 +22,8 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Attr4 { get; set; }
         public EntityHeader Attr5 { get; set; }
         public EntityHeader Attr6 { get; set; }
+        public EntityHeader Attr7 { get; set; }
+        public EntityHeader Attr8 { get; set; }
         public decimal Value { get; set; }
 
         public static readonly EntityHeader DirectEmailSent = EntityHeader.Create("4A84863CF9654F009E6463C87B46D5D6", "directemailssent", "Direct Emails Sent");
