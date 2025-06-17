@@ -232,6 +232,9 @@ insert into metrics_definition(id, key, name,
 						true);					
 
 
+        Additional ones to add
+        1) Contacts in sales stage
+
 CREATE EXTENSION IF NOT EXISTS timescaledb;
         */
  
@@ -634,7 +637,7 @@ update metrics_definition
 
                 using (var reader = await cmd.ExecuteReaderAsync())
                 {
-                    if (await reader.ReadAsync())
+                    if (await reader.ReadAsync())   
                     {
                         return ReadResults(reader);
                     }
@@ -648,7 +651,7 @@ update metrics_definition
 
         public async Task<ListResponse<MetricsDefinitionSummary>> GetMetricsDefinitionsAsync(ListRequest request, string orgId)
         {
-            var sql = @$"SELECT id, name, summary, key, icon, categoryName, categoryid, categorykey
+            var sql = @$"SELECT id, name, summary, help, description, key, icon, categoryname, categoryid, categorykey
                         FROM metrics_definition
                          order by name
                         limit {request.PageSize}
@@ -667,11 +670,13 @@ update metrics_definition
                             Id = reader["id"].ToString(),
                             Name = reader["name"].ToString(),
                             Description = reader["description"].ToString(),
+                            Summary = reader["summary"].ToString(),
+                            Help = reader["help"].ToString(),
                             Key = reader["key"].ToString(),
                             Icon = reader["icon"].ToString(),
-                            CategoryId = reader["categoryId"] != DBNull.Value ? reader["categoryId"].ToString() : string.Empty,
-                            CategoryKey = reader["categorykey"] != DBNull.Value ? reader["categoryKey"].ToString() : string.Empty,
-                            Category = reader["categoryName"] != DBNull.Value ? reader["categoryName"].ToString() : string.Empty,
+                            CategoryId = reader["categoryid"] != DBNull.Value ? reader["categoryid"].ToString() : string.Empty,
+                            CategoryKey = reader["categorykey"] != DBNull.Value ? reader["categorykey"].ToString() : string.Empty,
+                            Category = reader["categoryname"] != DBNull.Value ? reader["categoryname"].ToString() : string.Empty,
                         };
                         results.Add(definition);
                     }

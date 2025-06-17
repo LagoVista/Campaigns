@@ -141,6 +141,7 @@ namespace LagoVista.Campaigns.Models
            GetUrl: "/api/metrics/definition/{id}", GetListUrl: "/api/metrics/definitions", SaveUrl: "/api/metrics/definition", DeleteUrl: "/api/metrics/definition/{id}", FactoryUrl: "/api/metrics/definition/factory")]
     public class MetricsDefinitionSummary : SummaryData
     {
-
+        public string Summary { get; set; }
+        public string Help { get; set; }
     }
 }

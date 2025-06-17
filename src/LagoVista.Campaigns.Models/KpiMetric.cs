@@ -32,11 +32,16 @@ namespace LagoVista.Campaigns.Models
         public static readonly EntityHeader ContactPageSubmitted = EntityHeader.Create("2A84863CF9654F009E6463C87B46D5D8", "contactpagesubmitted", "Contact Us Submitted");
         public static readonly EntityHeader LandingPageView = EntityHeader.Create("3A84863CF9654F009E6463C87B46D5D7", "landingpageview", "Landing Page View");
 
+        
+        public static readonly EntityHeader HotLeads = EntityHeader.Create("137942FCBCFB4BC6A876C31E2843E5FF", "hotlead", "Hot Lead");
         public static readonly EntityHeader LeadsEngaged = EntityHeader.Create("237942FCBCFB4BC6A876C31E2843E5FE", "engagedlead", "Lead Engaged");
         public static readonly EntityHeader ProposalsCreatedAndSubmitted = EntityHeader.Create("437942FCBCFB4BC6A876C31E2843E5FC", "proposalscreated", "Proposals Created and Submitted");
         public static readonly EntityHeader AgreementsCreatedAndSubmitted = EntityHeader.Create("537942FCBCFB4BC6A876C31E2843E5FB", "agreementscreated", "Agreements Created and Submitted");
         public static readonly EntityHeader CustomersConverted = EntityHeader.Create("337942FCBCFB4BC6A876C31E2843E5FD", "customerconverted", "Customer Converted");
 
         public static readonly EntityHeader SalesCategory = EntityHeader.Create("4B1BD86D53FA4BF6BD7DE1EAB46D96AC", "sales", "Sales");
+        public static readonly EntityHeader MarketingCategory = EntityHeader.Create("30C28365B52A428BB8C32D38C690732A", "marketing", "Marketing");
+
+        public static readonly EntityHeader TotalLeadsInSalesStage = EntityHeader.Create("AACCDDCCCBCFB4BC6A876C31E28434321", "leadsinsalesstage", "Total Leads in Sales Stage");
     }
 }
