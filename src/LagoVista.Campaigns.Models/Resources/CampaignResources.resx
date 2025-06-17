@@ -336,11 +336,8 @@
   <data name="Promotion_IndustryNiche" xml:space="preserve">
     <value>Industry Niche</value>
   </data>
-  <data name="Promotion_LandingPage" xml:space="preserve">
-    <value>Landing Page</value>
-  </data>
-  <data name="Promotion_LandingPage_Select" xml:space="preserve">
-    <value>-select landing page-</value>
+  <data name="Promotion_LandingPages" xml:space="preserve">
+    <value>Landing Pages</value>
   </data>
   <data name="Promotion_Owner" xml:space="preserve">
     <value>Owner</value>
@@ -434,5 +431,20 @@
   </data>
   <data name="MetricDefinition_Attr6Key" xml:space="preserve">
     <value>Attribute 6 Key</value>
+  </data>
+  <data name="LandingPageInfo_Description" xml:space="preserve">
+    <value>Captures information to be used as a link on a email or other landing page.</value>
+  </data>
+  <data name="LandingPageInfo_Title" xml:space="preserve">
+    <value>Landing Page Info</value>
+  </data>
+  <data name="LandingPageInfo_LandingPage" xml:space="preserve">
+    <value>Landing Page</value>
+  </data>
+  <data name="LandingPageInfo_LandingPage_Select" xml:space="preserve">
+    <value>-select landing page-</value>
+  </data>
+  <data name="LandingPageInfo_Label" xml:space="preserve">
+    <value>Link Label</value>
   </data>
 </root>

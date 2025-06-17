@@ -111,14 +111,14 @@ insert into metrics_definition(id, key, name,
 
 insert into metrics_definition(id, key, name,
                         summary, help, description,
-                        icon, categoryId, categoryKey, categoryName,
+                        icon, categoryId, categoryKey, categoryName,   
                         attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
                         attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
 						readonly) 
                 values('3A84863CF9654F009E6463C87B46D5D7', 'landingpageview', 'Landing Page View', 
                        'Landing Page View', 'Number of times a landing page has been viewed','',
                         'icon-pz-stock-1','30C28365B52A428BB8C32D38C690732A', 'marketing', 'Marketing',
-                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Landing Page', 'landingpage',
                         'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
 						true);
 
@@ -229,30 +229,17 @@ insert into metrics_definition(id, key, name,
                        'Customer Agreements Created and Submitted', 'Total number of proposals that have been created and sent out to a a customer','',
                        'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                                                                                                          
                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
-						true);
-						
-
-insert into metrics_definition(id, key, name,
-                        summary, help, description,
-                        icon, categoryId, categoryKey, categoryName,
-                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
-						readonly) 
-                values('437942FCBCFB4BC6A876C31E2843E5FC', 'proposalscreated', 'Proposals Created and Submitted',
-                       'Customer Proposals Created and Submitted', 'Total number of proposals that have been created and sent out to a a customer','',
-                       'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                                                                     
-                       'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
-						true);
+						true);					
 
 
 CREATE EXTENSION IF NOT EXISTS timescaledb;
         */
-
+ 
         public MetricsRepo(IMetricStorageConnectionSettings repoSettings, IAdminLogger adminLogger)
         {
             _connectionSettings = repoSettings.MetricsStorageDBConenction;
             _adminLogger = adminLogger;
         }
-
 
         protected NpgsqlConnection OpenConnection(string orgId)
         {
@@ -665,9 +652,8 @@ update metrics_definition
                         FROM metrics_definition
                          order by name
                         limit {request.PageSize}
-                        offset {request.PageSize * request.PageIndex - 1};";
+                        offset {request.PageSize * (request.PageIndex - 1)};";
 
-            
             using (var cn = OpenConnection(orgId))
             using (var cmd = new NpgsqlCommand(sql, cn))
             {

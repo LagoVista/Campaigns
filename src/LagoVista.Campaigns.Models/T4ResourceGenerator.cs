@@ -189,6 +189,21 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Kpis_Title
 
 		public static string Kpis_Title { get { return GetResourceString("Kpis_Title"); } }
+//Resources:CampaignResources:LandingPageInfo_Description
+
+		public static string LandingPageInfo_Description { get { return GetResourceString("LandingPageInfo_Description"); } }
+//Resources:CampaignResources:LandingPageInfo_Label
+
+		public static string LandingPageInfo_Label { get { return GetResourceString("LandingPageInfo_Label"); } }
+//Resources:CampaignResources:LandingPageInfo_LandingPage
+
+		public static string LandingPageInfo_LandingPage { get { return GetResourceString("LandingPageInfo_LandingPage"); } }
+//Resources:CampaignResources:LandingPageInfo_LandingPage_Select
+
+		public static string LandingPageInfo_LandingPage_Select { get { return GetResourceString("LandingPageInfo_LandingPage_Select"); } }
+//Resources:CampaignResources:LandingPageInfo_Title
+
+		public static string LandingPageInfo_Title { get { return GetResourceString("LandingPageInfo_Title"); } }
 //Resources:CampaignResources:MetricDefinition_Attr1Key
 
 		public static string MetricDefinition_Attr1Key { get { return GetResourceString("MetricDefinition_Attr1Key"); } }
@@ -294,12 +309,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_IndustryNiche
 
 		public static string Promotion_IndustryNiche { get { return GetResourceString("Promotion_IndustryNiche"); } }
-//Resources:CampaignResources:Promotion_LandingPage
+//Resources:CampaignResources:Promotion_LandingPages
 
-		public static string Promotion_LandingPage { get { return GetResourceString("Promotion_LandingPage"); } }
-//Resources:CampaignResources:Promotion_LandingPage_Select
-
-		public static string Promotion_LandingPage_Select { get { return GetResourceString("Promotion_LandingPage_Select"); } }
+		public static string Promotion_LandingPages { get { return GetResourceString("Promotion_LandingPages"); } }
 //Resources:CampaignResources:Promotion_Owner
 
 		public static string Promotion_Owner { get { return GetResourceString("Promotion_Owner"); } }
@@ -420,6 +432,11 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Kpi_TargetValue = "Kpi_TargetValue";
 			public const string Kpi_Title = "Kpi_Title";
 			public const string Kpis_Title = "Kpis_Title";
+			public const string LandingPageInfo_Description = "LandingPageInfo_Description";
+			public const string LandingPageInfo_Label = "LandingPageInfo_Label";
+			public const string LandingPageInfo_LandingPage = "LandingPageInfo_LandingPage";
+			public const string LandingPageInfo_LandingPage_Select = "LandingPageInfo_LandingPage_Select";
+			public const string LandingPageInfo_Title = "LandingPageInfo_Title";
 			public const string MetricDefinition_Attr1Key = "MetricDefinition_Attr1Key";
 			public const string MetricDefinition_Attr1Name = "MetricDefinition_Attr1Name";
 			public const string MetricDefinition_Attr2Key = "MetricDefinition_Attr2Key";
@@ -455,8 +472,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Promotion_ExcludeWeekend = "Promotion_ExcludeWeekend";
 			public const string Promotion_ExternalCampaignId = "Promotion_ExternalCampaignId";
 			public const string Promotion_IndustryNiche = "Promotion_IndustryNiche";
-			public const string Promotion_LandingPage = "Promotion_LandingPage";
-			public const string Promotion_LandingPage_Select = "Promotion_LandingPage_Select";
+			public const string Promotion_LandingPages = "Promotion_LandingPages";
 			public const string Promotion_Owner = "Promotion_Owner";
 			public const string Promotion_Owner_Select = "Promotion_Owner_Select";
 			public const string Promotion_Persona = "Promotion_Persona";

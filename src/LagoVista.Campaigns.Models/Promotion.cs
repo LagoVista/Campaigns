@@ -93,12 +93,11 @@ namespace LagoVista.Campaigns.Models
             EnumType: typeof(PromotionTypes), WaterMark: CampaignResources.Names.Promotion_Type_Select)]
         public EntityHeader<PromotionTypes> PromotionType { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.Promotion_LandingPage, WaterMark:CampaignResources.Names.Promotion_LandingPage_Select, FieldType: FieldTypes.Custom, CustomFieldType:"landingpagepicker", ResourceType: typeof(CampaignResources))]
-        public LandingPageInfo LandingPage { get; set; }
+        [FormField(LabelResource: CampaignResources.Names.Promotion_LandingPages, FieldType: FieldTypes.ChildListInline, FactoryUrl: "/api/landingpageinfo/factory", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
+        public List<LandingPageInfo> LandingPages { get; set; } = new List<LandingPageInfo>();
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_ProductPage, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_ProductPage_Select, EntityHeaderPickerUrl: "/api/product/page/list", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
         public EntityHeader ProductPage { get; set; }
-
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_EmailList, HelpResource: CampaignResources.Names.Promotion_EmailList_Help, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_EmailList_Select, EntityHeaderPickerUrl: "/api/email/lists", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
         public EntityHeader EmailList { get; set; }
@@ -121,7 +120,7 @@ namespace LagoVista.Campaigns.Models
                 nameof(IndustryNiche),
                 nameof(PromotionType),
                 nameof(EmailTemplate),
-                nameof(LandingPage),
+                nameof(LandingPages),
                 nameof(Survey),
                 nameof(ProductPage),
                 nameof(Owner),
@@ -142,16 +141,6 @@ namespace LagoVista.Campaigns.Models
                 nameof(Posts),
             };
         }
-    }
-
-    public class LandingPageInfo
-    {
-        public string Id { get; set; }
-        public EntityHeader Page { get; set; }
-        public EntityHeader Industry { get; set; }
-        public EntityHeader Niche { get; set; }
-        public EntityHeader Persona { get; set; }
-        public string Link { get; set; }
     }
 
 }

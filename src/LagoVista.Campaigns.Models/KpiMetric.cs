@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,5 +23,20 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Attr5 { get; set; }
         public EntityHeader Attr6 { get; set; }
         public decimal Value { get; set; }
+
+        public static readonly EntityHeader DirectEmailSent = EntityHeader.Create("4A84863CF9654F009E6463C87B46D5D6", "directemailssent", "Direct Emails Sent");
+        public static readonly EntityHeader DirectPostalMailSent = EntityHeader.Create("5A84863CF9654F009E6463C87B46D5D5", "postalmailssent", "Direct Mails (postal) Sent");
+        public static readonly EntityHeader DirectEmailOpen = EntityHeader.Create("A8D44B760C83469EB6814100F79476FF", "directemailsopened", "Direct Emails Opended");
+        public static readonly EntityHeader DirectEmailClicked = EntityHeader.Create("A9677684F14A443E93A320147929A035", "directemailclicks", "Direct Emails Clicked");
+        public static readonly EntityHeader ContactPageView = EntityHeader.Create("1A84863CF9654F009E6463C87B46D5D9", "contactpageview", "Contact Page View");
+        public static readonly EntityHeader ContactPageSubmitted = EntityHeader.Create("2A84863CF9654F009E6463C87B46D5D8", "contactpagesubmitted", "Contact Us Submitted");
+        public static readonly EntityHeader LandingPageView = EntityHeader.Create("3A84863CF9654F009E6463C87B46D5D7", "landingpageview", "Landing Page View");
+
+        public static readonly EntityHeader LeadsEngaged = EntityHeader.Create("237942FCBCFB4BC6A876C31E2843E5FE", "engagedlead", "Lead Engaged");
+        public static readonly EntityHeader ProposalsCreatedAndSubmitted = EntityHeader.Create("437942FCBCFB4BC6A876C31E2843E5FC", "proposalscreated", "Proposals Created and Submitted");
+        public static readonly EntityHeader AgreementsCreatedAndSubmitted = EntityHeader.Create("537942FCBCFB4BC6A876C31E2843E5FB", "agreementscreated", "Agreements Created and Submitted");
+        public static readonly EntityHeader CustomersConverted = EntityHeader.Create("337942FCBCFB4BC6A876C31E2843E5FD", "customerconverted", "Customer Converted");
+
+        public static readonly EntityHeader SalesCategory = EntityHeader.Create("4B1BD86D53FA4BF6BD7DE1EAB46D96AC", "sales", "Sales");
     }
 }

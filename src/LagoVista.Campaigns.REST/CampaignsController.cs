@@ -84,6 +84,12 @@ namespace LagoVista.Campaigns.REST
             return DetailResponse<SocialMediaPost>.Create();
         }
 
+        [HttpGet("/api/landingpageinfo/factory")]
+        public DetailResponse< LandingPageInfo> CreateLandingPageInfo()
+        {
+            return DetailResponse<LandingPageInfo>.Create();
+        }
+
         [HttpGet("/api/campaign/factory")]
         public DetailResponse<Campaign> CreateCampaigns()
         {

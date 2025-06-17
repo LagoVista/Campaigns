@@ -21,13 +21,12 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Template { get; set; }
         public EntityHeader Industry { get; }
         public EntityHeader IndustryNiche { get; }
-        public EntityHeader IndustryPersona { get; }
-        public EntityHeader IndustryNichePersona { get;  }
+        public EntityHeader Persona { get; }
         public EntityHeader Survey { get; }
         public EntityHeader Campaign { get;}
         public EntityHeader Promotion { get;  }
         public EntityHeader ProductPage { get;  }
-        public LandingPageInfo LandingPage { get; }
+        public List<LandingPageInfo> LandingPages { get; }
         public string SenderEmailSignature { get; }
         public string SenderEmail { get; }
         public string SenderName { get;  }

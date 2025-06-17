@@ -28,9 +28,7 @@ namespace LagoVista.Campaigns.Models
 
         public EntityHeader IndustryNiche {get; set;}
 
-        public EntityHeader IndustryPersona {get; set;}
-
-        public EntityHeader IndustryNichePersona {get; set;}
+        public EntityHeader Persona {get; set;}
 
         public EntityHeader Survey {get; set;}
 
@@ -40,7 +38,7 @@ namespace LagoVista.Campaigns.Models
 
         public EntityHeader ProductPage {get; set;}
 
-        public LandingPageInfo LandingPage {get; set;}
+        public List<LandingPageInfo> LandingPages {get; set;}
 
         public string SenderEmailSignature {get; set;}
 
