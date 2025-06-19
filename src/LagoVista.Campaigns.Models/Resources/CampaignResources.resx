@@ -465,4 +465,10 @@
   <data name="MetricDefinition_Attr7Key" xml:space="preserve">
     <value>Attribute 7 Key</value>
   </data>
+  <data name="Kpi_ExcludeWeekends" xml:space="preserve">
+    <value>Exclude Weekends</value>
+  </data>
+  <data name="Common_IsActive" xml:space="preserve">
+    <value>Is Active</value>
+  </data>
 </root>

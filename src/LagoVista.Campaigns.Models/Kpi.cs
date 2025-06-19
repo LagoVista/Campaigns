@@ -47,7 +47,9 @@ namespace LagoVista.Campaigns.Models
                 nameof(Name),
                 nameof(Key),
                 nameof(Icon),
-                nameof(Category),                
+                nameof(Category),     
+                nameof(ExcludeWeekends),
+                nameof(IsActive),
                 nameof(Description)
             };
         }
@@ -60,6 +62,12 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Kpi_Period, FieldType: FieldTypes.Picker, WaterMark: CampaignResources.Names.Kpi_Period_Select, EnumType:typeof(KpiPeriod), 
             ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public EntityHeader<KpiPeriod> Period { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Common_IsActive, FieldType: FieldTypes.CheckBox, ResourceType: typeof(CampaignResources))]
+        public bool IsActive { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.Kpi_ExcludeWeekends, FieldType: FieldTypes.CheckBox, ResourceType: typeof(CampaignResources))]
+        public bool ExcludeWeekends { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Kpi_Attribute1, FieldType: FieldTypes.Picker, ResourceType: typeof(CampaignResources))]
         public EntityHeader Attr1 { get; set; }

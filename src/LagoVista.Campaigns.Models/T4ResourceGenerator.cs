@@ -105,6 +105,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Common_Icon
 
 		public static string Common_Icon { get { return GetResourceString("Common_Icon"); } }
+//Resources:CampaignResources:Common_IsActive
+
+		public static string Common_IsActive { get { return GetResourceString("Common_IsActive"); } }
 //Resources:CampaignResources:Common_IsPublic
 
 		public static string Common_IsPublic { get { return GetResourceString("Common_IsPublic"); } }
@@ -159,6 +162,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Kpi_Description
 
 		public static string Kpi_Description { get { return GetResourceString("Kpi_Description"); } }
+//Resources:CampaignResources:Kpi_ExcludeWeekends
+
+		public static string Kpi_ExcludeWeekends { get { return GetResourceString("Kpi_ExcludeWeekends"); } }
 //Resources:CampaignResources:Kpi_Metric
 
 		public static string Kpi_Metric { get { return GetResourceString("Kpi_Metric"); } }
@@ -422,6 +428,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Common_Category = "Common_Category";
 			public const string Common_Description = "Common_Description";
 			public const string Common_Icon = "Common_Icon";
+			public const string Common_IsActive = "Common_IsActive";
 			public const string Common_IsPublic = "Common_IsPublic";
 			public const string Common_IsRequired = "Common_IsRequired";
 			public const string Common_Key = "Common_Key";
@@ -440,6 +447,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Kpi_Attribute7 = "Kpi_Attribute7";
 			public const string Kpi_Attribute8 = "Kpi_Attribute8";
 			public const string Kpi_Description = "Kpi_Description";
+			public const string Kpi_ExcludeWeekends = "Kpi_ExcludeWeekends";
 			public const string Kpi_Metric = "Kpi_Metric";
 			public const string Kpi_Metric_Select = "Kpi_Metric_Select";
 			public const string Kpi_Period = "Kpi_Period";
