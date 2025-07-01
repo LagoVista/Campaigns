@@ -25,7 +25,7 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Recipient_Company, FieldType: FieldTypes.CustomerPicker, WaterMark: CampaignResources.Names.Recipient_Company_Select, ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
         public EntityHeader Company { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.Recipient_Company, FieldType: FieldTypes.Custom, CustomFieldType:"contactpicker", WaterMark: CampaignResources.Names.Recipient_Company_Select, ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
+        [FormField(LabelResource: CampaignResources.Names.Recipient_Contact, FieldType: FieldTypes.ContactPicker, WaterMark: CampaignResources.Names.Recipient_Contact_Select, ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
         public EntityHeader Contact { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Recipient_Industry, FieldType: FieldTypes.EntityHeaderPicker, WaterMark: CampaignResources.Names.Recipient_Industry_Select, EntityHeaderPickerUrl: "/api/industries", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
