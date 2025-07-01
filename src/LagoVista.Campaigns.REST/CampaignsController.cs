@@ -85,9 +85,9 @@ namespace LagoVista.Campaigns.REST
         }
 
         [HttpGet("/api/landingpageinfo/factory")]
-        public DetailResponse< LandingPageInfo> CreateLandingPageInfo()
+        public DetailResponse<PageLink> CreateLandingPageInfo()
         {
-            return DetailResponse<LandingPageInfo>.Create();
+            return DetailResponse<PageLink>.Create();
         }
 
         [HttpGet("/api/campaign/factory")]

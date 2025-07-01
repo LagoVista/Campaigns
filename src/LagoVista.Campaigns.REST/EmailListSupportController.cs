@@ -1,4 +1,5 @@
-﻿using LagoVista.Core.Exceptions;
+﻿using LagoVista.Campaigns.Models;
+using LagoVista.Core.Exceptions;
 using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
@@ -127,6 +128,19 @@ namespace LagoVista.Campaigns.REST
         public async Task<InvokeResult<string>> CreateEmailCampaign(SendEmailCampaignRequest request)
         {
             return await _emailSender.SendToListAsync(request.Name, request.ListId, request.SenderId, request.DesignId, OrgEntityHeader, UserEntityHeader);
+        }
+
+
+        [HttpGet("/api/pagelink/factory")]
+        public DetailResponse<PageLink> CreatePageLink()
+        {
+            return DetailResponse<PageLink>.Create();
+        }
+
+        [HttpGet("/api/recipient/factory")]
+        public DetailResponse<Recipeint> CreateRecipient()
+        {
+            return DetailResponse<Recipeint>.Create();
         }
     }
 }

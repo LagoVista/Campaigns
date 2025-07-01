@@ -94,9 +94,9 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader<PromotionTypes> PromotionType { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_LandingPages, FieldType: FieldTypes.ChildListInline, FactoryUrl: "/api/landingpageinfo/factory", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
-        public List<LandingPageInfo> LandingPages { get; set; } = new List<LandingPageInfo>();
+        public List<PageLink> PageLinks { get; set; } = new List<PageLink>();
 
-        [FormField(LabelResource: CampaignResources.Names.Promotion_ProductPage, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_ProductPage_Select, EntityHeaderPickerUrl: "/api/product/page/list", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
+        [FormField(LabelResource: CampaignResources.Names.Promotion_ProductPage, FieldType: FieldTypes.ProductPicker,  ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
         public EntityHeader ProductPage { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_EmailList, HelpResource: CampaignResources.Names.Promotion_EmailList_Help, FieldType: FieldTypes.EntityHeaderPicker, WaterMark:CampaignResources.Names.Promotion_EmailList_Select, EntityHeaderPickerUrl: "/api/email/lists", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
@@ -120,7 +120,7 @@ namespace LagoVista.Campaigns.Models
                 nameof(IndustryNiche),
                 nameof(PromotionType),
                 nameof(EmailTemplate),
-                nameof(LandingPages),
+                nameof(PageLinks),
                 nameof(Survey),
                 nameof(ProductPage),
                 nameof(Owner),

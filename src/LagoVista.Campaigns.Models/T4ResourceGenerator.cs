@@ -273,6 +273,96 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:MetricsDefinitions_TItle
 
 		public static string MetricsDefinitions_TItle { get { return GetResourceString("MetricsDefinitions_TItle"); } }
+//Resources:CampaignResources:PageLink_Description
+
+		public static string PageLink_Description { get { return GetResourceString("PageLink_Description"); } }
+//Resources:CampaignResources:PageLink_Label
+
+		public static string PageLink_Label { get { return GetResourceString("PageLink_Label"); } }
+//Resources:CampaignResources:PageLink_LandingPage
+
+		public static string PageLink_LandingPage { get { return GetResourceString("PageLink_LandingPage"); } }
+//Resources:CampaignResources:PageLink_LinkType
+
+		public static string PageLink_LinkType { get { return GetResourceString("PageLink_LinkType"); } }
+//Resources:CampaignResources:PageLink_LinkTypeSelect
+
+		public static string PageLink_LinkTypeSelect { get { return GetResourceString("PageLink_LinkTypeSelect"); } }
+//Resources:CampaignResources:PageLink_ProductCategory
+
+		public static string PageLink_ProductCategory { get { return GetResourceString("PageLink_ProductCategory"); } }
+//Resources:CampaignResources:PageLink_ProductPage
+
+		public static string PageLink_ProductPage { get { return GetResourceString("PageLink_ProductPage"); } }
+//Resources:CampaignResources:PageLink_SiteContentCategory
+
+		public static string PageLink_SiteContentCategory { get { return GetResourceString("PageLink_SiteContentCategory"); } }
+//Resources:CampaignResources:PageLink_SiteContentPage
+
+		public static string PageLink_SiteContentPage { get { return GetResourceString("PageLink_SiteContentPage"); } }
+//Resources:CampaignResources:PageLink_Survey
+
+		public static string PageLink_Survey { get { return GetResourceString("PageLink_Survey"); } }
+//Resources:CampaignResources:PageLink_Title
+
+		public static string PageLink_Title { get { return GetResourceString("PageLink_Title"); } }
+//Resources:CampaignResources:PageLink_ToolTip
+
+		public static string PageLink_ToolTip { get { return GetResourceString("PageLink_ToolTip"); } }
+//Resources:CampaignResources:PageLink_Type_ContactInformationPage
+
+		public static string PageLink_Type_ContactInformationPage { get { return GetResourceString("PageLink_Type_ContactInformationPage"); } }
+//Resources:CampaignResources:PageLink_Type_ContactUsPage
+
+		public static string PageLink_Type_ContactUsPage { get { return GetResourceString("PageLink_Type_ContactUsPage"); } }
+//Resources:CampaignResources:PageLink_Type_FaqPage
+
+		public static string PageLink_Type_FaqPage { get { return GetResourceString("PageLink_Type_FaqPage"); } }
+//Resources:CampaignResources:PageLink_Type_GlossaryPage
+
+		public static string PageLink_Type_GlossaryPage { get { return GetResourceString("PageLink_Type_GlossaryPage"); } }
+//Resources:CampaignResources:PageLink_Type_LandingPage
+
+		public static string PageLink_Type_LandingPage { get { return GetResourceString("PageLink_Type_LandingPage"); } }
+//Resources:CampaignResources:PageLink_Type_Link
+
+		public static string PageLink_Type_Link { get { return GetResourceString("PageLink_Type_Link"); } }
+//Resources:CampaignResources:PageLink_Type_LoginPage
+
+		public static string PageLink_Type_LoginPage { get { return GetResourceString("PageLink_Type_LoginPage"); } }
+//Resources:CampaignResources:PageLink_Type_LogoutPage
+
+		public static string PageLink_Type_LogoutPage { get { return GetResourceString("PageLink_Type_LogoutPage"); } }
+//Resources:CampaignResources:PageLink_Type_NuvIoTService
+
+		public static string PageLink_Type_NuvIoTService { get { return GetResourceString("PageLink_Type_NuvIoTService"); } }
+//Resources:CampaignResources:PageLink_Type_ParentMenu
+
+		public static string PageLink_Type_ParentMenu { get { return GetResourceString("PageLink_Type_ParentMenu"); } }
+//Resources:CampaignResources:PageLink_Type_ProductCategory
+
+		public static string PageLink_Type_ProductCategory { get { return GetResourceString("PageLink_Type_ProductCategory"); } }
+//Resources:CampaignResources:PageLink_Type_ProductCategoryType
+
+		public static string PageLink_Type_ProductCategoryType { get { return GetResourceString("PageLink_Type_ProductCategoryType"); } }
+//Resources:CampaignResources:PageLink_Type_ProductPage
+
+		public static string PageLink_Type_ProductPage { get { return GetResourceString("PageLink_Type_ProductPage"); } }
+//Resources:CampaignResources:PageLink_Type_SiteContactCategory
+
+		public static string PageLink_Type_SiteContactCategory { get { return GetResourceString("PageLink_Type_SiteContactCategory"); } }
+//Resources:CampaignResources:PageLink_Type_SiteContactPage
+
+		public static string PageLink_Type_SiteContactPage { get { return GetResourceString("PageLink_Type_SiteContactPage"); } }
+//Resources:CampaignResources:PageLink_Type_Survey
+
+		public static string PageLink_Type_Survey { get { return GetResourceString("PageLink_Type_Survey"); } }
+//Resources:CampaignResources:PageLink_Type_TypeProductCatalog
+
+		public static string PageLink_Type_TypeProductCatalog { get { return GetResourceString("PageLink_Type_TypeProductCatalog"); } }
+//Resources:CampaignResources:PageLink_Type_Url
+
+		public static string PageLink_Type_Url { get { return GetResourceString("PageLink_Type_Url"); } }
 //Resources:CampaignResources:Post_Account
 
 		public static string Post_Account { get { return GetResourceString("Post_Account"); } }
@@ -387,6 +477,51 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Promotion_Type_WebAd
 
 		public static string Promotion_Type_WebAd { get { return GetResourceString("Promotion_Type_WebAd"); } }
+//Resources:CampaignResources:Recipeint_Persona
+
+		public static string Recipeint_Persona { get { return GetResourceString("Recipeint_Persona"); } }
+//Resources:CampaignResources:Recipeint_Persona_Select
+
+		public static string Recipeint_Persona_Select { get { return GetResourceString("Recipeint_Persona_Select"); } }
+//Resources:CampaignResources:Recipient_Company
+
+		public static string Recipient_Company { get { return GetResourceString("Recipient_Company"); } }
+//Resources:CampaignResources:Recipient_Company_Select
+
+		public static string Recipient_Company_Select { get { return GetResourceString("Recipient_Company_Select"); } }
+//Resources:CampaignResources:Recipient_Contact
+
+		public static string Recipient_Contact { get { return GetResourceString("Recipient_Contact"); } }
+//Resources:CampaignResources:Recipient_Contact_Select
+
+		public static string Recipient_Contact_Select { get { return GetResourceString("Recipient_Contact_Select"); } }
+//Resources:CampaignResources:Recipient_Description
+
+		public static string Recipient_Description { get { return GetResourceString("Recipient_Description"); } }
+//Resources:CampaignResources:Recipient_EmailAddress
+
+		public static string Recipient_EmailAddress { get { return GetResourceString("Recipient_EmailAddress"); } }
+//Resources:CampaignResources:Recipient_FirstName
+
+		public static string Recipient_FirstName { get { return GetResourceString("Recipient_FirstName"); } }
+//Resources:CampaignResources:Recipient_Industry
+
+		public static string Recipient_Industry { get { return GetResourceString("Recipient_Industry"); } }
+//Resources:CampaignResources:Recipient_Industry_Select
+
+		public static string Recipient_Industry_Select { get { return GetResourceString("Recipient_Industry_Select"); } }
+//Resources:CampaignResources:Recipient_IndustryNiche
+
+		public static string Recipient_IndustryNiche { get { return GetResourceString("Recipient_IndustryNiche"); } }
+//Resources:CampaignResources:Recipient_IndustryNiche_Select
+
+		public static string Recipient_IndustryNiche_Select { get { return GetResourceString("Recipient_IndustryNiche_Select"); } }
+//Resources:CampaignResources:Recipient_LastName
+
+		public static string Recipient_LastName { get { return GetResourceString("Recipient_LastName"); } }
+//Resources:CampaignResources:Recipient_Title
+
+		public static string Recipient_Title { get { return GetResourceString("Recipient_Title"); } }
 //Resources:CampaignResources:SocialMedia_Account
 
 		public static string SocialMedia_Account { get { return GetResourceString("SocialMedia_Account"); } }
@@ -484,6 +619,36 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string MetricsDefinition_Description = "MetricsDefinition_Description";
 			public const string MetricsDefinition_Title = "MetricsDefinition_Title";
 			public const string MetricsDefinitions_TItle = "MetricsDefinitions_TItle";
+			public const string PageLink_Description = "PageLink_Description";
+			public const string PageLink_Label = "PageLink_Label";
+			public const string PageLink_LandingPage = "PageLink_LandingPage";
+			public const string PageLink_LinkType = "PageLink_LinkType";
+			public const string PageLink_LinkTypeSelect = "PageLink_LinkTypeSelect";
+			public const string PageLink_ProductCategory = "PageLink_ProductCategory";
+			public const string PageLink_ProductPage = "PageLink_ProductPage";
+			public const string PageLink_SiteContentCategory = "PageLink_SiteContentCategory";
+			public const string PageLink_SiteContentPage = "PageLink_SiteContentPage";
+			public const string PageLink_Survey = "PageLink_Survey";
+			public const string PageLink_Title = "PageLink_Title";
+			public const string PageLink_ToolTip = "PageLink_ToolTip";
+			public const string PageLink_Type_ContactInformationPage = "PageLink_Type_ContactInformationPage";
+			public const string PageLink_Type_ContactUsPage = "PageLink_Type_ContactUsPage";
+			public const string PageLink_Type_FaqPage = "PageLink_Type_FaqPage";
+			public const string PageLink_Type_GlossaryPage = "PageLink_Type_GlossaryPage";
+			public const string PageLink_Type_LandingPage = "PageLink_Type_LandingPage";
+			public const string PageLink_Type_Link = "PageLink_Type_Link";
+			public const string PageLink_Type_LoginPage = "PageLink_Type_LoginPage";
+			public const string PageLink_Type_LogoutPage = "PageLink_Type_LogoutPage";
+			public const string PageLink_Type_NuvIoTService = "PageLink_Type_NuvIoTService";
+			public const string PageLink_Type_ParentMenu = "PageLink_Type_ParentMenu";
+			public const string PageLink_Type_ProductCategory = "PageLink_Type_ProductCategory";
+			public const string PageLink_Type_ProductCategoryType = "PageLink_Type_ProductCategoryType";
+			public const string PageLink_Type_ProductPage = "PageLink_Type_ProductPage";
+			public const string PageLink_Type_SiteContactCategory = "PageLink_Type_SiteContactCategory";
+			public const string PageLink_Type_SiteContactPage = "PageLink_Type_SiteContactPage";
+			public const string PageLink_Type_Survey = "PageLink_Type_Survey";
+			public const string PageLink_Type_TypeProductCatalog = "PageLink_Type_TypeProductCatalog";
+			public const string PageLink_Type_Url = "PageLink_Type_Url";
 			public const string Post_Account = "Post_Account";
 			public const string Post_Account_Watermark = "Post_Account_Watermark";
 			public const string Post_Content = "Post_Content";
@@ -522,6 +687,21 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Promotion_Type_Select = "Promotion_Type_Select";
 			public const string Promotion_Type_SocialMedia = "Promotion_Type_SocialMedia";
 			public const string Promotion_Type_WebAd = "Promotion_Type_WebAd";
+			public const string Recipeint_Persona = "Recipeint_Persona";
+			public const string Recipeint_Persona_Select = "Recipeint_Persona_Select";
+			public const string Recipient_Company = "Recipient_Company";
+			public const string Recipient_Company_Select = "Recipient_Company_Select";
+			public const string Recipient_Contact = "Recipient_Contact";
+			public const string Recipient_Contact_Select = "Recipient_Contact_Select";
+			public const string Recipient_Description = "Recipient_Description";
+			public const string Recipient_EmailAddress = "Recipient_EmailAddress";
+			public const string Recipient_FirstName = "Recipient_FirstName";
+			public const string Recipient_Industry = "Recipient_Industry";
+			public const string Recipient_Industry_Select = "Recipient_Industry_Select";
+			public const string Recipient_IndustryNiche = "Recipient_IndustryNiche";
+			public const string Recipient_IndustryNiche_Select = "Recipient_IndustryNiche_Select";
+			public const string Recipient_LastName = "Recipient_LastName";
+			public const string Recipient_Title = "Recipient_Title";
 			public const string SocialMedia_Account = "SocialMedia_Account";
 			public const string SocialMedia_Account_Help = "SocialMedia_Account_Help";
 			public const string SocialMedia_AccountId = "SocialMedia_AccountId";

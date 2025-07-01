@@ -471,4 +471,139 @@
   <data name="Common_IsActive" xml:space="preserve">
     <value>Is Active</value>
   </data>
+  <data name="PageLink_Type_ParentMenu" xml:space="preserve">
+    <value>Parent Menu</value>
+  </data>
+  <data name="PageLink_Type_Link" xml:space="preserve">
+    <value>Link</value>
+  </data>
+  <data name="PageLink_Type_LandingPage" xml:space="preserve">
+    <value>Landing Page</value>
+  </data>
+  <data name="PageLink_Type_ContactInformationPage" xml:space="preserve">
+    <value>Contact Information Page</value>
+  </data>
+  <data name="PageLink_Type_ContactUsPage" xml:space="preserve">
+    <value>Contact Us Page</value>
+  </data>
+  <data name="PageLink_Type_LoginPage" xml:space="preserve">
+    <value>Login Page</value>
+  </data>
+  <data name="PageLink_Type_LogoutPage" xml:space="preserve">
+    <value>Logout Page</value>
+  </data>
+  <data name="PageLink_Type_SiteContactPage" xml:space="preserve">
+    <value>Site Contact Page</value>
+  </data>
+  <data name="PageLink_Type_SiteContactCategory" xml:space="preserve">
+    <value>Site Content Category</value>
+  </data>
+  <data name="PageLink_Type_FaqPage" xml:space="preserve">
+    <value>Faq Page</value>
+  </data>
+  <data name="PageLink_Type_GlossaryPage" xml:space="preserve">
+    <value>Glossay Page</value>
+  </data>
+  <data name="PageLink_Label" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="PageLink_LinkType" xml:space="preserve">
+    <value>Link Type</value>
+  </data>
+  <data name="PageLink_SiteContentCategory" xml:space="preserve">
+    <value>Site Content Category</value>
+  </data>
+  <data name="PageLink_SiteContentPage" xml:space="preserve">
+    <value>Site Content Page</value>
+  </data>
+  <data name="PageLink_LandingPage" xml:space="preserve">
+    <value>Landing Page</value>
+  </data>
+  <data name="PageLink_Title" xml:space="preserve">
+    <value>Page Link</value>
+  </data>
+  <data name="PageLink_Description" xml:space="preserve">
+    <value>A page link is a link somewhere on NuvIoT that can be added to an email template or landing page.</value>
+  </data>
+  <data name="PageLink_Type_Url" xml:space="preserve">
+    <value>Url</value>
+  </data>
+  <data name="PageLink_Type_NuvIoTService" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="PageLink_ToolTip" xml:space="preserve">
+    <value>Tool Tip</value>
+  </data>
+  <data name="PageLink_LinkTypeSelect" xml:space="preserve">
+    <value>-select link type-</value>
+  </data>
+  <data name="PageLink_Type_ProductCategory" xml:space="preserve">
+    <value>Product Category</value>
+  </data>
+  <data name="PageLink_Type_ProductPage" xml:space="preserve">
+    <value>Product Page</value>
+  </data>
+  <data name="PageLink_Type_Survey" xml:space="preserve">
+    <value>Survey</value>
+  </data>
+  <data name="PageLink_Survey" xml:space="preserve">
+    <value>Survey</value>
+  </data>
+  <data name="PageLink_ProductPage" xml:space="preserve">
+    <value>Product Page</value>
+  </data>
+  <data name="PageLink_ProductCategory" xml:space="preserve">
+    <value>Product Category</value>
+  </data>
+  <data name="PageLink_Type_ProductCategoryType" xml:space="preserve">
+    <value>Product Category Type</value>
+  </data>
+  <data name="PageLink_Type_TypeProductCatalog" xml:space="preserve">
+    <value>Product Catalog</value>
+  </data>
+  <data name="Recipient_FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Recipient_LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="Recipient_EmailAddress" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="Recipient_Company_Select" xml:space="preserve">
+    <value>-select company-</value>
+  </data>
+  <data name="Recipient_Industry" xml:space="preserve">
+    <value>Industry</value>
+  </data>
+  <data name="Recipient_IndustryNiche" xml:space="preserve">
+    <value>Industry Niche</value>
+  </data>
+  <data name="Recipeint_Persona" xml:space="preserve">
+    <value>Persona</value>
+  </data>
+  <data name="Recipeint_Persona_Select" xml:space="preserve">
+    <value>-select persona-</value>
+  </data>
+  <data name="Recipient_Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="Recipient_Industry_Select" xml:space="preserve">
+    <value>-select industry-</value>
+  </data>
+  <data name="Recipient_IndustryNiche_Select" xml:space="preserve">
+    <value>-select niche-</value>
+  </data>
+  <data name="Recipient_Title" xml:space="preserve">
+    <value>Recipient</value>
+  </data>
+  <data name="Recipient_Description" xml:space="preserve">
+    <value>A recipient is someone that will receive an email or text message.</value>
+  </data>
+  <data name="Recipient_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Recipient_Contact_Select" xml:space="preserve">
+    <value>-select contact-</value>
+  </data>
 </root>

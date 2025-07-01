@@ -10,8 +10,8 @@
     <ProjectReference Include="..\LagoVista.Campaigns\LagoVista.Campaigns.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.CloudStorage" Version="3.0.2529.0426" />
-    <PackageReference Include="Npgsql" Version="6.0.7" />
+    <PackageReference Include="LagoVista.CloudStorage" Version="3.0.2966.1525" />
+    <PackageReference Include="Npgsql" Version="6.0.13" />
   </ItemGroup>
 
 </Project>
