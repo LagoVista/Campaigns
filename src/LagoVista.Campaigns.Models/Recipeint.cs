@@ -11,7 +11,7 @@ namespace LagoVista.Campaigns.Models
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Recipient_Title, CampaignResources.Names.Recipient_Description,
      Resources.CampaignResources.Names.Recipient_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-pz-support-1",
        FactoryUrl: "/api/recipient/factory")]
-    public class Recipeint : IFormDescriptor, IFormConditionalFields
+    public class Recipeint : IFormDescriptor
     {
         [FormField(LabelResource: CampaignResources.Names.Recipient_FirstName, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string FirstName { get; set; }
@@ -37,42 +37,19 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Recipeint_Persona, FieldType: FieldTypes.EntityHeaderPicker, WaterMark: CampaignResources.Names.Recipeint_Persona_Select, EntityHeaderPickerUrl: "/api/personas", ResourceType: typeof(CampaignResources), IsRequired: false, IsUserEditable: true)]
         public EntityHeader Persona { get; set; }
 
-        public FormConditionals GetConditionalFields()
-        {
-            return new FormConditionals()
-            {
-                ConditionalFields = new List<string>() { nameof(FirstName), nameof(LastName), nameof(EmailAddress)},
-                Conditionals = new List<FormConditional>()
-                {
-                   new FormConditional()
-                   {
-                        Field = nameof(Contact),
-                        NotSet = true,
-                        RequiredFields = new List<string>() {nameof(FirstName), nameof(LastName), nameof(EmailAddress)},
-                        VisibleFields = new List<string>() {nameof(FirstName), nameof(LastName), nameof(EmailAddress)}
-                   },
-                   new FormConditional()
-                   {
-                        Field = nameof(Contact),
-                        Value = "*",
-                        VisibleFields = new List<string>() {}
-                   },
-                }
-            };
-        }
-
+ 
         public List<string> GetFormFields()
         {
             return new List<string>()
             {
-                nameof(FirstName),
-                nameof(LastName),
-                nameof(EmailAddress),
                 nameof(Company),
                 nameof(Contact),
+                nameof(FirstName),
+                nameof(LastName),
+                nameof(Persona),
+                nameof(EmailAddress),
                 nameof(Industry),
                 nameof(IndustryNiche),
-                nameof(Persona),
             };
         }
     }
