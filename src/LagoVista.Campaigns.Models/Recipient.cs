@@ -11,7 +11,7 @@ namespace LagoVista.Campaigns.Models
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Recipient_Title, CampaignResources.Names.Recipient_Description,
      Resources.CampaignResources.Names.Recipient_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-pz-support-1",
        FactoryUrl: "/api/recipient/factory")]
-    public class Recipeint : IFormDescriptor
+    public class Recipient : IFormDescriptor
     {
         [FormField(LabelResource: CampaignResources.Names.Recipient_FirstName, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string FirstName { get; set; }

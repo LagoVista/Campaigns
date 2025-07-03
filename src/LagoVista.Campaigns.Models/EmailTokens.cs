@@ -29,6 +29,6 @@ namespace LagoVista.Campaigns.Models
         public string SenderPhone { get; set;  }
 
         public List<PageLink> PageLinks { get; set; } = new List<PageLink>();
-        public List<Recipeint> Recipients { get; set; } = new List<Recipeint>();
+        public List<Recipient> Recipients { get; set; } = new List<Recipient>();
     }
 }

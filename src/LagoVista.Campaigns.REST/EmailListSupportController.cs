@@ -138,9 +138,9 @@ namespace LagoVista.Campaigns.REST
         }
 
         [HttpGet("/api/recipient/factory")]
-        public DetailResponse<Recipeint> CreateRecipient()
+        public DetailResponse<Recipient> CreateRecipient()
         {
-            return DetailResponse<Recipeint>.Create();
+            return DetailResponse<Recipient>.Create();
         }
     }
 }
