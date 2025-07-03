@@ -17,7 +17,8 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Campaign { get;}
         public EntityHeader Promotion { get;  }
 
-        public List<Recipient> Recipients { get; set;}
+        public List<Recipient> ToRecipients { get; set;}
+        public List<Recipient> CcRecipients { get; set; }
 
         public List<PageLink> PageLinks { get; }
         public string SenderEmailSignature { get; }

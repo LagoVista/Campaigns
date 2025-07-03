@@ -16,9 +16,9 @@ namespace LagoVista.Campaigns.Models
     {
         [EnumLabel(PageLink.TypeParentMenu, CampaignResources.Names.PageLink_Type_ParentMenu, typeof(CampaignResources))]
         ParentMenu,
-        [EnumLabel(PageLink.TypeParentMenu, CampaignResources.Names.PageLink_Type_Link, typeof(CampaignResources))]
+        [EnumLabel(PageLink.TypeLink, CampaignResources.Names.PageLink_Type_Link, typeof(CampaignResources))]
         Link,
-        [EnumLabel(PageLink.TypeParentMenu, CampaignResources.Names.PageLink_Type_LandingPage, typeof(CampaignResources))]
+        [EnumLabel(PageLink.TypeLandingPage, CampaignResources.Names.PageLink_Type_LandingPage, typeof(CampaignResources))]
         LandingPage,
         [EnumLabel(PageLink.TypeContactInformationPage, CampaignResources.Names.PageLink_Type_ContactInformationPage, typeof(CampaignResources))]
         ContactInformationPage,
@@ -59,7 +59,7 @@ namespace LagoVista.Campaigns.Models
         public const string TypeLink = "link";
         public const string TypeLoginPage = "loginpage";
         public const string TypeLogoutPage = "logoutpage";
-        public const string TypeAnotherLanidngpage = "anotherlandingpage";
+        public const string TypeLandingPage = "landingpage";
         public const string TypeContactInformationPage = "contactinformationpage";
         public const string TypeContactUsPage = "contactuspage";
         public const string TypeFaqPage = "faqpage";
@@ -134,7 +134,7 @@ namespace LagoVista.Campaigns.Models
                 {
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeParentMenu, RequiredFields = new List<string>() { }, VisibleFields = new List<string>() { nameof(SubMenus) } },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLink, RequiredFields = new List<string>() {nameof(LinkUrl) }, VisibleFields = new List<string>() { nameof(LinkUrl) } },
-                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeAnotherLanidngpage, RequiredFields = new List<string>() { nameof(LandingPage) }, VisibleFields = new List<string>() { nameof(LandingPage) } },
+                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLandingPage, RequiredFields = new List<string>() { nameof(LandingPage) }, VisibleFields = new List<string>() { nameof(LandingPage) } },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLoginPage },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLoginPage },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLoginPage },
