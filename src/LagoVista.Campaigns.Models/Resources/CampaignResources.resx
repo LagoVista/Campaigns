@@ -606,4 +606,7 @@
   <data name="Recipient_Contact_Select" xml:space="preserve">
     <value>-select contact-</value>
   </data>
+  <data name="PageLink_Type_ContentDownload" xml:space="preserve">
+    <value>Content Download</value>
+  </data>
 </root>

@@ -315,6 +315,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:PageLink_Type_ContactUsPage
 
 		public static string PageLink_Type_ContactUsPage { get { return GetResourceString("PageLink_Type_ContactUsPage"); } }
+//Resources:CampaignResources:PageLink_Type_ContentDownload
+
+		public static string PageLink_Type_ContentDownload { get { return GetResourceString("PageLink_Type_ContentDownload"); } }
 //Resources:CampaignResources:PageLink_Type_FaqPage
 
 		public static string PageLink_Type_FaqPage { get { return GetResourceString("PageLink_Type_FaqPage"); } }
@@ -633,6 +636,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string PageLink_ToolTip = "PageLink_ToolTip";
 			public const string PageLink_Type_ContactInformationPage = "PageLink_Type_ContactInformationPage";
 			public const string PageLink_Type_ContactUsPage = "PageLink_Type_ContactUsPage";
+			public const string PageLink_Type_ContentDownload = "PageLink_Type_ContentDownload";
 			public const string PageLink_Type_FaqPage = "PageLink_Type_FaqPage";
 			public const string PageLink_Type_GlossaryPage = "PageLink_Type_GlossaryPage";
 			public const string PageLink_Type_LandingPage = "PageLink_Type_LandingPage";
