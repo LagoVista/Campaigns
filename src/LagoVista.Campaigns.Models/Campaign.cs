@@ -10,6 +10,7 @@ namespace LagoVista.Campaigns.Models
 {
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Campaign_Title, CampaignResources.Names.Campaign_Description, 
         Resources.CampaignResources.Names.Campaign_Description, EntityDescriptionAttribute.EntityTypes.SimpleModel, typeof(CampaignResources), Icon: "icon-ae-call-center",
+        ListUIUrl: "/marketing/campaigns", EditUIUrl: "/marketing/campaign/{id}", CreateUIUrl: "/marketing/campaign/add",
         GetUrl: "/api/campaign/{id}", GetListUrl: "/api/campaigns", SaveUrl: "/api/campaign", DeleteUrl: "/api/campaign/{id}", FactoryUrl: "/api/campaign/factory")]
     public class Campaign : CampaignModelBase, IFormDescriptor, IFormDescriptorCol2, IIconEntity, ISummaryFactory
     {

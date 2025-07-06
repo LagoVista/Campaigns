@@ -198,6 +198,8 @@ namespace LagoVista.Campaigns.Models
                     return $"{rootUrl}/public/{orgNameSpace}/product/{Product.Id}";
                 case PageLinkTypes.Survey:
                     return $"{rootUrl}/public/{orgNameSpace}/survey/{Survey.Id}";
+                case PageLinkTypes.ContentDownload:
+                    return $"{rootUrl}/{orgNameSpace}/{ContentDownload.Key}/download";
             }
 
             throw new NotImplementedException($"Do not know how to handle {Type.Value}");
