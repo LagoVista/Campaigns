@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Models;
 using System.Collections.Generic;
+using System.Net.Mail;
 
 namespace LagoVista.Campaigns.Models
 {
@@ -28,6 +29,7 @@ namespace LagoVista.Campaigns.Models
         public string SenderEmailSignature {get; set;}        
         public string SenderPhone { get; set;  }
 
+        public List<EmailAttachment> Attachments { get; set; } = new List<EmailAttachment>();
         public List<PageLink> PageLinks { get; set; } = new List<PageLink>();
         public List<Recipient> ToRecipients { get; set; } = new List<Recipient>();
         public List<Recipient> CcRecipients { get; set; } = new List<Recipient>();

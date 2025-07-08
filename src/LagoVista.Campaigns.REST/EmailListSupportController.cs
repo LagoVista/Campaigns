@@ -137,6 +137,13 @@ namespace LagoVista.Campaigns.REST
             return DetailResponse<PageLink>.Create();
         }
 
+
+        [HttpGet("/api/email/attachment/factory")]
+        public DetailResponse<Models.EmailAttachment> CreateEmailAttachment()
+        {
+            return DetailResponse<Models.EmailAttachment>.Create();
+        }
+
         [HttpGet("/api/recipient/factory")]
         public DetailResponse<Recipient> CreateRecipient()
         {

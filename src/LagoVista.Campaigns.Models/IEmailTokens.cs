@@ -21,6 +21,7 @@ namespace LagoVista.Campaigns.Models
         public List<Recipient> CcRecipients { get; set; }
 
         public List<PageLink> PageLinks { get; }
+        public List<EmailAttachment> Attachments { get;  }
         public string SenderEmailSignature { get; }
         public string SenderPhone { get; }
     }

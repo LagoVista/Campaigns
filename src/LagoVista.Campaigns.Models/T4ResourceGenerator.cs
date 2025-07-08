@@ -135,6 +135,39 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:Common_SelectCategory
 
 		public static string Common_SelectCategory { get { return GetResourceString("Common_SelectCategory"); } }
+//Resources:CampaignResources:EmailAttachment_Description
+
+		public static string EmailAttachment_Description { get { return GetResourceString("EmailAttachment_Description"); } }
+//Resources:CampaignResources:EmailAttachment_FileType
+
+		public static string EmailAttachment_FileType { get { return GetResourceString("EmailAttachment_FileType"); } }
+//Resources:CampaignResources:EmailAttachment_FileType_Agreement
+
+		public static string EmailAttachment_FileType_Agreement { get { return GetResourceString("EmailAttachment_FileType_Agreement"); } }
+//Resources:CampaignResources:EmailAttachment_FileType_Agreement_Select
+
+		public static string EmailAttachment_FileType_Agreement_Select { get { return GetResourceString("EmailAttachment_FileType_Agreement_Select"); } }
+//Resources:CampaignResources:EmailAttachment_FileType_FileUpload
+
+		public static string EmailAttachment_FileType_FileUpload { get { return GetResourceString("EmailAttachment_FileType_FileUpload"); } }
+//Resources:CampaignResources:EmailAttachment_FileType_Invoice
+
+		public static string EmailAttachment_FileType_Invoice { get { return GetResourceString("EmailAttachment_FileType_Invoice"); } }
+//Resources:CampaignResources:EmailAttachment_FileType_Invoice_Select
+
+		public static string EmailAttachment_FileType_Invoice_Select { get { return GetResourceString("EmailAttachment_FileType_Invoice_Select"); } }
+//Resources:CampaignResources:EmailAttachment_FileType_Proposal
+
+		public static string EmailAttachment_FileType_Proposal { get { return GetResourceString("EmailAttachment_FileType_Proposal"); } }
+//Resources:CampaignResources:EmailAttachment_FileType_Proposal_Select
+
+		public static string EmailAttachment_FileType_Proposal_Select { get { return GetResourceString("EmailAttachment_FileType_Proposal_Select"); } }
+//Resources:CampaignResources:EmailAttachment_FileType_Select
+
+		public static string EmailAttachment_FileType_Select { get { return GetResourceString("EmailAttachment_FileType_Select"); } }
+//Resources:CampaignResources:EmailAttachment_Title
+
+		public static string EmailAttachment_Title { get { return GetResourceString("EmailAttachment_Title"); } }
 //Resources:CampaignResources:Kpi_Attribute1
 
 		public static string Kpi_Attribute1 { get { return GetResourceString("Kpi_Attribute1"); } }
@@ -576,6 +609,17 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string Common_LastUpdatedBy = "Common_LastUpdatedBy";
 			public const string Common_Name = "Common_Name";
 			public const string Common_SelectCategory = "Common_SelectCategory";
+			public const string EmailAttachment_Description = "EmailAttachment_Description";
+			public const string EmailAttachment_FileType = "EmailAttachment_FileType";
+			public const string EmailAttachment_FileType_Agreement = "EmailAttachment_FileType_Agreement";
+			public const string EmailAttachment_FileType_Agreement_Select = "EmailAttachment_FileType_Agreement_Select";
+			public const string EmailAttachment_FileType_FileUpload = "EmailAttachment_FileType_FileUpload";
+			public const string EmailAttachment_FileType_Invoice = "EmailAttachment_FileType_Invoice";
+			public const string EmailAttachment_FileType_Invoice_Select = "EmailAttachment_FileType_Invoice_Select";
+			public const string EmailAttachment_FileType_Proposal = "EmailAttachment_FileType_Proposal";
+			public const string EmailAttachment_FileType_Proposal_Select = "EmailAttachment_FileType_Proposal_Select";
+			public const string EmailAttachment_FileType_Select = "EmailAttachment_FileType_Select";
+			public const string EmailAttachment_Title = "EmailAttachment_Title";
 			public const string Kpi_Attribute1 = "Kpi_Attribute1";
 			public const string Kpi_Attribute2 = "Kpi_Attribute2";
 			public const string Kpi_Attribute3 = "Kpi_Attribute3";

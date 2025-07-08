@@ -606,6 +606,39 @@
   <data name="Recipient_Contact_Select" xml:space="preserve">
     <value>-select contact-</value>
   </data>
+  <data name="EmailAttachment_FileType_Proposal_Select" xml:space="preserve">
+    <value>-select proposal-</value>
+  </data>
+  <data name="EmailAttachment_FileType_Agreement_Select" xml:space="preserve">
+    <value>-select agreement-</value>
+  </data>
+  <data name="EmailAttachment_FileType_Invoice_Select" xml:space="preserve">
+    <value>-select invoice-</value>
+  </data>
+  <data name="EmailAttachment_FileType_FileUpload" xml:space="preserve">
+    <value>File Upload</value>
+  </data>
+  <data name="EmailAttachment_FileType_Proposal" xml:space="preserve">
+    <value>Proposal</value>
+  </data>
+  <data name="EmailAttachment_FileType_Agreement" xml:space="preserve">
+    <value>Agreement</value>
+  </data>
+  <data name="EmailAttachment_FileType_Invoice" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
+  <data name="EmailAttachment_FileType_Select" xml:space="preserve">
+    <value>-select file type-</value>
+  </data>
+  <data name="EmailAttachment_FileType" xml:space="preserve">
+    <value>File Type</value>
+  </data>
+  <data name="EmailAttachment_Title" xml:space="preserve">
+    <value>Attachment</value>
+  </data>
+  <data name="EmailAttachment_Description" xml:space="preserve">
+    <value>Attachments are files that can be sent out with an email</value>
+  </data>
   <data name="PageLink_Type_ContentDownload" xml:space="preserve">
     <value>Content Download</value>
   </data>
