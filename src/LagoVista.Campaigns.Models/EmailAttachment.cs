@@ -16,12 +16,10 @@ namespace LagoVista.Campaigns.Models
     {
         [EnumLabel(EmailAttachment.TypeFileUpload, CampaignResources.Names.EmailAttachment_FileType_FileUpload, typeof(CampaignResources))]
         FileUpload,
-        [EnumLabel(EmailAttachment.TypeProposal, CampaignResources.Names.EmailAttachment_FileType_Proposal, typeof(CampaignResources))]
-        Propsoal,
-        [EnumLabel(EmailAttachment.TypeAgreement, CampaignResources.Names.EmailAttachment_FileType_Agreement, typeof(CampaignResources))]
-        Agreement,
-        [EnumLabel(EmailAttachment.TypeInvoice, CampaignResources.Names.EmailAttachment_FileType_Invoice, typeof(CampaignResources))]
-        Invoice,
+        [EnumLabel(EmailAttachment.TypeSignedDocument, CampaignResources.Names.EmailAttachment_FileType_SignedDocument, typeof(CampaignResources))]
+        SignedDocument,
+        [EnumLabel(EmailAttachment.TypeContentDownload, CampaignResources.Names.EmailAttachment_FileType_ContentDownload, typeof(CampaignResources))]
+        ContentDownload,
     }
 
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.EmailAttachment_Title, CampaignResources.Names.EmailAttachment_Description,
@@ -30,33 +28,30 @@ namespace LagoVista.Campaigns.Models
     public class EmailAttachment : IValidateable, IFormDescriptor, IFormConditionalFields
     {
         public const string TypeFileUpload = "fileupload";
-        public const string TypeProposal = "proposal";
-        public const string TypeAgreement = "agreement";
-        public const string TypeInvoice = "invoice";
+        public const string TypeSignedDocument = "signedocument";
+        public const string TypeContentDownload = "contentdownload";
+
+        public string Name { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType, FieldType: FieldTypes.Picker, EnumType: typeof(EmailAttachmentFileTypes), WaterMark: CampaignResources.Names.EmailAttachment_FileType_Select, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
-        public string FileType { get; set; }
+        public EntityHeader<EmailAttachmentFileTypes> FileType { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_FileUpload, FieldType: FieldTypes.FileUpload, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Resource { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Proposal, FieldType: FieldTypes.Custom, CustomFieldType:"proposalpicker", WaterMark:CampaignResources.Names.EmailAttachment_FileType_Proposal_Select,
+        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_SignedDocument, FieldType: FieldTypes.Custom, CustomFieldType:"proposalpicker", WaterMark:CampaignResources.Names.EmailAttachment_FileType_SignedDocument_Select,
             EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
-        public EntityHeader Proposal { get; set; }
+        public EntityHeader SignedDocument { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Agreement, FieldType: FieldTypes.Custom, CustomFieldType:"agreementpicker", WaterMark: CampaignResources.Names.EmailAttachment_FileType_Agreement_Select,
-            EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
-        public EntityHeader Agreement { get; set; }
-
-        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Invoice, FieldType: FieldTypes.Custom, CustomFieldType: "invoicepicker", WaterMark: CampaignResources.Names.EmailAttachment_FileType_Invoice_Select, 
-            EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
-        public EntityHeader Invoice { get; set; }
+        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_ContentDownload, FieldType: FieldTypes.EntityHeaderPicker, WaterMark: CampaignResources.Names.EmailAttachment_FileType_ContentDownload_Select,
+            EntityHeaderPickerUrl: "/api/content/downloads", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        public EntityHeader ContentDownload { get; set; }
 
         public FormConditionals GetConditionalFields()
         {
             return new FormConditionals()
             {
-                ConditionalFields = new List<string>() { nameof(Resource), nameof(Proposal), nameof(Agreement), nameof(Invoice) },
+                ConditionalFields = new List<string>() { nameof(Resource), nameof(SignedDocument) },
                 Conditionals = new List<FormConditional>()
                 {
                     new FormConditional()
@@ -69,23 +64,16 @@ namespace LagoVista.Campaigns.Models
                     new FormConditional()
                     {
                         Field = nameof(FileType),
-                        Value = TypeProposal,
-                        RequiredFields = new List<string>() { nameof(Proposal) },
-                        VisibleFields = new List<string>() { nameof(Proposal) },
+                        Value = TypeContentDownload,
+                        RequiredFields = new List<string>() { nameof(ContentDownload) },
+                        VisibleFields = new List<string>() { nameof(ContentDownload) },
                     },
                     new FormConditional()
                     {
                         Field = nameof(FileType),
-                        Value = TypeAgreement,
-                        RequiredFields = new List<string>() { nameof(Agreement) },
-                        VisibleFields = new List<string>() { nameof(Agreement) },
-                    },
-                    new FormConditional()
-                    {
-                        Field = nameof(FileType),
-                        Value = TypeInvoice,
-                        RequiredFields = new List<string>() { nameof(Invoice) },
-                        VisibleFields = new List<string>() { nameof(Invoice) },
+                        Value = TypeSignedDocument,
+                        RequiredFields = new List<string>() { nameof(SignedDocument) },
+                        VisibleFields = new List<string>() { nameof(SignedDocument) },
                     },
                 }
             };
@@ -97,9 +85,8 @@ namespace LagoVista.Campaigns.Models
             {
                 nameof(FileType),
                 nameof(Resource),
-                nameof(Proposal),
-                nameof(Agreement),
-                nameof(Invoice),
+                nameof(SignedDocument),
+                nameof(ContentDownload),
             };
         }
     }
