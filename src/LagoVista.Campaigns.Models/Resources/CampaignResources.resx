@@ -636,4 +636,7 @@
   <data name="EmailAttachment_FileType_ContentDownload_Select" xml:space="preserve">
     <value>-select content download-</value>
   </data>
+  <data name="PageLink_Type_SignedDocument" xml:space="preserve">
+    <value>Signed Document</value>
+  </data>
 </root>

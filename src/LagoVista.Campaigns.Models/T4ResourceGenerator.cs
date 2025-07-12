@@ -378,6 +378,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:PageLink_Type_ProductPage
 
 		public static string PageLink_Type_ProductPage { get { return GetResourceString("PageLink_Type_ProductPage"); } }
+//Resources:CampaignResources:PageLink_Type_SignedDocument
+
+		public static string PageLink_Type_SignedDocument { get { return GetResourceString("PageLink_Type_SignedDocument"); } }
 //Resources:CampaignResources:PageLink_Type_SiteContactCategory
 
 		public static string PageLink_Type_SiteContactCategory { get { return GetResourceString("PageLink_Type_SiteContactCategory"); } }
@@ -684,6 +687,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string PageLink_Type_ProductCategory = "PageLink_Type_ProductCategory";
 			public const string PageLink_Type_ProductCategoryType = "PageLink_Type_ProductCategoryType";
 			public const string PageLink_Type_ProductPage = "PageLink_Type_ProductPage";
+			public const string PageLink_Type_SignedDocument = "PageLink_Type_SignedDocument";
 			public const string PageLink_Type_SiteContactCategory = "PageLink_Type_SiteContactCategory";
 			public const string PageLink_Type_SiteContactPage = "PageLink_Type_SiteContactPage";
 			public const string PageLink_Type_Survey = "PageLink_Type_Survey";
