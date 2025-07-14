@@ -50,6 +50,8 @@ namespace LagoVista.Campaigns.Models
         Survey,
         [EnumLabel(PageLink.TypeContentDownload, CampaignResources.Names.PageLink_Type_ContentDownload, typeof(CampaignResources))]
         ContentDownload,
+        [EnumLabel(PageLink.TypeSignedDocument, CampaignResources.Names.PageLink_Type_SignedDocument, typeof(CampaignResources))]
+        SignedDocument,
     }
 
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.PageLink_Title, CampaignResources.Names.PageLink_Description,
@@ -76,6 +78,7 @@ namespace LagoVista.Campaigns.Models
         public const string TypeProductPage = "productpage";
         public const string TypeSurvey = "survey";
         public const string TypeContentDownload = "contentdownload";
+        public const string TypeSignedDocument = "signeddocument";
 
 
         public string Id { get; set; } = Guid.NewGuid().ToId();
@@ -98,13 +101,13 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Glossary { get; set; }
 
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_Label, FieldType: FieldTypes.Text, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.PageLink_Type_Link, FieldType: FieldTypes.WebLink, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
         public string LinkUrl { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.PageLink_LandingPage, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/landingpages", EditorPath: "/contentmanagement/landingpage/{id}", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader LandingPage { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_LandingPage, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/content/downloads/published", EditorPath: "/contentmanagement/download/{id}", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.PageLink_Type_ContentDownload, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/content/downloads/published", EditorPath: "/contentmanagement/download/{id}", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader ContentDownload { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.PageLink_ToolTip, FieldType: FieldTypes.Text, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
@@ -176,8 +179,9 @@ namespace LagoVista.Campaigns.Models
                 case PageLinkTypes.ParentMenu:
                     throw new InvalidOperationException("Should not call get link for Parent Menu");
                 case PageLinkTypes.NuvIoTService:
-                case PageLinkTypes.Link:
                     return $"{rootUrl}{LinkUrl}";
+                case PageLinkTypes.Link:
+                    return LinkUrl; 
                 case PageLinkTypes.ContactInformationPage:
                     return $"{rootUrl}/public/{orgNameSpace}/about";
                 case PageLinkTypes.ContactUsPage:
@@ -189,7 +193,7 @@ namespace LagoVista.Campaigns.Models
                 case PageLinkTypes.Faq:
                     return $"{rootUrl}/public/{orgNameSpace}/faq";
                 case PageLinkTypes.Glossary:
-                    return $"{rootUrl}/public/{orgNameSpace}/faq";
+                    return $"{rootUrl}/public/{orgNameSpace}/glossaries";
                 case PageLinkTypes.ProductCategoryType:
                     return $"{rootUrl}/public/{orgNameSpace}/productcategories/{ProductCategoryType.Id}";
                 case PageLinkTypes.ProductCategory:
