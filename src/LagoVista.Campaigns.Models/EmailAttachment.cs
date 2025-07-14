@@ -35,21 +35,21 @@ namespace LagoVista.Campaigns.Models
         public const string TypeInvoice = "invoice";
 
         [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType, FieldType: FieldTypes.Picker, EnumType: typeof(EmailAttachmentFileTypes), WaterMark: CampaignResources.Names.EmailAttachment_FileType_Select, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
-        public string FileType { get; set; }
+        public EntityHeader<EmailAttachmentFileTypes> FileType { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_FileUpload, FieldType: FieldTypes.FileUpload, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Resource { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Proposal, FieldType: FieldTypes.Custom, CustomFieldType:"proposalpicker", WaterMark:CampaignResources.Names.EmailAttachment_FileType_Proposal_Select,
-            EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+            EntityHeaderPickerUrl: "/api/business/proposals", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Proposal { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Agreement, FieldType: FieldTypes.Custom, CustomFieldType:"agreementpicker", WaterMark: CampaignResources.Names.EmailAttachment_FileType_Agreement_Select,
-            EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+            EntityHeaderPickerUrl: "/api/agreements", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Agreement { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Invoice, FieldType: FieldTypes.Custom, CustomFieldType: "invoicepicker", WaterMark: CampaignResources.Names.EmailAttachment_FileType_Invoice_Select, 
-            EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+            EntityHeaderPickerUrl: "/api/invoices", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Invoice { get; set; }
 
         public FormConditionals GetConditionalFields()
