@@ -17,9 +17,7 @@ namespace LagoVista.Campaigns.Models
         [EnumLabel(EmailAttachment.TypeFileUpload, CampaignResources.Names.EmailAttachment_FileType_FileUpload, typeof(CampaignResources))]
         FileUpload,
         [EnumLabel(EmailAttachment.TypeSignedDocument, CampaignResources.Names.EmailAttachment_FileType_SignedDocument, typeof(CampaignResources))]
-        SignedDocument,
-        [EnumLabel(EmailAttachment.TypeContentDownload, CampaignResources.Names.EmailAttachment_FileType_ContentDownload, typeof(CampaignResources))]
-        ContentDownload,
+        SignedDocument
     }
 
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.EmailAttachment_Title, CampaignResources.Names.EmailAttachment_Description,
@@ -38,18 +36,11 @@ namespace LagoVista.Campaigns.Models
 
         [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_FileUpload, FieldType: FieldTypes.FileUpload, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Resource { get; set; }
+        
 
-        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Proposal, FieldType: FieldTypes.Custom, CustomFieldType:"proposalpicker", WaterMark:CampaignResources.Names.EmailAttachment_FileType_Proposal_Select,
+        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_SignedDocument, FieldType: FieldTypes.Custom, CustomFieldType: "invoicepicker", WaterMark: CampaignResources.Names.EmailAttachment_FileType_SignedDocument_Select, 
             EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
-        public EntityHeader Proposal { get; set; }
-
-        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Agreement, FieldType: FieldTypes.Custom, CustomFieldType:"agreementpicker", WaterMark: CampaignResources.Names.EmailAttachment_FileType_Agreement_Select,
-            EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
-        public EntityHeader Agreement { get; set; }
-
-        [FormField(LabelResource: CampaignResources.Names.EmailAttachment_FileType_Invoice, FieldType: FieldTypes.Custom, CustomFieldType: "invoicepicker", WaterMark: CampaignResources.Names.EmailAttachment_FileType_Invoice_Select, 
-            EntityHeaderPickerUrl: "/api/sitecontent/{siteContentCategory.key}/all", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
-        public EntityHeader Invoice { get; set; }
+        public EntityHeader SignedDocument { get; set; }
 
         public FormConditionals GetConditionalFields()
         {
@@ -64,13 +55,6 @@ namespace LagoVista.Campaigns.Models
                         Value = TypeFileUpload,
                         RequiredFields = new List<string>() { nameof(Resource) },
                         VisibleFields = new List<string>() { nameof(Resource) },
-                    },
-                    new FormConditional()
-                    {
-                        Field = nameof(FileType),
-                        Value = TypeContentDownload,
-                        RequiredFields = new List<string>() { nameof(ContentDownload) },
-                        VisibleFields = new List<string>() { nameof(ContentDownload) },
                     },
                     new FormConditional()
                     {
@@ -90,7 +74,6 @@ namespace LagoVista.Campaigns.Models
                 nameof(FileType),
                 nameof(Resource),
                 nameof(SignedDocument),
-                nameof(ContentDownload),
             };
         }
     }
