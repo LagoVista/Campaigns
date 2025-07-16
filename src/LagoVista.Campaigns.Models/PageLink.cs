@@ -32,7 +32,7 @@ namespace LagoVista.Campaigns.Models
         SiteContentPage,
         [EnumLabel(PageLink.TypeSiteContentCategory, CampaignResources.Names.PageLink_Type_SiteContactCategory, typeof(CampaignResources))]
         SiteContentCategory,
-        [EnumLabel(PageLink.TypeFaq, CampaignResources.Names.PageLink_Type_FaqPage, typeof(CampaignResources))]
+        [EnumLabel(PageLink.TypeFaqPage, CampaignResources.Names.PageLink_Type_FaqPage, typeof(CampaignResources))]
         Faq,
         [EnumLabel(PageLink.TypeGlossary, CampaignResources.Names.PageLink_Type_GlossaryPage, typeof(CampaignResources))]
         Glossary,
@@ -69,7 +69,6 @@ namespace LagoVista.Campaigns.Models
         public const string TypeFaqPage = "faqpage";
         public const string TypeSiteContentCategory = "sitecontentcategory";
         public const string TypeSiteContentPage = "sitecontentpage";
-        public const string TypeFaq = "faq";
         public const string TypeGlossary = "glossary";
         public const string TypeNuvIoTService = "nuviotservice";
         public const string TypeProductCatalog = "productcatalog";
