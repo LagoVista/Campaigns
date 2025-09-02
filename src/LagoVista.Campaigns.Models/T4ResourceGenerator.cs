@@ -315,6 +315,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:PageLink_LinkTypeSelect
 
 		public static string PageLink_LinkTypeSelect { get { return GetResourceString("PageLink_LinkTypeSelect"); } }
+//Resources:CampaignResources:PageLink_Product
+
+		public static string PageLink_Product { get { return GetResourceString("PageLink_Product"); } }
 //Resources:CampaignResources:PageLink_ProductCategory
 
 		public static string PageLink_ProductCategory { get { return GetResourceString("PageLink_ProductCategory"); } }
@@ -369,6 +372,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:PageLink_Type_ParentMenu
 
 		public static string PageLink_Type_ParentMenu { get { return GetResourceString("PageLink_Type_ParentMenu"); } }
+//Resources:CampaignResources:PageLink_Type_Product
+
+		public static string PageLink_Type_Product { get { return GetResourceString("PageLink_Type_Product"); } }
 //Resources:CampaignResources:PageLink_Type_ProductCategory
 
 		public static string PageLink_Type_ProductCategory { get { return GetResourceString("PageLink_Type_ProductCategory"); } }
@@ -666,6 +672,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string PageLink_LandingPage = "PageLink_LandingPage";
 			public const string PageLink_LinkType = "PageLink_LinkType";
 			public const string PageLink_LinkTypeSelect = "PageLink_LinkTypeSelect";
+			public const string PageLink_Product = "PageLink_Product";
 			public const string PageLink_ProductCategory = "PageLink_ProductCategory";
 			public const string PageLink_ProductPage = "PageLink_ProductPage";
 			public const string PageLink_SiteContentCategory = "PageLink_SiteContentCategory";
@@ -684,6 +691,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string PageLink_Type_LogoutPage = "PageLink_Type_LogoutPage";
 			public const string PageLink_Type_NuvIoTService = "PageLink_Type_NuvIoTService";
 			public const string PageLink_Type_ParentMenu = "PageLink_Type_ParentMenu";
+			public const string PageLink_Type_Product = "PageLink_Type_Product";
 			public const string PageLink_Type_ProductCategory = "PageLink_Type_ProductCategory";
 			public const string PageLink_Type_ProductCategoryType = "PageLink_Type_ProductCategoryType";
 			public const string PageLink_Type_ProductPage = "PageLink_Type_ProductPage";

@@ -45,6 +45,8 @@ namespace LagoVista.Campaigns.Models
         [EnumLabel(PageLink.TypeProductCategory, CampaignResources.Names.PageLink_Type_ProductCategory, typeof(CampaignResources))]
         ProductCategory,
         [EnumLabel(PageLink.TypeProductPage, CampaignResources.Names.PageLink_Type_ProductPage, typeof(CampaignResources))]
+        ProductPage,
+        [EnumLabel(PageLink.TypeProduct, CampaignResources.Names.PageLink_Type_Product, typeof(CampaignResources))]
         Product,
         [EnumLabel(PageLink.TypeSurvey, CampaignResources.Names.PageLink_Type_Survey, typeof(CampaignResources))]
         Survey,
@@ -78,6 +80,7 @@ namespace LagoVista.Campaigns.Models
         public const string TypeSurvey = "survey";
         public const string TypeContentDownload = "contentdownload";
         public const string TypeSignedDocument = "signeddocument";
+        public const string TypeProduct = "product";
 
 
         public string Id { get; set; } = Guid.NewGuid().ToId();
@@ -112,14 +115,18 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.PageLink_ToolTip, FieldType: FieldTypes.Text, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public string ToolTip { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_ProductCategory, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/product/category/types", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.PageLink_Type_ProductCategoryType, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/product/category/types", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader ProductCategoryType { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.PageLink_ProductCategory, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/product/categories", EditorPath: "/business/productcatalogs/products", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader ProductCategory { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_ProductPage, FieldType: FieldTypes.ProductPicker, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.PageLink_Product, FieldType: FieldTypes.ProductPicker, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Product { get; set; }
+
+        [FormField(LabelResource: CampaignResources.Names.PageLink_ProductPage, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/product/page/list", EditorPath: "/business/productcatalogs/productpage/{id}", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        public EntityHeader ProductPage { get; set; }
+
 
         [FormField(LabelResource: CampaignResources.Names.PageLink_Survey, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/surveys", EditorPath: "/contentmanagement/surveys/edit/{id}", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Survey { get; set; }
@@ -140,6 +147,8 @@ namespace LagoVista.Campaigns.Models
                     nameof(LandingPage),
                     nameof(ProductCategory),
                     nameof(ProductCategoryType),
+                    nameof(ProductPage),
+                    nameof(Survey),
                     nameof(Product)
                 },
                 Conditionals = new List<FormConditional>()
@@ -149,14 +158,16 @@ namespace LagoVista.Campaigns.Models
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLink, RequiredFields = new List<string>() {nameof(LinkUrl) }, VisibleFields = new List<string>() { nameof(LinkUrl) } },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLandingPage, RequiredFields = new List<string>() { nameof(LandingPage) }, VisibleFields = new List<string>() { nameof(LandingPage) } },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLoginPage },
-                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLoginPage },
+                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLogoutPage },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeLoginPage },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeFaqPage },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeProductCategoryType, RequiredFields = new List<string>() {nameof(ProductCategoryType) }, VisibleFields = new List<string>() {nameof(ProductCategoryType) }  },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeProductCategory, RequiredFields = new List<string>() {nameof(ProductCategoryType), nameof(ProductCategory) }, VisibleFields = new List<string>() {nameof(ProductCategoryType), nameof(ProductCategory) }  },
-                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeProductPage,  RequiredFields = new List<string>() {nameof(Product) }, VisibleFields = new List<string>() {nameof(ProductCategoryType) }  },
+                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeProductPage,  RequiredFields = new List<string>() {nameof(ProductPage) }, VisibleFields = new List<string>() {nameof(ProductPage) }  },
+                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeProduct,  RequiredFields = new List<string>() {nameof(Product) }, VisibleFields = new List<string>() {nameof(Product) }  },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeContactInformationPage },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeContactUsPage },
+                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeSurvey , RequiredFields = new List<string>() {nameof(Survey) }, VisibleFields = new List<string>() {nameof(Survey) } },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeGlossary, RequiredFields = new List<string>() {nameof(Glossary) } },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeNuvIoTService },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeSiteContentCategory, RequiredFields = new List<string>() { nameof(SiteContentCategory) }, VisibleFields = new List<string>() { nameof(SiteContentCategory) } },
@@ -199,6 +210,8 @@ namespace LagoVista.Campaigns.Models
                     return $"{rootUrl}/public/{orgNameSpace}/productcategories/{ProductCategoryType.Id}/{ProductCategory.Id}/products";
                 case PageLinkTypes.Product:
                     return $"{rootUrl}/public/{orgNameSpace}/product/{Product.Id}";
+                case PageLinkTypes.ProductPage:
+                    return $"{rootUrl}/public/{orgNameSpace}/pp/{ProductPage.Key}";
                 case PageLinkTypes.Survey:
                     return $"{rootUrl}/public/{orgNameSpace}/survey/{Survey.Id}";
                 case PageLinkTypes.ContentDownload:
@@ -225,7 +238,9 @@ namespace LagoVista.Campaigns.Models
                 nameof(ContentDownload),
                 nameof(ProductCategory),
                 nameof(ProductCategoryType),
-                nameof(Product)
+                nameof(ProductPage),
+                nameof(Product),
+                nameof(Survey),
             };
         }
     }
