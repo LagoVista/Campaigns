@@ -315,6 +315,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:PageLink_LinkTypeSelect
 
 		public static string PageLink_LinkTypeSelect { get { return GetResourceString("PageLink_LinkTypeSelect"); } }
+//Resources:CampaignResources:PageLink_OpenInNewTab
+
+		public static string PageLink_OpenInNewTab { get { return GetResourceString("PageLink_OpenInNewTab"); } }
 //Resources:CampaignResources:PageLink_Product
 
 		public static string PageLink_Product { get { return GetResourceString("PageLink_Product"); } }
@@ -369,6 +372,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:PageLink_Type_NuvIoTService
 
 		public static string PageLink_Type_NuvIoTService { get { return GetResourceString("PageLink_Type_NuvIoTService"); } }
+//Resources:CampaignResources:PageLink_Type_OrgWebSite
+
+		public static string PageLink_Type_OrgWebSite { get { return GetResourceString("PageLink_Type_OrgWebSite"); } }
 //Resources:CampaignResources:PageLink_Type_ParentMenu
 
 		public static string PageLink_Type_ParentMenu { get { return GetResourceString("PageLink_Type_ParentMenu"); } }
@@ -393,6 +399,9 @@ namespace LagoVista.Campaigns.Models.Resources
 //Resources:CampaignResources:PageLink_Type_SiteContactPage
 
 		public static string PageLink_Type_SiteContactPage { get { return GetResourceString("PageLink_Type_SiteContactPage"); } }
+//Resources:CampaignResources:PageLink_Type_SocialMediaLinks
+
+		public static string PageLink_Type_SocialMediaLinks { get { return GetResourceString("PageLink_Type_SocialMediaLinks"); } }
 //Resources:CampaignResources:PageLink_Type_Survey
 
 		public static string PageLink_Type_Survey { get { return GetResourceString("PageLink_Type_Survey"); } }
@@ -672,6 +681,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string PageLink_LandingPage = "PageLink_LandingPage";
 			public const string PageLink_LinkType = "PageLink_LinkType";
 			public const string PageLink_LinkTypeSelect = "PageLink_LinkTypeSelect";
+			public const string PageLink_OpenInNewTab = "PageLink_OpenInNewTab";
 			public const string PageLink_Product = "PageLink_Product";
 			public const string PageLink_ProductCategory = "PageLink_ProductCategory";
 			public const string PageLink_ProductPage = "PageLink_ProductPage";
@@ -690,6 +700,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string PageLink_Type_LoginPage = "PageLink_Type_LoginPage";
 			public const string PageLink_Type_LogoutPage = "PageLink_Type_LogoutPage";
 			public const string PageLink_Type_NuvIoTService = "PageLink_Type_NuvIoTService";
+			public const string PageLink_Type_OrgWebSite = "PageLink_Type_OrgWebSite";
 			public const string PageLink_Type_ParentMenu = "PageLink_Type_ParentMenu";
 			public const string PageLink_Type_Product = "PageLink_Type_Product";
 			public const string PageLink_Type_ProductCategory = "PageLink_Type_ProductCategory";
@@ -698,6 +709,7 @@ namespace LagoVista.Campaigns.Models.Resources
 			public const string PageLink_Type_SignedDocument = "PageLink_Type_SignedDocument";
 			public const string PageLink_Type_SiteContactCategory = "PageLink_Type_SiteContactCategory";
 			public const string PageLink_Type_SiteContactPage = "PageLink_Type_SiteContactPage";
+			public const string PageLink_Type_SocialMediaLinks = "PageLink_Type_SocialMediaLinks";
 			public const string PageLink_Type_Survey = "PageLink_Type_Survey";
 			public const string PageLink_Type_TypeProductCatalog = "PageLink_Type_TypeProductCatalog";
 			public const string PageLink_Type_Url = "PageLink_Type_Url";

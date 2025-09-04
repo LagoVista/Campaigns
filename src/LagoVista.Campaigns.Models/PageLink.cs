@@ -54,6 +54,10 @@ namespace LagoVista.Campaigns.Models
         ContentDownload,
         [EnumLabel(PageLink.TypeSignedDocument, CampaignResources.Names.PageLink_Type_SignedDocument, typeof(CampaignResources))]
         SignedDocument,
+        [EnumLabel(PageLink.TypeSocialMediaLinks, CampaignResources.Names.PageLink_Type_SocialMediaLinks, typeof(CampaignResources))]
+        SocialMediaLinks,
+        [EnumLabel(PageLink.OrganizationWebSite, CampaignResources.Names.PageLink_Type_OrgWebSite, typeof(CampaignResources))]
+        OrgWebSite,
     }
 
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.PageLink_Title, CampaignResources.Names.PageLink_Description,
@@ -61,6 +65,8 @@ namespace LagoVista.Campaigns.Models
                    FactoryUrl: "/api/pagelink/factory")]
     public class PageLink : IValidateable, IFormDescriptor, IFormConditionalFields
     {
+        public const string LabelRow = "labelrow";
+
         public const string TypeParentMenu = "parentmenu";
         public const string TypeLink = "link";
         public const string TypeLoginPage = "loginpage";
@@ -81,11 +87,12 @@ namespace LagoVista.Campaigns.Models
         public const string TypeContentDownload = "contentdownload";
         public const string TypeSignedDocument = "signeddocument";
         public const string TypeProduct = "product";
-
+        public const string TypeSocialMediaLinks = "socialmedialinks";
+        public const string OrganizationWebSite = "orgwebsite";
 
         public string Id { get; set; } = Guid.NewGuid().ToId();
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_Label, FieldType: FieldTypes.Text, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.PageLink_Label, ParentRowIndex: 1, ParentRowName: PageLink.LabelRow, FieldType: FieldTypes.Text, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
         public string Label { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.PageLink_LinkType, FieldType: FieldTypes.Picker, EnumType: typeof(PageLinkTypes), WaterMark: CampaignResources.Names.PageLink_LinkTypeSelect, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
@@ -103,7 +110,10 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Glossary { get; set; }
 
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_Type_Link, FieldType: FieldTypes.WebLink, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.Common_Icon, ParentRowIndex: 2, ParentRowName: PageLink.LabelRow,  FieldType: FieldTypes.FontAwesomeIconPicker, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
+        public string Icon { get; set; } = "fa fa-chevron-right";
+
+        [FormField(LabelResource: CampaignResources.Names.PageLink_Type_Link, FieldType: FieldTypes.WebLink, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public string LinkUrl { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.PageLink_LandingPage, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/landingpages", EditorPath: "/contentmanagement/landingpage/{id}", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
@@ -112,8 +122,12 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.PageLink_Type_ContentDownload, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/content/downloads/published", EditorPath: "/contentmanagement/download/{id}", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader ContentDownload { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_ToolTip, FieldType: FieldTypes.Text, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.PageLink_ToolTip, ParentRowIndex:3, ParentRowName: PageLink.LabelRow, FieldType: FieldTypes.Text, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public string ToolTip { get; set; }
+
+
+        [FormField(LabelResource: CampaignResources.Names.PageLink_OpenInNewTab, ParentRowIndex: 4, ParentRowName: PageLink.LabelRow, FieldType: FieldTypes.CheckBox, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        public string OpenInNewTab { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.PageLink_Type_ProductCategoryType, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/product/category/types", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader ProductCategoryType { get; set; }
@@ -168,7 +182,7 @@ namespace LagoVista.Campaigns.Models
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeContactInformationPage },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeContactUsPage },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeSurvey , RequiredFields = new List<string>() {nameof(Survey) }, VisibleFields = new List<string>() {nameof(Survey) } },
-                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeGlossary, RequiredFields = new List<string>() {nameof(Glossary) } },
+                    new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeGlossary, RequiredFields = new List<string>() {nameof(Glossary) }, VisibleFields = new List<string>() {nameof(Glossary) } },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeNuvIoTService },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeSiteContentCategory, RequiredFields = new List<string>() { nameof(SiteContentCategory) }, VisibleFields = new List<string>() { nameof(SiteContentCategory) } },
                     new FormConditional(){ Field = nameof(Type), Value = PageLink.TypeSiteContentPage, RequiredFields = new List<string>() { nameof(SiteContentCategory), nameof(SiteContentPage) }, VisibleFields = new List<string>() { nameof(SiteContentCategory), nameof(SiteContentPage) } },
@@ -227,8 +241,7 @@ namespace LagoVista.Campaigns.Models
         {
             return new List<string>()
             {
-                nameof(Label),
-                nameof(ToolTip),
+                PageLink.LabelRow,
                 nameof(Type),
                 nameof(LinkUrl),
                 nameof(LandingPage),

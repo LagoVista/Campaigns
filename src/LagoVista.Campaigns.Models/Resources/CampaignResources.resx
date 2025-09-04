@@ -639,4 +639,19 @@
   <data name="PageLink_Type_SignedDocument" xml:space="preserve">
     <value>Signed Document</value>
   </data>
+  <data name="PageLink_Type_Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="PageLink_Product" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="PageLink_Type_SocialMediaLinks" xml:space="preserve">
+    <value>Social Media Links</value>
+  </data>
+  <data name="PageLink_Type_OrgWebSite" xml:space="preserve">
+    <value>Organization Web Site</value>
+  </data>
+  <data name="PageLink_OpenInNewTab" xml:space="preserve">
+    <value>Open in New Tab</value>
+  </data>
 </root>
