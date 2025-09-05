@@ -110,7 +110,7 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader Glossary { get; set; }
 
 
-        [FormField(LabelResource: CampaignResources.Names.Common_Icon, ParentRowIndex: 2, ParentRowName: PageLink.LabelRow,  FieldType: FieldTypes.FontAwesomeIconPicker, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.Common_Icon, ParentRowIndex: 2, ParentRowName: PageLink.LabelRow, FieldType: FieldTypes.FontAwesomeIconPicker, IsRequired: true, ResourceType: (typeof(CampaignResources)))]
         public string Icon { get; set; } = "fa fa-chevron-right";
 
         [FormField(LabelResource: CampaignResources.Names.PageLink_Type_Link, FieldType: FieldTypes.WebLink, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
@@ -122,7 +122,7 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.PageLink_Type_ContentDownload, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/content/downloads/published", EditorPath: "/contentmanagement/download/{id}", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader ContentDownload { get; set; }
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_ToolTip, ParentRowIndex:3, ParentRowName: PageLink.LabelRow, FieldType: FieldTypes.Text, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.PageLink_ToolTip, ParentRowIndex: 3, ParentRowName: PageLink.LabelRow, FieldType: FieldTypes.Text, IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public string ToolTip { get; set; }
 
 
@@ -205,7 +205,7 @@ namespace LagoVista.Campaigns.Models
                 case PageLinkTypes.NuvIoTService:
                     return $"{rootUrl}{LinkUrl}";
                 case PageLinkTypes.Link:
-                    return LinkUrl; 
+                    return LinkUrl;
                 case PageLinkTypes.ContactInformationPage:
                     return $"{rootUrl}/public/{orgNameSpace}/about";
                 case PageLinkTypes.ContactUsPage:
@@ -236,6 +236,18 @@ namespace LagoVista.Campaigns.Models
 
         }
 
+        public PageLinkSummary ToPageLinkSummary(string orgNameSpace, string rootUrl)
+        {
+            return new PageLinkSummary()
+            {
+                Label = this.Label,
+                Icon = this.Icon,
+                LinkUrl = this.GetLinkPath(orgNameSpace, rootUrl),
+                OpenInNewTab = this.OpenInNewTab == "true",
+                Children = (this.SubMenus != null) ? this.SubMenus.ConvertAll(pl => pl.ToPageLinkSummary(orgNameSpace, rootUrl)) : new List<PageLinkSummary>()
+            };
+        }
+
 
         public List<string> GetFormFields()
         {
@@ -258,4 +270,13 @@ namespace LagoVista.Campaigns.Models
         }
     }
 
+    public class PageLinkSummary
+    {
+        public string Label { get; set; }
+        public bool OpenInNewTab { get; set; }
+        public string Icon { get; set; }
+        public string LinkUrl { get; set; }
+        public List<PageLinkSummary> Children { get; set; }
+
+    }
 }
