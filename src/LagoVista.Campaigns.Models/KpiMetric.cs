@@ -33,8 +33,9 @@ namespace LagoVista.Campaigns.Models
         public static readonly EntityHeader ContactPageView = EntityHeader.Create("1A84863CF9654F009E6463C87B46D5D9", "contactpageview", "Contact Page View");
         public static readonly EntityHeader ContactPageSubmitted = EntityHeader.Create("2A84863CF9654F009E6463C87B46D5D8", "contactpagesubmitted", "Contact Us Submitted");
         public static readonly EntityHeader LandingPageView = EntityHeader.Create("3A84863CF9654F009E6463C87B46D5D7", "landingpageview", "Landing Page View");
+        public static readonly EntityHeader ProductPageView = EntityHeader.Create("6E7980E268974883A6397C296458795B", "prodcutpageview", "Product Page View");
 
-        
+
         public static readonly EntityHeader HotLeads = EntityHeader.Create("137942FCBCFB4BC6A876C31E2843E5FF", "hotlead", "Hot Lead");
         public static readonly EntityHeader LeadsEngaged = EntityHeader.Create("237942FCBCFB4BC6A876C31E2843E5FE", "engagedlead", "Lead Engaged");
         public static readonly EntityHeader ProposalsCreatedAndSubmitted = EntityHeader.Create("437942FCBCFB4BC6A876C31E2843E5FC", "proposalscreated", "Proposals Created and Submitted");

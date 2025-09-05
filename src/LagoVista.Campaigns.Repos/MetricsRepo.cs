@@ -135,6 +135,20 @@ insert into metrics_definition(id, key, name,
 
 insert into metrics_definition(id, key, name,
                         summary, help, description,
+                        icon, categoryId, categoryKey, categoryName,   
+                        attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
+                        attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
+						attr7name, attr7key, readonly) 
+                values('6E7980E268974883A6397C296458795B', 'productpageview', 'Product Page View', 
+                       'Product Page View', 'Number of times a product page has been viewed','',
+                        'icon-pz-stock-1','30C28365B52A428BB8C32D38C690732A', 'marketing', 'Marketing',
+                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
+                        'Campaign', 'campaign', 'Promotion', 'promotion', 'Template', 'template', 
+						'Product Page', 'productpage', true);
+
+
+insert into metrics_definition(id, key, name,
+                        summary, help, description,
                         icon, categoryId, categoryKey, categoryName,
                         attr1name, attr1key, attr2name, attr2key, attr3name, attr3key, 
                         attr4name, attr4key, attr5name, attr5key, attr6name, attr6key, 
@@ -239,7 +253,8 @@ insert into metrics_definition(id, key, name,
                        'Customer Agreements Created and Submitted', 'Total number of proposals that have been created and sent out to a a customer','',
                        'icon-pz-stock-1','40C28365B52C4288B8C32D38C690732B', 'sales', 'Sales',                                                                                                                          
                        'Industry', 'industry', 'Industry Niche', 'industryniche', 'Sales Stage', 'salestage',
-						true);";					
+						true);
+";					
 
         /*
         Additional ones to add
