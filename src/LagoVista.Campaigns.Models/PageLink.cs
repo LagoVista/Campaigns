@@ -5,10 +5,8 @@ using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
-using NLog.Layouts;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 
 namespace LagoVista.Campaigns.Models
 {

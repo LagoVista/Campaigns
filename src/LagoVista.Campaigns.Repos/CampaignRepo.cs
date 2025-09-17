@@ -52,7 +52,7 @@ namespace LagoVista.Campaigns.Repos
 
         public async Task<Campaign> GetCampaignByKeyAsync(string orgId, string key)
         {
-            return (await QueryAsync(cmp => cmp.Key == key && cmp.OwnerOrganization.Id == orgId)).FirstOrDefault();
+            return (await QueryAsync(cmp => cmp.Key == key && cmp.OwnerOrganization.Id == orgId)).Single();
         }
 
         public Task<IEnumerable<Campaign>> GetActiveCampaignsByIndustryAsync(string orgId, string industryId)

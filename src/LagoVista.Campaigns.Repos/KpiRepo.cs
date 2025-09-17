@@ -38,7 +38,7 @@ namespace LagoVista.Campaigns.Repos
 
         public async Task<Kpi> GetKpiByKeyAscyn(string orgId, string key)
         {
-            return (await QueryAsync(cmp => cmp.Key == key && cmp.OwnerOrganization.Id == orgId)).FirstOrDefault();
+            return (await QueryAsync(cmp => cmp.Key == key && cmp.OwnerOrganization.Id == orgId)).Single();
         }
 
         public Task<ListResponse<KpiSummary>> GetKpisAsync(ListRequest request, string orgId)
