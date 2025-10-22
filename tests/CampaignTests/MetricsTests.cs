@@ -1,3 +1,7 @@
+// --- BEGIN CODE INDEX META (do not edit) ---
+// ContentHash: 7e09f48cd1937736dffb571ed0cebe0e861a5eb072aa7853eaf79e2447ddb4ab
+// IndexVersion: 0
+// --- END CODE INDEX META ---
 using LagoVista.Campaigns.Repos;
 using LagoVista.Core;
 using LagoVista.IoT.Logging.Loggers;
