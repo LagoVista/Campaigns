@@ -2,30 +2,30 @@
 <package>
   <metadata>
     <id>LagoVista.Campaigns.Rest</id>
-    <version>3.0.1963.1145</version>
+    <version>3.0.3097.0925</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://www.nuviot.com</projectUrl>
     <iconUrl>http://bytemaster.blob.core.windows.net/icons/LagoVistaIcon.png</iconUrl>
     <description>Provides web services to store data for campaigns and promotions.</description>
-    <copyright>Copyright Software Logistics - 2022</copyright>
+    <copyright>Copyright Software Logistics - 2025</copyright>
     <tags>LagoVista Campaigns</tags>
     <icon>LagoVistaIcon.png</icon>
-    <releaseNotes>Build Date: 10/1/2022 3:45:22 PM UTC</releaseNotes>
+    <releaseNotes>Build Date: 11/8/2025 2:25:52 PM UTC</releaseNotes>
     <repository url="https://www.github.com/lagovista" type="git" branch="master"></repository>
     <dependencies>
-      <group targetFramework="net6.0">
-        <dependency id="LagoVista.IoT.Web.Common" version="3.0.1963.1145" />
-        <dependency id="LagoVista.UserAdmin" version="3.0.1963.1145" />
-        <dependency id="LagoVista.Campaigns.Models" version="3.0.1963.1145" />
-        <dependency id="LagoVista.Campaigns" version="3.0.1963.1145" />
+      <group targetFramework="net9.0">
+        <dependency id="LagoVista.IoT.Web.Common" version="3.0.3097.0925" />
+        <dependency id="LagoVista.UserAdmin" version="3.0.3097.0925" />
+        <dependency id="LagoVista.Campaigns.Models" version="3.0.3097.0925" />
+        <dependency id="LagoVista.Campaigns" version="3.0.3097.0925" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <file src="LagoVistaIcon.png" target="LagoVistaIcon.png" />
-    <file src="bin\release\net6.0\LagoVista.Campaigns.Rest.dll" target="lib\net6.0\LagoVista.Campaigns.Rest.dll" />
-    <file src="bin\release\net6.0\LagoVista.Campaigns.Rest.pdb" target="lib\net6.0\LagoVista.Campaigns.Rest.pdb" />
+    <file src="bin\release\net9.0\LagoVista.Campaigns.Rest.dll" target="lib\net9.0\LagoVista.Campaigns.Rest.dll" />
+    <file src="bin\release\net9.0\LagoVista.Campaigns.Rest.pdb" target="lib\net9.0\LagoVista.Campaigns.Rest.pdb" />
   </files>
 </package>

@@ -1,6 +1,6 @@
 // --- BEGIN CODE INDEX META (do not edit) ---
 // ContentHash: 5bde2919e0241942174aa71be36c29b572ba018c3865ba17bde3d48dece78b1c
-// IndexVersion: 0
+// IndexVersion: 2
 // --- END CODE INDEX META ---
 using LagoVista.Campaigns.Interfaces;
 using LagoVista.Campaigns.Models;
