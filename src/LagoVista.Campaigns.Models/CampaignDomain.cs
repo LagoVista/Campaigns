@@ -14,7 +14,6 @@ namespace LagoVista.Campaigns.Models
     public class CampaignDomain
     {
         public const string CampaignAdmin = "Campaigns";
-
         [DomainDescription(CampaignAdmin)]
         public static DomainDescription DeploymentAdminDescription
         {
@@ -22,7 +21,7 @@ namespace LagoVista.Campaigns.Models
             {
                 return new DomainDescription()
                 {
-                    Description = "Campaing Module is used to track goals.",
+                    Description = "Manage campaigns and related metrics to track progress toward business goals.",
                     DomainType = DomainDescription.DomainTypes.BusinessObject,
                     Name = "Campaign",
                     CurrentVersion = new Core.Models.VersionInfo()

@@ -124,7 +124,7 @@
     <value>The Budget Allocated amount is the total budget amount that is available for all the promotions</value>
   </data>
   <data name="Campaign_Description" xml:space="preserve">
-    <value>A campaign is an effort to promote something that will help grow an initiative for our company.</value>
+    <value>Create and manage campaigns to organize and track efforts that promote and grow a company initiative.</value>
   </data>
   <data name="Campaign_EndDate" xml:space="preserve">
     <value>End Date</value>
@@ -208,7 +208,7 @@
     <value>Attribute 3</value>
   </data>
   <data name="Kpi_Description" xml:space="preserve">
-    <value>A KPI (Key Performance Indicator) is a measurable value that shows how effectively a company is achieving key business objectives.</value>
+    <value>Track and evaluate progress toward specific business goals using KPIs. Each KPI is a measurable value that indicates how effectively objectives are being achieved.</value>
   </data>
   <data name="Kpi_Metric" xml:space="preserve">
     <value>Metric</value>
@@ -265,16 +265,16 @@
     <value>Attribute 4 Name</value>
   </data>
   <data name="MetricsDefinitions_TItle" xml:space="preserve">
-    <value>Metrics Definitions</value>
+    <value>Metric Definitions</value>
   </data>
   <data name="MetricDefinition_Attr4Key" xml:space="preserve">
     <value>Attribute 4 Key</value>
   </data>
   <data name="MetricsDefinition_Description" xml:space="preserve">
-    <value>A Metric Definition defines a measurement point of a behavior or action that is being tracked.</value>
+    <value>Use metric definitions to specify which behaviors or actions should be measured and tracked.</value>
   </data>
   <data name="MetricsDefinition_Title" xml:space="preserve">
-    <value>Metrics Definition</value>
+    <value>Metric Definition</value>
   </data>
   <data name="Post_Account" xml:space="preserve">
     <value>Social Media Account</value>
@@ -304,7 +304,7 @@
     <value>Daily Goal</value>
   </data>
   <data name="Promotion_Description" xml:space="preserve">
-    <value>A promotion is a specific tactical initiative that will help support campaign</value>
+    <value>Create and manage promotions as focused initiatives within a broader campaign, including their goals, budget, channels, and related assets.</value>
   </data>
   <data name="Promotion_EmailList" xml:space="preserve">
     <value>Email List</value>
@@ -391,7 +391,7 @@
     <value>Web Advertisement</value>
   </data>
   <data name="SocialMediaPost_Description" xml:space="preserve">
-    <value>A Social Media Post is a content to be presented on Social Media to drive users to the Softwar Logistics web site.</value>
+    <value>Create and manage social media posts that link to the Softwar Logistics website. You can optionally associate each post with related site content.</value>
   </data>
   <data name="SocialMediaPost_Title" xml:space="preserve">
     <value>Social Media Post</value>
@@ -523,7 +523,7 @@
     <value>Page Link</value>
   </data>
   <data name="PageLink_Description" xml:space="preserve">
-    <value>A page link is a link somewhere on NuvIoT that can be added to an email template or landing page.</value>
+    <value>Use page links to define reusable links in NuvIoT. After a page link is created, reference it from email templates, landing pages, and other site content so updates only need to be made in one place.</value>
   </data>
   <data name="PageLink_Type_Url" xml:space="preserve">
     <value>Url</value>
@@ -598,7 +598,7 @@
     <value>Recipient</value>
   </data>
   <data name="Recipient_Description" xml:space="preserve">
-    <value>A recipient is someone that will receive an email or text message.</value>
+    <value>Enter details for the person who will receive the email or text message.</value>
   </data>
   <data name="Recipient_Contact" xml:space="preserve">
     <value>Contact</value>
@@ -625,7 +625,7 @@
     <value>Attachment</value>
   </data>
   <data name="EmailAttachment_Description" xml:space="preserve">
-    <value>Attachments are files that can be sent out with an email</value>
+    <value>Upload a file to include it as an attachment to this email.</value>
   </data>
   <data name="PageLink_Type_ContentDownload" xml:space="preserve">
     <value>Content Download</value>
