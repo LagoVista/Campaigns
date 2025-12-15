@@ -205,7 +205,7 @@ namespace LagoVista.Campaigns.Models
                 case PageLinkTypes.ParentMenu:
                     throw new InvalidOperationException("Should not call get link for Parent Menu");
                 case PageLinkTypes.NuvIoTService:
-                    return $"{rootUrl}{LinkUrl}";
+                    return $"https://www.nuviot.com/{LinkUrl}";
                 case PageLinkTypes.Link:
                     return LinkUrl;
                 case PageLinkTypes.ContactInformationPage:
