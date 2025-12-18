@@ -108,7 +108,7 @@ namespace LagoVista.Campaigns.Models
         public EntityHeader SiteContentPage { get; set; }
 
 
-        [FormField(LabelResource: CampaignResources.Names.PageLink_SiteContentCategory, FieldType: FieldTypes.Text, EntityHeaderPickerUrl: "/api/categories/sitecontent", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
+        [FormField(LabelResource: CampaignResources.Names.PageLink_Type_GlossaryPage, FieldType: FieldTypes.EntityHeaderPicker, EntityHeaderPickerUrl: "/api/glossaries", IsRequired: false, ResourceType: (typeof(CampaignResources)))]
         public EntityHeader Glossary { get; set; }
 
 
@@ -203,7 +203,7 @@ namespace LagoVista.Campaigns.Models
                 case PageLinkTypes.LoginPage:
                     return $"{rootUrl}/auth/welcome";
                 case PageLinkTypes.ParentMenu:
-                    throw new InvalidOperationException("Should not call get link for Parent Menu");
+                    return String.Empty;
                 case PageLinkTypes.NuvIoTService:
                     return $"https://www.nuviot.com/{LinkUrl}";
                 case PageLinkTypes.Link:
@@ -211,15 +211,15 @@ namespace LagoVista.Campaigns.Models
                 case PageLinkTypes.ContactInformationPage:
                     return $"{rootUrl}/public/{orgNameSpace}/about";
                 case PageLinkTypes.ContactUsPage:
-                    return $"{rootUrl}/public/{orgNameSpace}contactus";
+                    return $"{rootUrl}/public/{orgNameSpace}/contactus";
                 case PageLinkTypes.SiteContentPage:
                     return $"{rootUrl}/public/{orgNameSpace}/{SiteContentCategory.Key}/{SiteContentPage.Key}";
                 case PageLinkTypes.SiteContentCategory:
                     return $"{rootUrl}/public/{orgNameSpace}/{SiteContentCategory.Key}";
                 case PageLinkTypes.Faq:
-                    return $"{rootUrl}/public/{orgNameSpace}/faq";
+                    return $"{rootUrl}/public/{orgNameSpace}/faqs";
                 case PageLinkTypes.Glossary:
-                    return $"{rootUrl}/public/{orgNameSpace}/glossaries";
+                    return $"{rootUrl}/public/{orgNameSpace}/glossary/{Glossary.Key}";
                 case PageLinkTypes.ProductCategoryType:
                     return $"{rootUrl}/public/{orgNameSpace}/productcategories/{ProductCategoryType.Id}";
                 case PageLinkTypes.ProductCategory:
