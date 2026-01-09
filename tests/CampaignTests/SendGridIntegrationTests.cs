@@ -23,7 +23,7 @@ namespace CampaignTests
         [SetUp]
         public void Setup()
         {
-            _emailSender = new SendGridEmailService(new IdentitySettings(), new Mock<IOrganizationRepo>().Object, new Moq.Mock<IAppUserRepo>().Object, new Moq.Mock<IBackgroundServiceTaskQueue>().Object, new Moq.Mock<IAppConfig>().Object,  new Moq.Mock<IAdminLogger>().Object);
+            _emailSender = new SendGridEmailService(new IdentitySettings(), new Mock<IOrganizationLoaderRepo>().Object, new Moq.Mock<IAppUserLoaderRepo>().Object, new Moq.Mock<IBackgroundServiceTaskQueue>().Object, new Moq.Mock<IAppConfig>().Object,  new Moq.Mock<IAdminLogger>().Object);
         }
 
         public class IdentitySettings : ILagoVistaAspNetCoreIdentityProviderSettings
