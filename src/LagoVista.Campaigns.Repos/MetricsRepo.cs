@@ -355,14 +355,14 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
 
                 sql += "and time between @start and @end ";
                 
-                var start = new DateTime(listRequest.StartDate.ToDateTime().Year,
-                    listRequest.StartDate.ToDateTime().Month,
-                    listRequest.StartDate.ToDateTime().Day,0,0,0,
+                var start = new DateTime(listRequest.StartDate.Value.ToDateTime().Year,
+                    listRequest.StartDate.Value.ToDateTime().Month,
+                    listRequest.StartDate.Value.ToDateTime().Day,0,0,0,
                      kind: DateTimeKind.Utc);
 
-                var end = new DateTime(listRequest.EndDate.ToDateTime().Year,
-                    listRequest.EndDate.ToDateTime().Month,
-                    listRequest.EndDate.ToDateTime().Day, 0, 0, 0,
+                var end = new DateTime(listRequest.EndDate.Value.ToDateTime().Year,
+                    listRequest.EndDate.Value.ToDateTime().Month,
+                    listRequest.EndDate.Value.ToDateTime().Day, 0, 0, 0,
                      kind: DateTimeKind.Utc);
 
 

@@ -44,14 +44,14 @@ namespace LagoVista.Campaigns.Models
             PromotionType = EntityHeader<PromotionTypes>.Create(PromotionTypes.Other);
         }
 
-        public String Id { get; set; } 
+        public NormalizedId32 Id { get; set; } 
 
         [ListColumn(HeaderResource: CampaignResources.Names.Common_Name, ResourceType: typeof(CampaignResources))]
         [FormField(LabelResource: CampaignResources.Names.Common_Name, FieldType: FieldTypes.Text, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string Name { get; set; }
 
         [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
-        public string Icon { get; set; }
+        public LagoVistaIcon Icon { get; set; }
 
 
         [FormField(LabelResource: CampaignResources.Names.Promotion_IndustryNiche, IsRequired: false, FieldType: FieldTypes.Picker, EntityHeaderPickerUrl: "/api/industry/{parent.industry.id}/niches", ResourceType: typeof(CampaignResources))]

@@ -27,10 +27,6 @@ namespace LagoVista.Campaigns.Models
         [FormField(LabelResource: CampaignResources.Names.Campaign_Promotions, FieldType: FieldTypes.ChildListInline, ResourceType: typeof(CampaignResources),  IsUserEditable: true)]
         public List<Promotion> Promotions { get; set; } = new List<Promotion>();
 
-
-        [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
-        public string Icon { get; set; }
-
         [FormField(LabelResource: CampaignResources.Names.Campaign_StartDate, FieldType: FieldTypes.Date, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
         public string StartDate { get; set; }
 

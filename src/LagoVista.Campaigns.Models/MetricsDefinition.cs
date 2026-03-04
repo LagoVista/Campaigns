@@ -33,7 +33,7 @@ namespace LagoVista.Campaigns.Models
         [CloneOptions(false)]
         [FormField(LabelResource: LagoVistaCommonStrings.Names.Common_Key, HelpResource: LagoVistaCommonStrings.Names.Common_Key_Help, FieldType: FieldTypes.Key,
             RegExValidationMessageResource: LagoVistaCommonStrings.Names.Common_Key_Validation, ResourceType: typeof(LagoVistaCommonStrings), IsRequired: true)]
-        public virtual string Key { get; set; }
+        public virtual LagoVistaKey Key { get; set; }
 
         [FormField(LabelResource: LagoVistaCommonStrings.Names.Common_Category, FieldType: FieldTypes.Category, WaterMark: LagoVistaCommonStrings.Names.Common_Category_Select, ResourceType: typeof(LagoVistaCommonStrings), IsRequired: false, IsUserEditable: true)]
         public EntityHeader Category { get; set; }
@@ -41,7 +41,7 @@ namespace LagoVista.Campaigns.Models
         public bool IsReadOnly { get; set; }
 
 
-        public string Id { get; set; }
+        public NormalizedId32 Id { get; set; }
 
         [FormField(LabelResource: LagoVistaCommonStrings.Names.Common_Summary, IsRequired: true, FieldType: FieldTypes.Text, ResourceType: typeof(LagoVistaCommonStrings))]
         public string Summary { get; set; }
@@ -92,7 +92,7 @@ namespace LagoVista.Campaigns.Models
 
 
         [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
-        public string Icon { get; set; }
+        public LagoVistaIcon Icon { get; set; }
     
         public MetricsDefinitionSummary CreateSummary()
         {

@@ -21,8 +21,5 @@ namespace LagoVista.Campaigns.Models
         {
             Id = Guid.NewGuid().ToId();
         }
-
-        [FormField(LabelResource: CampaignResources.Names.Common_Description, IsRequired: false, FieldType: FieldTypes.MultiLineText, ResourceType: typeof(CampaignResources))]
-        public string Description { get; set; }
     }
 }

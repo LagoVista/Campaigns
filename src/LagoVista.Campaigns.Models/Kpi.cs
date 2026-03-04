@@ -141,10 +141,6 @@ namespace LagoVista.Campaigns.Models
                 nameof(Attr8),
             };
         }
-
-        [FormField(LabelResource: CampaignResources.Names.Common_Icon, FieldType: FieldTypes.Icon, ResourceType: typeof(CampaignResources), IsRequired: true, IsUserEditable: true)]
-        public string Icon { get; set; }
-
     }
 
     [EntityDescription(CampaignDomain.CampaignAdmin, CampaignResources.Names.Kpis_Title, CampaignResources.Names.Kpi_Description,
