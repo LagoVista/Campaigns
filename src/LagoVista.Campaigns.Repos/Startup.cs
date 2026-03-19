@@ -3,8 +3,11 @@
 // IndexVersion: 2
 // --- END CODE INDEX META ---
 using LagoVista.Campaigns.Interfaces;
-using LagoVista.Core.Interfaces;
+using LagoVista.Campaigns.Models;
+using LagoVista.IoT.Logging.Loggers;
 using LagoVista.Kpis.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System.Resources;
 
 [assembly: NeutralResourcesLanguage("en")]
@@ -19,6 +22,19 @@ namespace LagoVista.Campaigns.Repos
             services.AddTransient<IMetricsRepo, MetricsRepo>();
             services.AddTransient<IMetricsDefinitionRepo, MetricsRepo>();
             services.AddTransient<ISocialMediaAccountRepo, SocialMediaAccountRepo>();
+        }
+    }
+}
+
+namespace LagoVista.DependencyInjection
+{
+    public static class CampaignsModule
+    {
+        public static void AddCampaignsModule(this IServiceCollection services, IConfigurationRoot configRoot, IAdminLogger logger)
+        {
+            LagoVista.Campaigns.Repos.Startup.ConfigureServices(services);
+            LagoVista.Campaigns.Startup.ConfigureServices(configRoot, services, logger);
+            services.AddMetaDataHelper<Campaign>();
         }
     }
 }

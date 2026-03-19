@@ -1,15 +1,11 @@
-// --- BEGIN CODE INDEX META (do not edit) ---
-// ContentHash: 55df9cd45e168931ac506f2efebd72890ef7b3807d28cf849e9c347670100904
-// IndexVersion: 2
-// --- END CODE INDEX META ---
 using LagoVista.Campaigns.Interfaces;
-using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.IoT.Logging.Exceptions;
 using LagoVista.Kpis;
 using LagoVista.Kpis.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Resources;
 
@@ -50,6 +46,6 @@ namespace LagoVista.Campaigns
             };
         }
 
-        public IConnectionSettings MetricsStorageDBConenction { get; }
+        public LagoVista.Core.Interfaces.IConnectionSettings MetricsStorageDBConenction { get; }
     }
 }

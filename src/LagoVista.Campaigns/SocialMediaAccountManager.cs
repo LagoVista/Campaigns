@@ -65,7 +65,7 @@ namespace LagoVista.Campaigns
         {
             ValidationCheck(account, Actions.Create);
             account.LastUpdatedBy = user;
-            account.LastUpdatedDate = DateTime.UtcNow.ToJSONString();
+            account.LastUpdatedDate = UtcTimestamp.Now;
 
             if(!String.IsNullOrEmpty(account.AccountSecret))
             {
