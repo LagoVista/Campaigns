@@ -21,8 +21,8 @@ namespace LagoVista.Campaigns
     {
         private readonly ICampaignRepo _repo;
 
-        public CampaignManager(ICampaignRepo campaignRepo, ILogger logger, IAppConfig appConfig, IDependencyManager dependencyManager, ISecurity security) :
-            base(logger, appConfig, dependencyManager, security)
+        public CampaignManager(ICampaignRepo campaignRepo, ICoreAppServices coreAppServices) :
+            base(coreAppServices)
         {
             _repo = campaignRepo ?? throw new ArgumentNullException(nameof(campaignRepo));
         }

@@ -11,8 +11,6 @@ namespace LagoVista.Campaigns
         IConnectionSettings CampaignDocDbStorage { get; }
 
         IConnectionSettings CampaignTableStorage { get; }
-
-        bool ShouldConsolidateCollections { get; }
     }
 
     public interface IMetricStorageConnectionSettings

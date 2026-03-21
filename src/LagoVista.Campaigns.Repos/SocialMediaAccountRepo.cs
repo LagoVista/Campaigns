@@ -15,16 +15,10 @@ namespace LagoVista.Campaigns.Repos
 {
     public class SocialMediaAccountRepo : DocumentDBRepoBase<SocialMediaAccount>, ISocialMediaAccountRepo
     {
-        private bool _shouldConsolidateCollections;
-
         public SocialMediaAccountRepo(ICampaignConnectionSettings repoSettings, IAdminLogger logger, ICacheProvider cacheProvider)
             : base(repoSettings.CampaignDocDbStorage.Uri, repoSettings.CampaignDocDbStorage.AccessKey, repoSettings.CampaignDocDbStorage.ResourceName, logger, cacheProvider)
         {
-            this._shouldConsolidateCollections = repoSettings.ShouldConsolidateCollections;
         }
-
-        protected override bool ShouldConsolidateCollections => _shouldConsolidateCollections;
-
 
         public Task AddAccountAsync(SocialMediaAccount account)
         {

@@ -15,15 +15,10 @@ namespace LagoVista.Campaigns.Repos
 {
     public class KpiRepo : DocumentDBRepoBase<Kpi>, IKpiRepo
     {
-        private bool _shouldConsolidateCollections;
-
         public KpiRepo(ICampaignConnectionSettings repoSettings, IAdminLogger logger, ICacheProvider cacheProvider)
-    : base(repoSettings.CampaignDocDbStorage.Uri, repoSettings.CampaignDocDbStorage.AccessKey, repoSettings.CampaignDocDbStorage.ResourceName, logger, cacheProvider)
+   : base(repoSettings.CampaignDocDbStorage.Uri, repoSettings.CampaignDocDbStorage.AccessKey, repoSettings.CampaignDocDbStorage.ResourceName, logger, cacheProvider)
         {
-            this._shouldConsolidateCollections = repoSettings.ShouldConsolidateCollections;
         }
-
-        protected override bool ShouldConsolidateCollections => _shouldConsolidateCollections;
 
         public Task AddKpiAsync(Kpi kpi)
         {
