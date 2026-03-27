@@ -6,16 +6,16 @@ using Microsoft.Extensions.Configuration;
 
 public class MetricStorageConnectionSettings : IMetricStorageConnectionSettings
 {
-    public MetricStorageConnectionSettings(IConfigurationRoot configurationRoot)
+    public MetricStorageConnectionSettings(IConfiguration configurationRoot)
     {
-        var billingDbSection = configurationRoot.GetRequiredSection("MetricsStorage");
+        var metricsSection = configurationRoot.GetRequiredSection("MetricsDB");
 
         MetricsStorageDBConenction = new ConnectionSettings()
         {
-            Uri = billingDbSection.Require("ServerURL"),
-            ResourceName = billingDbSection.Require("InitialCatalog"),
-            UserName = billingDbSection.Require("UserName"),
-            Password = billingDbSection.Require("Password"),
+            Uri = metricsSection.Require("ServerURL"),
+            ResourceName = metricsSection.Require("InitialCatalog"),
+            UserName = metricsSection.Require("UserName"),
+            Password = metricsSection.Require("Password"),
         };
     }
 
