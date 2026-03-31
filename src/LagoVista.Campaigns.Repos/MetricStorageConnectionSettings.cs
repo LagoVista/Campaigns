@@ -8,7 +8,7 @@ public class MetricStorageConnectionSettings : IMetricStorageConnectionSettings
 {
     public MetricStorageConnectionSettings(IConfiguration configurationRoot)
     {
-        var metricsSection = configurationRoot.GetRequiredSection("MetricsDB");
+        var metricsSection = configurationRoot.GetSection("MetricsDB");
 
         MetricsStorageDBConenction = new ConnectionSettings()
         {
