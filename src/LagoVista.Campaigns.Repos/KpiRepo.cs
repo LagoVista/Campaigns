@@ -4,6 +4,7 @@
 // --- END CODE INDEX META ---
 using LagoVista.Campaigns.Models;
 using LagoVista.CloudStorage.DocumentDB;
+using LagoVista.CloudStorage.Interfaces;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.Logging.Loggers;
@@ -15,8 +16,7 @@ namespace LagoVista.Campaigns.Repos
 {
     public class KpiRepo : DocumentDBRepoBase<Kpi>, IKpiRepo
     {
-        public KpiRepo(ICampaignConnectionSettings repoSettings, IAdminLogger logger, ICacheProvider cacheProvider)
-   : base(repoSettings.CampaignDocDbStorage.Uri, repoSettings.CampaignDocDbStorage.AccessKey, repoSettings.CampaignDocDbStorage.ResourceName, logger, cacheProvider)
+        public KpiRepo(IDocumentCloudCachedServices services) : base(services)
         {
         }
 

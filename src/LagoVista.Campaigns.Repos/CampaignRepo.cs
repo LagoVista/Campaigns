@@ -4,6 +4,7 @@
 // --- END CODE INDEX META ---
 using LagoVista.Campaigns.Models;
 using LagoVista.CloudStorage.DocumentDB;
+using LagoVista.CloudStorage.Interfaces;
 using LagoVista.Core;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models.UIMetaData;
@@ -17,8 +18,7 @@ namespace LagoVista.Campaigns.Repos
 {
     public class CampaignRepo : DocumentDBRepoBase<Campaign>, ICampaignRepo
     {
-        public CampaignRepo(ICampaignConnectionSettings repoSettings, IAdminLogger logger, ICacheProvider cacheProvider)
-            : base(repoSettings.CampaignDocDbStorage.Uri, repoSettings.CampaignDocDbStorage.AccessKey, repoSettings.CampaignDocDbStorage.ResourceName, logger, cacheProvider)
+        public CampaignRepo(IDocumentCloudCachedServices services) : base(services)
         {
         }
 
