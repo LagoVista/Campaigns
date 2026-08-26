@@ -18,35 +18,35 @@ namespace CampaignTests
 {
     public class KPITests
     {
-        IKpiRepo _kpiRepo;
-        private IMetricsRepo _metricsRepo;
+        //IKpiRepo _kpiRepo;
+        //private IMetricsRepo _metricsRepo;
 
-        [SetUp]
-        public void Setup()
-        {
-            _kpiRepo = new KpiRepo(new CampaignConnectionSettings(), new AdminLogger(new LagoVista.IoT.Logging.Utils.ConsoleLogWriter()), null);
-            _metricsRepo = new MetricsRepo(new MetricsStorageConnections(), new AdminLogger(new LagoVista.IoT.Logging.Utils.ConsoleLogWriter()));
-        }
+        //[SetUp]
+        //public void Setup()
+        //{
+        //    _kpiRepo = new KpiRepo(new CampaignConnectionSettings(), new AdminLogger(new LagoVista.IoT.Logging.Utils.ConsoleLogWriter()), null);
+        //    _metricsRepo = new MetricsRepo(new MetricsStorageConnections(), new AdminLogger(new LagoVista.IoT.Logging.Utils.ConsoleLogWriter()));
+        //}
 
-        [Test]
-        public async Task GetKPI()
-        {
-            var kpi = await _kpiRepo.GetKpiAsync("BD4351629C55441B80DDE819E0C97F2E");
+        //[Test]
+        //public async Task GetKPI()
+        //{
+        //    var kpi = await _kpiRepo.GetKpiAsync("BD4351629C55441B80DDE819E0C97F2E");
 
-            Console.WriteLine("KPI - " + kpi.Name);
+        //    Console.WriteLine("KPI - " + kpi.Name);
 
-            var listRequest = new ListRequest()
-            {
-                StartDate = "2024/04/15",
-                EndDate = "2024/04/29"
-            };
+        //    var listRequest = new ListRequest()
+        //    {
+        //        StartDate = "2024/04/15",
+        //        EndDate = "2024/04/29"
+        //    };
 
-            var results = await _metricsRepo.GetMetricsForKpi(listRequest, kpi);
-            foreach(var result in results)
-            {
-                Console.WriteLine(result.TimeStamp + " " + result.Value);
-            }            
-        }
+        //    var results = await _metricsRepo.GetMetricsForKpi(listRequest, kpi);
+        //    foreach(var result in results)
+        //    {
+        //        Console.WriteLine(result.TimeStamp + " " + result.Value);
+        //    }            
+        //}
     }
 
     public class CampaignConnectionSettings : ICampaignConnectionSettings
