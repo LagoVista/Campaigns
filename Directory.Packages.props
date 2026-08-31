@@ -11,6 +11,6 @@
     <PackageVersion Include="LagoVista.IoT.Logging" Version="6.0.3" />
     <PackageVersion Include="LagoVista.IoT.Web.Common" Version="6.0.1" />
     <PackageVersion Include="LagoVista.UserAdmin" Version="6.0.1" />
-    <PackageVersion Include="Npgsql" Version="8.0.5" />
+    <PackageVersion Include="Npgsql" Version="9.0.3" />
   </ItemGroup>
 </Project>
