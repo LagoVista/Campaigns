@@ -6,12 +6,11 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.IoT.Web.Common" Version="3.0.3230.1347" />
-    <PackageReference Include="LagoVista.UserAdmin" Version="3.0.3230.1347" />
+    <PackageReference Include="LagoVista.IoT.Web.Common" />
+    <PackageReference Include="LagoVista.UserAdmin" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Campaigns.Models\LagoVista.Campaigns.Models.csproj" />
     <ProjectReference Include="..\LagoVista.Campaigns\LagoVista.Campaigns.csproj" />
   </ItemGroup>
-  
-  </Project>
+</Project>

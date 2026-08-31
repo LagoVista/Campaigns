@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
     <id>LagoVista.Campaigns.Repos</id>
-    <version>3.0.3230.1347</version>
+    <version>6.0.0</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -16,17 +16,17 @@
     <repository url="https://www.github.com/lagovista" type="git" branch="master"></repository>
     <dependencies>
       <group targetFramework="net9.0">
-        <dependency id="LagoVista.Core.Configuration" version="3.0.3230.1347" />
-        <dependency id="LagoVista.CloudStorage" version="3.0.3230.1347" />
-        <dependency id="Npgsql" version="9.0.3" />
-        <dependency id="LagoVista.Campaigns.Models" version="3.0.3230.1347" />
-        <dependency id="LagoVista.Campaigns" version="3.0.3230.1347" />
+        <dependency id="LagoVista.Campaigns" version="6.0.0" />
+        <dependency id="LagoVista.Campaigns.Models" version="6.0.0" />
+        <dependency id="LagoVista.CloudStorage" version="6.0.1" />
+        <dependency id="LagoVista.Core.Configuration" version="6.0.10" />
+        <dependency id="Npgsql" version="8.0.5" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <file src="LagoVistaIcon.png" target="LagoVistaIcon.png" />
-    <file src="bin\release\net9.0\LagoVista.Campaigns.Repos.dll" target="lib\net9.0\LagoVista.Campaigns.Repos.dll" />
-    <file src="bin\release\net9.0\LagoVista.Campaigns.Repos.pdb" target="lib\net9.0\LagoVista.Campaigns.Repos.pdb" />
+    <file src="bin/Release/net9.0/LagoVista.Campaigns.Repos.dll" target="lib/net9.0/LagoVista.Campaigns.Repos.dll" />
+    <file src="bin/Release/net9.0/LagoVista.Campaigns.Repos.pdb" target="lib/net9.0/LagoVista.Campaigns.Repos.pdb" />
   </files>
 </package>
